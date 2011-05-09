@@ -5,6 +5,51 @@
  	 name = "conversation_reader" >
  	 
  	 <operation name="invoke">
+ 	 <output name="result" type="document"></output>
+ 	 
+ 	 <variable name="config" type="document">
+ 	 	<configuration>
+		   <feeds>
+		       <feed>
+		           <url>https://graph.facebook.com/intel/feed</url>
+		           <keywords>intel,news,greetings</keywords>
+		           <description>News about Intel and greetings from fans</description>
+		           <timeout>10000</timeout>
+		           <mandatory>true</mandatory>
+		           <active>true</active>
+		           <source_name>Facebook</source_name>
+		           <source_type>custom</source_type>
+		           <repeating_element>/data</repeating_element>
+		           <limit>25</limit>
+		           <fields>
+		               <field>
+		                   <name>entry</name>
+		                   <path>/message</path>
+		               </field>
+		               <field>
+		                   <name>created_time</name>
+		                   <path>/created_time</path>
+		               </field>
+		               <field>
+		                   <name>link</name>
+		                   <path>/link</path>
+		               </field>
+		               <field>
+		                   <name>id</name>
+		                   <path>/id</path>
+		               </field>
+		               <field>
+		                   <name>from</name>
+		                   <path>/from/name</path>
+		               </field>
+		           </fields>
+		       </feed>
+		   </feeds>
+		</configuration>
+ 	 </variable>
+ 	 
+ 	 
+ 	 
  	 
  	 </operation>
 </mashup>
