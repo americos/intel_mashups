@@ -5,15 +5,27 @@
  	 name = "conversations_parser_feed" >
  	 
  	 <operation name="invoke">
- 	 <output name="result" type="document"></output>
+ 	 <output name="result" type="string"></output>
  	 
  	 
  	 <!-- Input -->
  	 <input name="url" type="string" default=""></input>
  	 
- 	 <!-- Visit url -->
- 	 <directinvoke outputvariable="result" endpoint="$url"/>
+ 	 <variables>
+		
+	 </variables>
  	 
+ 	 
+ 	 <script>
+ 	 	<![CDATA[
+  			
+  			//Direct Invoke of the URL
+  			var res = '<output name="jobsDoc" type="document"/> <directinvoke endpoint="' + url + '" outputvariable="jobsDoc"/>'
+  			result = res;
+		]]>
+	</script>
+ 	 
+ 	
  	 
  	 </operation>
 </mashup>

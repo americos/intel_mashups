@@ -8,6 +8,11 @@
 		
 		<variables>
 			<variable name="feed_data" type="document"></variable>
+			
+			<variable name="dynamicScript" type="string"/>
+			
+			<variable name="emml_string" type="string"/>
+			<variable name="final_emml" type="string"/>
 		</variables>
 
 		<variable name="config" type="document">
@@ -46,21 +51,35 @@
 				<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url" outputvariable="feed_data"/>
 			</if>
 			
-			
-			
-			
 
 			<!-- Keywords filter -->
 
 			<!-- Count Filter -->
-
-			<appendresult outputvariable="result">
-				<mashup_result>{$feed_data}</mashup_result>
+			
+			
+			<appendresult outputvariable="emml_string">
+				<emml_string>{$feed_data}</emml_string>
 			</appendresult>
-
+			 
 		</foreach>
 
+		
 		<!-- Execute Mashup Dynamically, macro:executeDynamicEMML -->
+		<assign fromexpr="$emml_string//emml_string/node()" outputvariable="final_emml"/>
+		<display message="final emml:" variable="final_emml"/>
+		<script>
+ 	 	<![CDATA[
+  			
+  			dynamicScript = "<mashup>" + final_emml + "</mashup>";
+		]]>
+	</script>
+
+		<display message="This is the Groovy: " variable="dynamicScript"/>		
+
+        <!-- execute dynamically built EMML script  and return the result in output variable -->
+        <macro:executeDynamicEMML script="$dynamicScript" outputvariable="result"/>
+
+
 
 		<display message="===END MASHUP CONTROLLER EXECUTION===" />
 
