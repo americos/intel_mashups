@@ -1,0 +1,68 @@
+<mashup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd"
+	xmlns="http://www.openmashup.org/schemas/v1.0/EMML" xmlns:macro="http://www.openmashup.org/schemas/v1.0/EMMLMacro"
+	name="conversation_reader">
+
+	<operation name="invoke">
+		<output name="result" type="document"></output>
+		
+		<variables>
+			<variable name="feed_data" type="document"></variable>
+		</variables>
+
+		<variable name="config" type="document">
+			<configuration>
+				<feeds>
+					<feed>
+						<url>http://twitter.com/statuses/user_timeline/34714943.atom</url>
+						<keywords>intel,news,greetings</keywords>
+						<description>News about Intel and greetings from fans</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>twitter</source_name>
+						<source_type>custom</source_type>
+						<repeating_element>/data</repeating_element>
+						<limit>25</limit>
+					</feed>
+				</feeds>
+			</configuration>
+		</variable>
+		
+		<variable name="feed_url" type="string" default=""></variable>
+
+		<!-- CONTROLLER LOGIC -->
+		<display message="===BEGIN MASHUP CONTROLLER EXECUTION===" />
+		
+		<foreach items="$config//feed" variable="feed">
+			<!-- feed_url -->
+			<assign fromexpr="$feed//url/node()" outputvariable="feed_url" />
+			<display message="::Controller will ask to visit url:" variable="feed_url" />
+
+			<!-- Checking feed type -->
+			<assign fromexpr="$feed//source_name/node()" outputvariable="feed_sourcetype"/>
+			 <if condition="$feed_sourcetype eq 'twitter' ">
+				<!-- Twitter -->
+				<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url" outputvariable="feed_data"/>
+			</if>
+			
+			
+			
+			
+
+			<!-- Keywords filter -->
+
+			<!-- Count Filter -->
+
+			<appendresult outputvariable="result">
+				<mashup_result>{$feed_data}</mashup_result>
+			</appendresult>
+
+		</foreach>
+
+		<!-- Execute Mashup Dynamically, macro:executeDynamicEMML -->
+
+		<display message="===END MASHUP CONTROLLER EXECUTION===" />
+
+	</operation>
+</mashup>

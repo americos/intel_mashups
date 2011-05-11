@@ -1,0 +1,19 @@
+<mashup xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance" 
+ 	 xsi:schemaLocation="http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd" 
+ 	 xmlns="http://www.openmashup.org/schemas/v1.0/EMML" 
+ 	 xmlns:macro="http://www.openmashup.org/schemas/v1.0/EMMLMacro" 
+ 	 name = "conversations_parser_feed" >
+ 	 
+ 	 <operation name="invoke">
+ 	 <output name="result" type="document"></output>
+ 	 
+ 	 
+ 	 <!-- Input -->
+ 	 <input name="url" type="string" default=""></input>
+ 	 
+ 	 <!-- Visit url -->
+ 	 <directinvoke outputvariable="result" endpoint="$url"/>
+ 	 
+ 	 
+ 	 </operation>
+</mashup>

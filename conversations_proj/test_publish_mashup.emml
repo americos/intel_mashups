@@ -1,0 +1,39 @@
+<mashup xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance" 
+ 	 xsi:schemaLocation="http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd" 
+ 	 xmlns="http://www.openmashup.org/schemas/v1.0/EMML" 
+ 	 xmlns:macro="http://www.openmashup.org/schemas/v1.0/EMMLMacro" 
+ 	 name = "test_publish_mashup" >
+ 	 
+ 	 <operation name="invoke">
+ 	 
+ 	 <!-- 
+ 	 "version": "1.1", 
+	"svcVersion": "", 
+	"sid": "JEMSDesigner", 
+	"oid": "registerService", 
+	"params": [
+		{	"name": "deleteme_deleteme", 
+			"description": "", 
+			"providerName": "NONE", 
+			"categories": ["/"], 
+			"tags": [""]
+		}, 
+			"<mashup xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'\n\txsi:schemaLocation='http://www.openmashup.org/schemas/v1.0/EMML/../schemas/		
+			EMMLPrestoSpec.xsd'\n\txmlns='http://www.openmashup.org/schemas/v1.0/EMML'\n\txmlns:macro='http://www.openmashup.org/schemas/v1.0/EMMLMacro'\n	
+			\txmlns:presto='http://www.jackbe.com/v1.0/EMMLPrestoExtensions'\n\tname='newMashup'>\n\n\t<output name='result' type='document' />\n</mashup>"
+	], 
+	"header": {"invId": ""}
+ 	 
+ 	  -->
+ 	 <variables>
+ 	 	<variable name="version" type="string" default="sss1.1"></variable>
+ 	 	<variable name="svcVersion" type="string" default=""></variable>
+ 	 </variables>
+ 	 
+ 	 
+ 	 <invoke operation="registerService" service="JEMSDesigner" inputvariables="version" outputvariable="result"/>
+ 	 
+ 	 <display message="The result is:" variable="result"/>
+ 	 
+ 	 </operation>
+</mashup>
