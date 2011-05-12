@@ -26,10 +26,11 @@
 						<mandatory>true</mandatory>
 						<active>true</active>
 						<source_name>twitter</source_name>
-						<source_type>custom</source_type>
+						<source_type>twitter</source_type>
 						<repeating_element>/data</repeating_element>
 						<limit>25</limit>
 					</feed>
+					
 				</feeds>
 			</configuration>
 		</variable>
@@ -45,7 +46,7 @@
 			<display message="::Controller will ask to visit url:" variable="feed_url" />
 
 			<!-- Checking feed type -->
-			<assign fromexpr="$feed//source_name/node()" outputvariable="feed_sourcetype"/>
+			<assign fromexpr="$feed//source_type/node()" outputvariable="feed_sourcetype"/>
 			 <if condition="$feed_sourcetype eq 'twitter' ">
 				<!-- Twitter -->
 				<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url" outputvariable="feed_data"/>
@@ -63,24 +64,27 @@
 			 
 		</foreach>
 
+		<display message="Emml_String:" variable="emml_string"/>
 		
 		<!-- Execute Mashup Dynamically, macro:executeDynamicEMML -->
 		<assign fromexpr="$emml_string//emml_string/node()" outputvariable="final_emml"/>
 		<display message="final emml:" variable="final_emml"/>
 		<script>
  	 	<![CDATA[
-  			
-  			dynamicScript = "<mashup>" + final_emml + "</mashup>";
+  			var mashup_header = "<mashup xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd' xmlns='http://www.openmashup.org/schemas/v1.0/EMML' xmlns:macro='http://www.openmashup.org/schemas/v1.0/EMMLMacro' xmlns:presto='http://www.jackbe.com/v1.0/EMMLPrestoExtensions' name='newMashup'>"
+  			dynamicScript = mashup_header + final_emml + "</mashup>";
 		]]>
 	</script>
 
 		<display message="This is the Groovy: " variable="dynamicScript"/>		
 
         <!-- execute dynamically built EMML script  and return the result in output variable -->
-        <macro:executeDynamicEMML script="$dynamicScript" outputvariable="result"/>
+       <!--  <macro:executeDynamicEMML script="$dynamicScript" outputvariable="result"/>-->
 
-
-
+		<!-- SAVE MASHUP -->
+		<variable name="smartAutumn" type="string" default="smartAutumn"></variable>
+		<invoke operation="invoke" service="test_publish_mashup" inputvariables="smartAutumn, dynamicScript" outputvariable="result"/>
+	
 		<display message="===END MASHUP CONTROLLER EXECUTION===" />
 
 	</operation>

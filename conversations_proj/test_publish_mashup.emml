@@ -5,35 +5,37 @@
  	 name = "test_publish_mashup" >
  	 
  	 <operation name="invoke">
+ 	
+ 	<output name='result' type='document' />
+ 	
+ 	<!-- MAHSUP NAME -->
+ 	<input name="mashup_name" type="string" default="smartAmerico"></input>
+ 	<!-- MASHUP CODE -->
+ 	<input name="mashup_code" type="string"></input>
+ 	
+ 	 <script type="text/javascript">
+        <![CDATA[
+			var designer = new Packages.com.jackbe.jbp.jems.moe.runtime.JEMSDesignerImpl();
+			var svcRegInfo = new Packages.com.jackbe.jbp.sas.services.ServiceRegistrationInfo();
+			svcRegInfo.setName( mashup_name );
+			//svcRegInfo.setDescription("sample mashup ");
+			//var tags = java.lang.reflect.Array.newInstance(java.lang.String, 2);
+			//tags[0] = 'dog';
+			//tags[1] = 'smarts';
+			//svcRegInfo.setTags(tags);
+   			//svcRegInfo.setProviderName('petsmart');
+
+			//var apps = java.lang.reflect.Array.newInstance(java.lang.String, 1);
+			//apps[0] = 'DogApp';
+   			//svcRegInfo.setApplications(apps);
+
+
+			var mashup1 = mashup_code; //"<mashup xmlns='http://www.openmashup.org/schemas/v1.0/EMML' name='SmartDog'>	<output name='result' type='document'> <sampledata/> </output> </mashup> ";
+
+			designer.registerService(svcRegInfo, mashup1 );
+        ]]>
+    </script>
  	 
- 	 <!-- 
- 	 "version": "1.1", 
-	"svcVersion": "", 
-	"sid": "JEMSDesigner", 
-	"oid": "registerService", 
-	"params": [
-		{	"name": "deleteme_deleteme", 
-			"description": "", 
-			"providerName": "NONE", 
-			"categories": ["/"], 
-			"tags": [""]
-		}, 
-			"<mashup xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'\n\txsi:schemaLocation='http://www.openmashup.org/schemas/v1.0/EMML/../schemas/		
-			EMMLPrestoSpec.xsd'\n\txmlns='http://www.openmashup.org/schemas/v1.0/EMML'\n\txmlns:macro='http://www.openmashup.org/schemas/v1.0/EMMLMacro'\n	
-			\txmlns:presto='http://www.jackbe.com/v1.0/EMMLPrestoExtensions'\n\tname='newMashup'>\n\n\t<output name='result' type='document' />\n</mashup>"
-	], 
-	"header": {"invId": ""}
- 	 
- 	  -->
- 	 <variables>
- 	 	<variable name="version" type="string" default="sss1.1"></variable>
- 	 	<variable name="svcVersion" type="string" default=""></variable>
- 	 </variables>
- 	 
- 	 
- 	 <invoke operation="registerService" service="JEMSDesigner" inputvariables="version" outputvariable="result"/>
- 	 
- 	 <display message="The result is:" variable="result"/>
  	 
  	 </operation>
 </mashup>
