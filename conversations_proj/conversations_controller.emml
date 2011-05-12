@@ -13,6 +13,9 @@
 			
 			<variable name="emml_string" type="string"/>
 			<variable name="final_emml" type="string"/>
+			<variable name="emml_xml" type="document"></variable>
+			<variable name="counter" type="number" default="0"></variable>
+			
 		</variables>
 
 		<variable name="config" type="document">
@@ -30,7 +33,18 @@
 						<repeating_element>/data</repeating_element>
 						<limit>25</limit>
 					</feed>
-					
+					<feed>
+						<url>http://rss.intel.com/rss/intel-master-pressfeed.xml</url>
+						<keywords>intel,news,greetings</keywords>
+						<description>News about Intel and greetings from fans</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>feed</source_name>
+						<source_type>feed</source_type>
+						<repeating_element>/data</repeating_element>
+						<limit>25</limit>
+					</feed>
 				</feeds>
 			</configuration>
 		</variable>
@@ -40,52 +54,90 @@
 		<!-- CONTROLLER LOGIC -->
 		<display message="===BEGIN MASHUP CONTROLLER EXECUTION===" />
 		
+		<!-- ITERATE ON ALL THE FEEDS -->
 		<foreach items="$config//feed" variable="feed">
-			<!-- feed_url -->
+			<!-- FEED URL -->
 			<assign fromexpr="$feed//url/node()" outputvariable="feed_url" />
 			<display message="::Controller will ask to visit url:" variable="feed_url" />
+			
+			<script>
+			<![CDATA[
+  				counter = counter + 1; 
+			]]>
+			</script>
 
-			<!-- Checking feed type -->
+			<!-- CHECKING SOURCE TYPE -->
 			<assign fromexpr="$feed//source_type/node()" outputvariable="feed_sourcetype"/>
 			 <if condition="$feed_sourcetype eq 'twitter' ">
-				<!-- Twitter -->
-				<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url" outputvariable="feed_data"/>
+				<!-- TWITTER -->
+				<variable name="repetitive_elem" type="string" default="entry"></variable>
+				<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url, counter, repetitive_elem" outputvariable="feed_data"/>
+				
+				<!-- FEEDS -->
+				<elseif condition="$feed_sourcetype eq 'feed' ">
+					<variable name="repetitive_elem" type="string" default="item"></variable>
+					<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url, counter, repetitive_elem" outputvariable="feed_data"/>
+				</elseif>
 			</if>
+		
 			
-
-			<!-- Keywords filter -->
-
-			<!-- Count Filter -->
-			
-			
-			<appendresult outputvariable="emml_string">
-				<emml_string>{$feed_data}</emml_string>
+			<!-- CREATING XML STRUCTURE WHERE EACH LINE IS A MASHUP CODE -->
+			<appendresult outputvariable="emml_xml">
+					<mashup_code>
+						{$feed_data}
+					</mashup_code>
 			</appendresult>
 			 
 		</foreach>
 
-		<display message="Emml_String:" variable="emml_string"/>
+		<display message="Emml_String:" variable="emml_xml"/>
 		
-		<!-- Execute Mashup Dynamically, macro:executeDynamicEMML -->
-		<assign fromexpr="$emml_string//emml_string/node()" outputvariable="final_emml"/>
-		<display message="final emml:" variable="final_emml"/>
+		<!-- CREATE FINAL MASHUP CODE -->
 		<script>
  	 	<![CDATA[
-  			var mashup_header = "<mashup xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd' xmlns='http://www.openmashup.org/schemas/v1.0/EMML' xmlns:macro='http://www.openmashup.org/schemas/v1.0/EMMLMacro' xmlns:presto='http://www.jackbe.com/v1.0/EMMLPrestoExtensions' name='newMashup'>"
-  			dynamicScript = mashup_header + final_emml + "</mashup>";
+  			var mashup_header = "<mashup xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd' xmlns='http://www.openmashup.org/schemas/v1.0/EMML' xmlns:macro='http://www.openmashup.org/schemas/v1.0/EMMLMacro' xmlns:presto='http://www.jackbe.com/v1.0/EMMLPrestoExtensions' name='newMashup'><operation name='invoke'>"
+  			var output = '<output name="result" type="document"></output>';
+  			dynamicScript = mashup_header + output;
 		]]>
-	</script>
-
+		</script>
+		
+		<!-- Getting all the lines of every mashup -->
+		<foreach items="$emml_xml//mashup_code" variable="mashup_item">
+			<display message="MASHUP_ITEM:" variable="mashup_item"/>
+			
+			<script>
+ 	 		<![CDATA[  				
+  				dynamicScript = dynamicScript + mashup_item;
+			]]>
+			</script>
+		</foreach>
+		<!-- Closing operation & mashup tag -->
+		<script>
+ 	 	<![CDATA[
+ 	 		//CONSTRUCTOR FOR PUTTING ALL TOGETHER
+ 	 		//dynamicScript = dynamicScript + '<merge inputvariables="output1, output2" outputvariable="result"/>';
+ 	 		dynamicScript = dynamicScript + '<constructor outputvariable="result">';
+          	dynamicScript = dynamicScript + '<mashup_result>'
+            dynamicScript = dynamicScript + '<output1>{$output1//*:entry}</output1>'
+            dynamicScript = dynamicScript + '<output2>{$output2//*:item}</output2>'
+          	dynamicScript = dynamicScript + '</mashup_result>'
+        	dynamicScript = dynamicScript + '</constructor>'
+ 	 	
+ 	 		//FUZZY LOGIC FOR REMOVING MASHUP_CODE tag
+ 	 		var res = new Packages.java.lang.String(dynamicScript);
+  			res = res.replaceAll("<mashup_code>" , "");
+  			res = res.replaceAll("</mashup_code>" , "");
+  			dynamicScript = res + "</operation></mashup>";
+		]]>
+		</script>
+		
 		<display message="This is the Groovy: " variable="dynamicScript"/>		
-
-        <!-- execute dynamically built EMML script  and return the result in output variable -->
-       <!--  <macro:executeDynamicEMML script="$dynamicScript" outputvariable="result"/>-->
-
 		<!-- SAVE MASHUP -->
+		
 		<variable name="smartAutumn" type="string" default="smartAutumn"></variable>
 		<invoke operation="invoke" service="test_publish_mashup" inputvariables="smartAutumn, dynamicScript" outputvariable="result"/>
-	
-		<display message="===END MASHUP CONTROLLER EXECUTION===" />
-
+	 	
+		
+		
 	</operation>
 </mashup>
