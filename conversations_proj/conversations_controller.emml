@@ -15,7 +15,7 @@
 			<variable name="final_emml" type="string"/>
 			<variable name="emml_xml" type="document"></variable>
 			<variable name="counter" type="number" default="0"></variable>
-			
+			<variable name="constructor" type="string"/>
 		</variables>
 
 		<variable name="config" type="document">
@@ -23,6 +23,18 @@
 				<feeds>
 					<feed>
 						<url>http://twitter.com/statuses/user_timeline/34714943.atom</url>
+						<keywords>intel,news,greetings</keywords>
+						<description>News about Intel and greetings from fans</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>twitter</source_name>
+						<source_type>twitter</source_type>
+						<repeating_element>/data</repeating_element>
+						<limit>25</limit>
+					</feed>
+					<feed>
+						<url>http://twitter.com/statuses/user_timeline/12024042.atom</url>
 						<keywords>intel,news,greetings</keywords>
 						<description>News about Intel and greetings from fans</description>
 						<timeout>10000</timeout>
@@ -112,16 +124,42 @@
 			</script>
 		</foreach>
 		<!-- Closing operation & mashup tag -->
+		<assign fromexpr="count($config//feed)" outputvariable="feed_count"/>
+		<display message="FEED COUNT:" variable="feed_count"/>
+		
+		<!-- Opening final Constructor -->
+		<script>
+ 	 		<![CDATA[  				
+  				constructor = '<constructor outputvariable="result">';
+  				constructor = constructor + '<mashup_result>';
+			]]>
+		</script>
+		
+		<for variable="feed_number" startcountervalue="1" finalcountervalue="$feed_count">
+			<display message="feed_number:" variable="feed_number"/>
+			
+			<script>
+ 	 		<![CDATA[  	
+ 	 			var item = 'output' + feed_number;
+ 	 					
+  				//constructor = constructor + '<'+ item +'>' + '{$'+ item +'//'+ item +'}</'+ item +'>';
+  				constructor = constructor + '{$'+ item +'}';
+			]]>
+			</script>
+			
+		</for>
+		<!-- Closing final constructor -->
+		<script>
+ 	 		<![CDATA[  				
+  				constructor = constructor + '</mashup_result>';
+  				constructor = constructor + '</constructor>';
+			]]>
+		</script>
+		
 		<script>
  	 	<![CDATA[
  	 		//CONSTRUCTOR FOR PUTTING ALL TOGETHER
- 	 		//dynamicScript = dynamicScript + '<merge inputvariables="output1, output2" outputvariable="result"/>';
- 	 		dynamicScript = dynamicScript + '<constructor outputvariable="result">';
-          	dynamicScript = dynamicScript + '<mashup_result>'
-            dynamicScript = dynamicScript + '<output1>{$output1//*:entry}</output1>'
-            dynamicScript = dynamicScript + '<output2>{$output2//*:item}</output2>'
-          	dynamicScript = dynamicScript + '</mashup_result>'
-        	dynamicScript = dynamicScript + '</constructor>'
+ 	 		dynamicScript = dynamicScript + constructor
  	 	
  	 		//FUZZY LOGIC FOR REMOVING MASHUP_CODE tag
  	 		var res = new Packages.java.lang.String(dynamicScript);
@@ -135,7 +173,7 @@
 		<!-- SAVE MASHUP -->
 		
 		<variable name="smartAutumn" type="string" default="smartAutumn"></variable>
-		<invoke operation="invoke" service="test_publish_mashup" inputvariables="smartAutumn, dynamicScript" outputvariable="result"/>
+		<!-- <invoke operation="invoke" service="test_publish_mashup" inputvariables="smartAutumn, dynamicScript" outputvariable="result"/> -->
 	 	
 		
 		
