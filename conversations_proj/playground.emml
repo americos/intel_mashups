@@ -1,0 +1,29 @@
+<mashup xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance" 
+ 	 xsi:schemaLocation="http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd" 
+ 	 xmlns="http://www.openmashup.org/schemas/v1.0/EMML" 
+ 	 xmlns:macro="http://www.openmashup.org/schemas/v1.0/EMMLMacro" 
+ 	 name = "playground" >
+ 
+ <operation name="invoke">
+        <output name="result" type="document"/>
+        <directinvoke endpoint="http://twitter.com/statuses/user_timeline/34714943.atom"
+            outputvariable="output1"/>
+        <variable name="mystring" type="string"/>
+        <script><![CDATA[var mystring=""; var res = new Packages.java.lang.String(output1);res = res.replaceAll("&" , "&amp;");mystring = res;]]></script>
+        <assign fromvariable="mystring" outputvariable="output1"/>
+      
+        <!--Adding filter by COUNT -->
+        <input name="COUNT" type="number" default="3"/>
+  		<filter inputvariable='output1' filterexpr='//entry[position() = (1 to $COUNT)]' outputvariable='output1' />
+        <display message="ss:" variable="output1"/>
+        
+        
+        <constructor outputvariable="output1">
+            <output1>{$output1//*:entry}</output1>
+        </constructor>
+        
+        <constructor outputvariable="result">
+            <mashup_result>{$output1}</mashup_result>
+        </constructor>
+    </operation>
+</mashup>

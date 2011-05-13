@@ -16,6 +16,7 @@
 			<variable name="emml_xml" type="document"></variable>
 			<variable name="counter" type="number" default="0"></variable>
 			<variable name="constructor" type="string"/>
+			<variable name="feed_limit" type="number"></variable>
 		</variables>
 
 		<variable name="config" type="document">
@@ -31,7 +32,7 @@
 						<source_name>twitter</source_name>
 						<source_type>twitter</source_type>
 						<repeating_element>/data</repeating_element>
-						<limit>25</limit>
+						<limit>10</limit>
 					</feed>
 					<feed>
 						<url>http://twitter.com/statuses/user_timeline/12024042.atom</url>
@@ -43,7 +44,7 @@
 						<source_name>twitter</source_name>
 						<source_type>twitter</source_type>
 						<repeating_element>/data</repeating_element>
-						<limit>25</limit>
+						<limit>5</limit>
 					</feed>
 					<feed>
 						<url>http://rss.intel.com/rss/intel-master-pressfeed.xml</url>
@@ -55,7 +56,7 @@
 						<source_name>feed</source_name>
 						<source_type>feed</source_type>
 						<repeating_element>/data</repeating_element>
-						<limit>25</limit>
+						<limit>20</limit>
 					</feed>
 				</feeds>
 			</configuration>
@@ -71,7 +72,9 @@
 			<!-- FEED URL -->
 			<assign fromexpr="$feed//url/node()" outputvariable="feed_url" />
 			<display message="::Controller will ask to visit url:" variable="feed_url" />
-			
+			<!-- Limit -->
+			<assign fromexpr="$feed//limit/node()" outputvariable="feed_limit" />
+			<display message="::Limit results to:" variable="feed_limit" />
 			<script>
 			<![CDATA[
   				counter = counter + 1; 
@@ -83,12 +86,12 @@
 			 <if condition="$feed_sourcetype eq 'twitter' ">
 				<!-- TWITTER -->
 				<variable name="repetitive_elem" type="string" default="entry"></variable>
-				<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url, counter, repetitive_elem" outputvariable="feed_data"/>
+				<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url, counter, repetitive_elem, feed_limit" outputvariable="feed_data"/>
 				
 				<!-- FEEDS -->
 				<elseif condition="$feed_sourcetype eq 'feed' ">
 					<variable name="repetitive_elem" type="string" default="item"></variable>
-					<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url, counter, repetitive_elem" outputvariable="feed_data"/>
+					<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url, counter, repetitive_elem, feed_limit" outputvariable="feed_data"/>
 				</elseif>
 			</if>
 		
