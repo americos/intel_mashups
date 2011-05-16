@@ -1,60 +1,86 @@
-<mashup xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance" 
- 	 xsi:schemaLocation="http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd" 
- 	 xmlns="http://www.openmashup.org/schemas/v1.0/EMML" 
- 	 xmlns:macro="http://www.openmashup.org/schemas/v1.0/EMMLMacro" 
- 	 name = "conversations_parser_feed" >
- 	 
- 	 <operation name="invoke">
- 	 <output name="result" type="string"></output>
- 	 
- 	 
- 	 <!-- Input -->
- 	 <input name="url" type="string" default=""></input>
+<mashup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd"
+    xmlns="http://www.openmashup.org/schemas/v1.0/EMML"
+    xmlns:macro="http://www.openmashup.org/schemas/v1.0/EMMLMacro"
+    xmlns:presto="http://www.jackbe.com/v1.0/EMMLPrestoExtensions" name="conversations_parser_feed">
+    <operation name="invoke">
+        <output name="result" type="document"/>
+        
+         <!-- Input -->
+ 	 <input name="url" type="string" default="http://twitter.com/statuses/user_timeline/34714943.atom"></input>
  	 <input name="counter" type="number" default="1"></input>
  	 <input name="repetitive_elem" type="string" default="item"></input>
- 	 <input name="limit" type="number" default="4"></input>
- 	 
- 	 <variables>
-		
-	 </variables>
- 	 
- 	 
- 	 <script>
+ 	 <input name="limit" type="number" default="7"></input>
+ 	 <input name="feed_sourcetype" type="string" default="feed_source"></input>
+ 
+        
+        <script>
  	 	<![CDATA[
  	 		//OUTPUT VARIABLE FOR ALL
  	 		var my_output = "output" + counter
  	 	
-  			
   			//Direct Invoke of the URL
   			var res = ' <directinvoke endpoint="' + url + '" outputvariable="'+ my_output +'"/>'
   			
-			//Removing &'s  			  			
-  			res = res + '<variable name="mystring" type="string"/>'
+			//Removing &'s to be able to parse this response.			  			
+  			res = res + ' <variable name="mystring" type="string"/>'
   			res = res + '<script><![CDATA['
   			res = res + 'var mystring=""; var res = new Packages.java.lang.String('+ my_output +');'
   			res = res + 'res = res.replaceAll("&" , "&amp;");'
   			res = res + 'mystring = res;' 
-  			res = res + "]]xx></script>"
+  			res = res + "]]xxxx></script>"
   			res = res + '<assign fromvariable="mystring" outputvariable="'+ my_output +'" />';
   			
   			//Applying limit
   			res = res + '<filter inputvariable="'+ my_output + '"'
   			res = res + ' filterexpr="//'+ repetitive_elem +'[position() = (1 to '+ limit +')]"'
   			res = res + ' outputvariable="' + my_output + '" />'
-  			
-  			//Get section with items/entries into a constructor
+ 
+			//Iterate in each repetitive elem.
+			var item_root_start = "<item_root>";
+			var item_root_end = "</item_root>";
+			var item_string = "";
+ 			for( var i = 1; i<=limit; i++){
+ 				//item
+ 				item_string = item_string + '<item>';
+ 				
+ 				//Entry
+ 				item_string = item_string + '<entry>';
+ 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:content' + '[1]//text()' +'}'
+ 				item_string = item_string + '</entry>';
+ 				
+ 				//Created Time
+ 				item_string = item_string  + '<created_time>'
+ 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:published' + '[1]//text()' +'}'
+ 				item_string = item_string  + '</created_time>'
+ 				
+ 				//Source
+ 				item_string = item_string + '<source>';
+ 					item_string = item_string + feed_sourcetype;
+ 				item_string = item_string + '</source>';
+ 				
+ 				//Source URI
+ 				item_string = item_string + '<source_uri>';
+ 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:link'+ '[1]/@href' +'}'
+ 				item_string = item_string + '</source_uri>';
+ 				
+ 				//Closing Item
+ 				item_string = item_string + '</item>';
+ 			}
+ 			
+ 			//Get section with items/entries into a constructor
     		res = res + '<constructor outputvariable="' + my_output +'">';
-    		res = res + '<' + my_output + '>{$' + my_output + '//*:' + repetitive_elem + '}</' + my_output + '> </constructor>';
-      		
+    		res = res + item_root_start + item_string + item_root_end;
+  			res = res + '</constructor>';
+  			
       		//Fuzzy logic to close the cdata section
       		res = new Packages.java.lang.String(res);
-  			res = res.replaceAll("xx","");
+  			res = res.replaceAll("xxxx","");
   			
   			result = res;
+  			
+  			print(result);
 		]]>
 	</script>
- 	 
- 	
- 	 
- 	 </operation>
+    </operation>
 </mashup>

@@ -19,6 +19,7 @@
 			<variable name="feed_limit" type="number"></variable>
 			<variable name="mashup_name" type="string"></variable>
 			<variable name="serviceID" type="string"></variable>
+			<variable name="feed_sourcetype" type="string"></variable>
 			
 		</variables>
 
@@ -78,12 +79,12 @@
 			 <if condition="$feed_sourcetype eq 'twitter' ">
 				<!-- TWITTER -->
 				<variable name="repetitive_elem" type="string" default="entry"></variable>
-				<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url, counter, repetitive_elem, feed_limit" outputvariable="feed_data"/>
+				<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype" outputvariable="feed_data"/>
 				
 				<!-- FEEDS -->
 				<elseif condition="$feed_sourcetype eq 'feed' ">
 					<variable name="repetitive_elem" type="string" default="item"></variable>
-					<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url, counter, repetitive_elem, feed_limit" outputvariable="feed_data"/>
+					<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype" outputvariable="feed_data"/>
 				</elseif>
 			</if>
 		
@@ -132,7 +133,7 @@
 		<script>
  	 		<![CDATA[  				
   				constructor = '<constructor outputvariable="result">';
-  				constructor = constructor + '<mashup_result>';
+  				constructor = constructor + '<mashup_result><items>';
 			]]>
 		</script>
 		
@@ -141,10 +142,8 @@
 			
 			<script>
  	 		<![CDATA[  	
- 	 			var item = 'output' + feed_number;
- 	 					
-  				//constructor = constructor + '<'+ item +'>' + '{$'+ item +'//'+ item +'}</'+ item +'>';
-  				constructor = constructor + '{$'+ item +'}';
+ 	 			var output_number = 'output' + feed_number;
+ 	 			constructor = constructor + '{$'+ output_number +'//item}'; //This last item is the tag name created in conversations_parser_feed.emml
 			]]>
 			</script>
 			
@@ -152,7 +151,7 @@
 		<!-- Closing final constructor -->
 		<script>
  	 		<![CDATA[  				
-  				constructor = constructor + '</mashup_result>';
+  				constructor = constructor + '</items></mashup_result>';
   				constructor = constructor + '</constructor>';
 			]]>
 		</script>
