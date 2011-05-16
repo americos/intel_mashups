@@ -4,7 +4,7 @@
 	name="conversations_controller">
 
 	<operation name="invoke">
-		<output name="result" type="document"></output>
+		<output name="result" type="string"></output>
 		
 		<variables>
 			<variable name="feed_data" type="document"></variable>
@@ -20,8 +20,12 @@
 			<variable name="mashup_name" type="string"></variable>
 			<variable name="serviceID" type="string"></variable>
 			<variable name="feed_sourcetype" type="string"></variable>
+			<variable name="jsonp" type="string"></variable>
 			
 		</variables>
+		
+		<!-- INPUT's -->
+		<input name="jsonp_function" type="string" default="parseResponse"></input>
 		<input name="config" type="document">
 			<configuration>
 				<name>beachMashup</name>
@@ -187,16 +191,20 @@
 		<!-- SAVE MASHUP -->
 		<invoke operation="invoke" service="test_publish_mashup" inputvariables="mashup_name, dynamicScript" outputvariable="serviceID"/> 
 	 	
-	 	<!-- CONSTRUCTING FINAL RESULT STRUCTURE FOR CLIENT
-	 		url: /presto/edge/api/rest/conversations_controller/invoke?
+	 	<!-- CONSTRUCTING FINAL RESULT jsonp FOR CLIENT
+	 		parseResponse({"mashup":{"id":"Mashup_Generated_Name","url":"/presto/edge/api/rest/Mashup_Generated_Name/runMashup"}})
 	 	 -->
 	 	 <assign fromexpr="concat('/presto/edge/api/rest/', $serviceID, '/invoke?')" outputvariable="url"/>]
-	 	 <constructor outputvariable="result">
-			<mashup_info>
-				<mashup_name>{$serviceID}</mashup_name>
-				<mashup_url>{$url}</mashup_url>
-			</mashup_info>
-		</constructor>
+	 	 
+	 	 <script>
+ 	 	<![CDATA[
+ 	 		//BUILDING THE JSONP STRING FOR RESULT
+ 	 		var jsonp = jsonp_function + '({"mashup":{"id":"'+ serviceID + '", "url":"/presto/edge/api/rest/'+ serviceID + '"/runMashup' +'}})';
+ 	 	
+		]]>
+		</script>
+	 	<assign fromvariable="jsonp" outputvariable="result"/>
+	 	 
 		<display message="Result:" variable="result"/>
 		
 	</operation>

@@ -2,14 +2,69 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Test for Executing the Mashup Controller</title>
+<title>Intel Conversations - Test for Executing the Mashup
+Controller</title>
 </head>
 <body>
-	Type the config for executing the Conversations Mashup:
-	<form action="http://localhost:8080/presto/edge/api/rest/conversations_controller/invoke?x-presto-resultFormat=json&" method="POST">
-		<textarea rows="40" cols="130" id="config" name="config" ></textarea>
+<b>Instructions</b>
+<p>
+<ul>
+	<li>Type the config xml in the text area below</li>
+	<li>Type the function name for the jsonp callback function</li>
+	<li>Make sure your set the mashup name in the "name" xml tag as
+	shown on the second line in the example below</li>
+	<li>Click the submit button to create the mashup</li>
+</ul>
+
+<form
+	action="http://localhost:8080/presto/edge/api/rest/conversations_controller/invoke?x-presto-resultFormat=json&"
+	method="POST">
+		jsonp Function Name:<input type="text" id="jsonp_function" name="jsonp_function" value="parseResponse"></input>
 		<p/>
-		<input type="submit" value="Submit">
-	</form>
+		<textarea rows="40" cols="130" id="config" name="config">
+			<configuration>
+				<name>beachMashup</name>
+				<feeds>
+					<feed>
+						<url>http://twitter.com/statuses/user_timeline/intel.atom</url>
+						<keywords></keywords>
+						<description>News about Intel and greetings from fans</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>twitter</source_name>
+						<source_type>twitter</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>10</limit>
+					</feed>
+					<feed>
+						<url>http://twitter.com/statuses/user_timeline/intelinside.atom</url>
+						<keywords></keywords>
+						<description>Tweets about IntelInisde</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>twitter</source_name>
+						<source_type>twitter</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>5</limit>
+					</feed>
+					<feed>
+						<url>http://twitter.com/statuses/user_timeline/jobsatintel.atom</url>
+						<keywords></keywords>
+						<description>Tweets about intel jobs</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>twitter</source_name>
+						<source_type>twitter</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>5</limit>
+					</feed>
+				</feeds>
+			</configuration>
+		</textarea>
+<p /><input type="submit" value="Submit">
+</form>
 </body>
 </html>
