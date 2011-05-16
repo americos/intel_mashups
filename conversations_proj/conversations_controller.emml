@@ -40,7 +40,7 @@
 					</feed>
 					<feed>
 						<url>http://twitter.com/statuses/user_timeline/intelinside.atom</url>
-						<keywords>intel,news,greetings</keywords>
+						<keywords></keywords>
 						<description>Tweets about IntelInisde</description>
 						<timeout>10000</timeout>
 						<mandatory>true</mandatory>
@@ -52,7 +52,7 @@
 					</feed>
 					<feed>
 						<url>http://twitter.com/statuses/user_timeline/jobsatintel.atom</url>
-						<keywords>intel,news,greetings</keywords>
+						<keywords></keywords>
 						<description>Tweets about intel jobs</description>
 						<timeout>10000</timeout>
 						<mandatory>true</mandatory>
