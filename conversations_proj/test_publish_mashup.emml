@@ -6,12 +6,14 @@
  	 
  	 <operation name="invoke">
  	
- 	<output name='result' type='document' />
+ 	<output name='result' type='string' />
  	
  	<!-- MAHSUP NAME -->
  	<input name="mashup_name" type="string" default="smartAmerico"></input>
  	<!-- MASHUP CODE -->
  	<input name="mashup_code" type="string"></input>
+ 	
+ 	<variable name="serviceID" type="string"></variable>
  	
  	 <script type="text/javascript">
         <![CDATA[
@@ -31,11 +33,15 @@
 
 
 			var mashup1 = mashup_code; //"<mashup xmlns='http://www.openmashup.org/schemas/v1.0/EMML' name='SmartDog'>	<output name='result' type='document'> <sampledata/> </output> </mashup> ";
-
-			designer.registerService(svcRegInfo, mashup1 );
+			
+			var serviceID = designer.registerService(svcRegInfo, mashup1 );
+			designer.publishService(serviceID)
         ]]>
     </script>
+    <display message="ServiceID: " variable="serviceID"/>
  	 
+ 	 <!-- RETURN THE SERVICEID -->
+ 	 <assign fromvariable="serviceID" outputvariable="result"/>
  	 
  	 </operation>
 </mashup>

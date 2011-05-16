@@ -1,7 +1,7 @@
 <mashup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd"
 	xmlns="http://www.openmashup.org/schemas/v1.0/EMML" xmlns:macro="http://www.openmashup.org/schemas/v1.0/EMMLMacro"
-	name="conversation_reader">
+	name="conversations_controller">
 
 	<operation name="invoke">
 		<output name="result" type="document"></output>
@@ -17,10 +17,14 @@
 			<variable name="counter" type="number" default="0"></variable>
 			<variable name="constructor" type="string"/>
 			<variable name="feed_limit" type="number"></variable>
+			<variable name="mashup_name" type="string"></variable>
+			<variable name="serviceID" type="string"></variable>
+			
 		</variables>
 
 		<variable name="config" type="document">
 			<configuration>
+				<name>beachMashup</name>
 				<feeds>
 					<feed>
 						<url>http://twitter.com/statuses/user_timeline/34714943.atom</url>
@@ -45,18 +49,6 @@
 						<source_type>twitter</source_type>
 						<repeating_element>/data</repeating_element>
 						<limit>5</limit>
-					</feed>
-					<feed>
-						<url>http://rss.intel.com/rss/intel-master-pressfeed.xml</url>
-						<keywords>intel,news,greetings</keywords>
-						<description>News about Intel and greetings from fans</description>
-						<timeout>10000</timeout>
-						<mandatory>true</mandatory>
-						<active>true</active>
-						<source_name>feed</source_name>
-						<source_type>feed</source_type>
-						<repeating_element>/data</repeating_element>
-						<limit>20</limit>
 					</feed>
 				</feeds>
 			</configuration>
@@ -107,10 +99,16 @@
 
 		<display message="Emml_String:" variable="emml_xml"/>
 		
+		<!-- Get Final MASHUP NAME -->
+		<assign fromexpr="$config//name/node()" outputvariable="mashup_name"/>
+		<display message="::New Mashup... I bautize you under the Name of:" variable="mashup_name"/>
 		<!-- CREATE FINAL MASHUP CODE -->
 		<script>
  	 	<![CDATA[
-  			var mashup_header = "<mashup xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd' xmlns='http://www.openmashup.org/schemas/v1.0/EMML' xmlns:macro='http://www.openmashup.org/schemas/v1.0/EMMLMacro' xmlns:presto='http://www.jackbe.com/v1.0/EMMLPrestoExtensions' name='newMashup'><operation name='invoke'>"
+ 	 		
+  			var mashup_header = "<mashup xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd' xmlns='http://www.openmashup.org/schemas/v1.0/EMML' xmlns:macro='http://www.openmashup.org/schemas/v1.0/EMMLMacro' xmlns:presto='http://www.jackbe.com/v1.0/EMMLPrestoExtensions'";
+  			mashup_header = mashup_header + " name='"+ mashup_name +"'><operation name='invoke'>";
+  			
   			var output = '<output name="result" type="document"></output>';
   			dynamicScript = mashup_header + output;
 		]]>
@@ -172,13 +170,20 @@
 		]]>
 		</script>
 		
+		<!-- EMML STRING THAT WAS CREATED AND ITS GOING TO BE SAVED -->
 		<display message="This is the Groovy: " variable="dynamicScript"/>		
+	
 		<!-- SAVE MASHUP -->
-		
-		<variable name="smartAutumn" type="string" default="smartAutumn"></variable>
-		<!-- <invoke operation="invoke" service="test_publish_mashup" inputvariables="smartAutumn, dynamicScript" outputvariable="result"/> -->
+		<invoke operation="invoke" service="test_publish_mashup" inputvariables="mashup_name, dynamicScript" outputvariable="serviceID"/> 
 	 	
-		
+	 	<!-- CONSTRUCTING FINAL RESULT STRUCTURE FOR CLIENT -->
+		<constructor outputvariable="result">
+			<mashup_info>
+				<mashup_name>{$serviceID}</mashup_name>
+				<mashup_url></mashup_url>
+			</mashup_info>
+		</constructor>
+		<display message="Result:" variable="result"/>
 		
 	</operation>
 </mashup>

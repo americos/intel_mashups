@@ -1,29 +1,42 @@
-<mashup xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance" 
- 	 xsi:schemaLocation="http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd" 
- 	 xmlns="http://www.openmashup.org/schemas/v1.0/EMML" 
- 	 xmlns:macro="http://www.openmashup.org/schemas/v1.0/EMMLMacro" 
- 	 name = "playground" >
- 
- <operation name="invoke">
+<mashup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd"
+    xmlns="http://www.openmashup.org/schemas/v1.0/EMML"
+    xmlns:macro="http://www.openmashup.org/schemas/v1.0/EMMLMacro"
+    xmlns:presto="http://www.jackbe.com/v1.0/EMMLPrestoExtensions" name="smartAutumn">
+    <operation name="invoke">
         <output name="result" type="document"/>
         <directinvoke endpoint="http://twitter.com/statuses/user_timeline/34714943.atom"
             outputvariable="output1"/>
         <variable name="mystring" type="string"/>
         <script><![CDATA[var mystring=""; var res = new Packages.java.lang.String(output1);res = res.replaceAll("&" , "&amp;");mystring = res;]]></script>
         <assign fromvariable="mystring" outputvariable="output1"/>
-      
-        <!--Adding filter by COUNT -->
-        <input name="COUNT" type="number" default="3"/>
-  		<filter inputvariable='output1' filterexpr='//entry[position() = (1 to $COUNT)]' outputvariable='output1' />
-        <display message="ss:" variable="output1"/>
-        
-        
+        <filter inputvariable="output1" filterexpr="//entry[position() = (1 to 10)]"
+            outputvariable="output1"/>
         <constructor outputvariable="output1">
             <output1>{$output1//*:entry}</output1>
         </constructor>
-        
+        <directinvoke endpoint="http://twitter.com/statuses/user_timeline/12024042.atom"
+            outputvariable="output2"/>
+        <variable name="mystring" type="string"/>
+        <script><![CDATA[var mystring=""; var res = new Packages.java.lang.String(output2);res = res.replaceAll("&" , "&amp;");mystring = res;]]></script>
+        <assign fromvariable="mystring" outputvariable="output2"/>
+        <filter inputvariable="output2" filterexpr="//entry[position() = (1 to 5)]"
+            outputvariable="output2"/>
+        <constructor outputvariable="output2">
+            <output2>{$output2//*:entry}</output2>
+        </constructor>
+        <directinvoke endpoint="http://rss.intel.com/rss/intel-master-pressfeed.xml"
+            outputvariable="output3"/>
+        <variable name="mystring" type="string"/>
+        <script><![CDATA[var mystring=""; var res = new Packages.java.lang.String(output3);res = res.replaceAll("&" , "&amp;");mystring = res;]]></script>
+        <assign fromvariable="mystring" outputvariable="output3"/>
+        <filter inputvariable="output3" filterexpr="//item[position() = (1 to 20)]"
+            outputvariable="output3"/>
+        <constructor outputvariable="output3">
+            <output3>{$output3//*:item}</output3>
+        </constructor>
         <constructor outputvariable="result">
-            <mashup_result>{$output1}</mashup_result>
+            <mashup_result>{$output1}{$output2}{$output3}</mashup_result>
         </constructor>
     </operation>
 </mashup>
