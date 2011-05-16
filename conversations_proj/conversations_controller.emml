@@ -124,7 +124,7 @@
  	 	<![CDATA[
  	 		
   			var mashup_header = "<mashup xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd' xmlns='http://www.openmashup.org/schemas/v1.0/EMML' xmlns:macro='http://www.openmashup.org/schemas/v1.0/EMMLMacro' xmlns:presto='http://www.jackbe.com/v1.0/EMMLPrestoExtensions'";
-  			mashup_header = mashup_header + " name='"+ mashup_name +"'><operation name='invoke'>";
+  			mashup_header = mashup_header + " name='"+ mashup_name +"'><operation name='runMashup'>";
   			
   			var output = '<output name="result" type="document"></output>';
   			dynamicScript = mashup_header + output;
@@ -199,7 +199,7 @@
 	 	 <script>
  	 	<![CDATA[
  	 		//BUILDING THE JSONP STRING FOR RESULT
- 	 		var jsonp = jsonp_function + '({"mashup":{"id":"'+ serviceID + '", "url":"/presto/edge/api/rest/'+ serviceID + '"/runMashup' +'}})';
+ 	 		var jsonp = jsonp_function + '({"mashup":{"id":"'+ serviceID + '", "url":"/presto/edge/api/rest/'+ serviceID + '/runMashup?x-p-anonymous=true"' +'}})';
  	 	
 		]]>
 		</script>
