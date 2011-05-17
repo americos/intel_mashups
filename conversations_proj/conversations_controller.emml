@@ -28,8 +28,20 @@
 		<input name="jsonp" type="string" default="parseResponse"></input>
 		<input name="config" type="document">
 			<configuration>
-				<name>ameMiami</name>
+				<name>beachMashup</name>
 				<feeds>
+					<feed>
+						<url>http://feeds.feedburner.com/IntelBlogs</url>
+						<keywords></keywords>
+						<description>Tweets about IntelInisde</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>feed</source_name>
+						<source_type>feed</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>6</limit>
+					</feed>
 					<feed>
 						<url>http://feeds.feedburner.com/IADPBlog</url>
 						<keywords></keywords>
@@ -90,6 +102,17 @@
 					<variable name="repetitive_elem" type="string" default="item"></variable>
 					<invoke operation="invoke" service="conversations_parser_rss" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype" outputvariable="feed_data"/>
 				</elseif>
+				
+				<!-- FEED -->				
+				<elseif condition="$feed_sourcetype eq 'feed' ">
+					<variable name="repetitive_elem" type="string" default="entry"></variable>
+					<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype" outputvariable="feed_data"/>
+				</elseif>
+				
+				<!-- FEED NOT SUPPORTED -->
+				<else>
+					<invoke operation="invoke" service="conversations_error" inputvariables="counter, feed_sourcetype" outputvariable="feed_data"/>
+				</else>
 			</if>
 		
 			
@@ -106,7 +129,6 @@
 		
 		<!-- Get Final MASHUP NAME -->
 		<assign fromexpr="$config//name/node()" outputvariable="mashup_name"/>
-		<display message="::New Mashup... I bautize you under the Name of:" variable="mashup_name"/>
 		<!-- CREATE FINAL MASHUP CODE -->
 		<script>
  	 	<![CDATA[
@@ -177,7 +199,7 @@
 		<display message="This is the Groovy: " variable="dynamicScript"/>		
 	
 		<!-- SAVE MASHUP -->
-		<invoke operation="invoke" service="test_publish_mashup" inputvariables="mashup_name, dynamicScript" outputvariable="serviceID"/> 
+		<invoke operation="invoke" service="test_publish_mashup" inputvariables="mashup_name, dynamicScript" outputvariable="serviceID"/>
 	 	
 	 	<!-- CONSTRUCTING FINAL RESULT jsonp FOR CLIENT
 	 		parseResponse({"mashup":{"id":"Mashup_Generated_Name","url":"/presto/edge/api/rest/Mashup_Generated_Name/runMashup"}})

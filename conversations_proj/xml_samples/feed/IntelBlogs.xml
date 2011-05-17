@@ -1,0 +1,1655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/atom10full.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+    xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0">
+
+    <title type="html">Blogs@Intel</title>
+    <link rel="alternate" type="text/html" href="http://blogs.intel.com/"/>
+
+    <id>tag:blogs.intel.com,2011://4</id>
+    <subtitle>Innovative online dialogues</subtitle>
+
+
+
+
+
+
+
+
+
+
+    <updated>2011-04-14T09:06:18Z</updated>
+
+
+
+
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml"
+        href="http://feeds.feedburner.com/IntelBlogs"/>
+    <feedburner:info uri="intelblogs"/>
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub"
+        href="http://pubsubhubbub.appspot.com/"/>
+    <feedburner:emailServiceId>IntelBlogs</feedburner:emailServiceId>
+    <feedburner:feedburnerHostname>http://feedburner.google.com</feedburner:feedburnerHostname>
+    <entry>
+        <title type="html">Tablet Innovation: Today and Tomorrow</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/vBeLPfUILHA/tablet_innovation_today_and_to.php"/>
+        <id>tag:blogs.intel.com,2011:/technology//10.4675</id>
+
+        <published>2011-04-14T08:12:16Z</published>
+
+        <updated>2011-04-14T08:22:15Z</updated>
+
+        <summary type="html">This week at the Intel Developer Forum (IDF) in Beijing, Doug Davis, GM
+            of the newly formed Netbook and Tablet Group, took to the stage outlining Intel’s plan
+            to accelerate the Atom product line roadmap. He boldly claimed that Intel...</summary>
+
+        <author>
+
+            <name>Krystal Temple</name>
+
+
+        </author>
+
+
+
+        <category term="mobile_devices" label="mobile_devices"
+            scheme="http://blogs.intel.com/technology/mobile-devices//"/>
+
+        <category term="atom" label="atom" scheme="http://blogs.intel.com/technology/tag/"/>
+
+
+        <category term="idfb11" label="idfb11" scheme="http://blogs.intel.com/technology/tag/"/>
+
+        <category term="tablet" label="tablet" scheme="http://blogs.intel.com/technology/tag/"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;p&gt;This week at
+            the Intel Developer Forum (IDF) in Beijing, Doug Davis, GM of the newly formed Netbook
+            and Tablet Group, took to the stage outlining Intel&amp;#8217;s plan to accelerate the
+            Atom product line roadmap. He boldly claimed that Intel will begin to move faster than
+            Moore&amp;#8217;s Law to bring new Intel Atom products to market based on three process
+            technology generations over the next three years.&lt;/p&gt; &lt;p&gt;This speed of
+            development and innovation will help push Intel ahead of the pack in the tablet market.
+            Today, the dialogue around tablets is focused on battery life - for good reason. The
+            newly launched &lt;a
+            href="http://newsroom.intel.com/community/intel_newsroom/blog/2011/04/11/new-intel-atom-processor-for-tablets-spurs-companion-computing-device-innovation?cid=rss-258152-c1-266165"&gt;Atom
+            Z670 (codenamed &amp;#8220;Oak Trail&amp;#8221;) &lt;/a&gt; provides up-to all day
+            battery life1 - but as Intel begins this acceleration, battery life will quickly become
+            a moot point. What was &amp;#8220;all-day&amp;#8221; will become all week or even all
+            month battery life. Once this happens, Intel believes the key differentiation in tablets
+            and other connected devices will be found in the features that are integrated into the
+            silicon, and pure performance which enables a range of consumer benefits. This
+            traditionally has been, and continues to be, Intel&amp;#8217;s strength. &lt;/p&gt;
+            &lt;p&gt;This industry is in the early stages of development, and has yet to realize its
+            full potential. We believe that what lies ahead is far greater than what we&amp;#8217;ve
+            seen so far. With the launch of the Atom Z670 processor this week, we showcased a
+            variety of new tablet innovations, including the &lt;a
+            href="http://newsroom.intel.com/community/intel_newsroom/blog/2011/04/11/new-intel-atom-processor-for-tablets-spurs-companion-computing-device-innovation?cid=rss-258152-c1-266165"&gt;Razer
+            Switchblade&lt;/a&gt; gaming device, which incorporates a multi-touch screen with a
+            dynamic keyboard that adapts and changes with the games being played.&lt;/p&gt;
+            &lt;p&gt;Once was only for consumers, tablets are also finding their way into the
+            workplace more and more. Traditional vertical businesses like healthcare are using
+            tablets to help increase efficiency, improve productivity and save time. &lt;a
+            href="http://www.motioncomputing.com/"&gt;Motion Computing&amp;#8217;s&lt;/a&gt; mobile
+            clinical assistant is one such example of how tablets allow medical staff to directly
+            input data into patients&amp;#8217; electronic files and avoid paper charting.
+            &lt;/p&gt; &lt;p&gt;In the future, tablets may not even look like they do today. Other
+            &amp;#8220;hybrid-like&amp;#8221; devices will offer consumers the choice of designs
+            that flip, swivel, spin and slide providing both touch-screen and keyboard interfaces.
+            &lt;/p&gt; &lt;p&gt;With so many new, innovative uses, and designs in store for tablets
+            and other companion devices, one thing is clear: Intel&amp;#8217;s current and future
+            technologies will play a key role in the tablet market segment today and in the
+            future.&lt;/p&gt; &lt;p&gt;What do you want from your next tablet? &lt;/p&gt;
+            &lt;p&gt;1Software and workloads used in performance tests may have been optimized for
+            performance only on Intel microprocessors. Performance tests, such as SYSmark and
+            MobileMark, are measured using specific computer systems, components, software,
+            operations and functions. Any change to any of those factors may cause the results to
+            vary. You should consult other information and performance tests to assist you in fully
+            evaluating your contemplated purchases, including the performance of that product when
+            combined with other products. For more information go to
+            http://www.intel.com/performance.&lt;/p&gt; Comments (0) &lt;img
+            src="http://feeds.feedburner.com/~r/IntelBlogs/~4/vBeLPfUILHA" height="1"
+            width="1"/&gt;</content>
+        <feedburner:origLink>http://feedproxy.google.com/~r/TechnologyIntel/~3/rL_5LKQkgRE/tablet_innovation_today_and_to.php</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">Technology Rocks: Yes, And You Make the Impossible, Possible</title>
+
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/gjrHvCWYIxc/"/>
+        <id>http://scoop.intel.com/?p=2575</id>
+
+        <published>2011-04-13T05:00:09Z</published>
+        <updated>2011-04-13T05:00:09Z</updated>
+
+        <summary type="html"/>
+
+        <author>
+
+
+            <name>Marcia Hansen</name>
+
+
+        </author>
+
+
+
+        <category term="inspiration" label="inspiration"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> Here at Intel, there
+            are a number of posters that various groups have hung around on cube walls and in
+            conference rooms that are designed to build optimism and help us feel empowered and
+            energetic about the work that we do here. On the way to my desk, I pass a conference
+            room with a [...] &lt;a
+            href="http://feeds.feedburner.com/~ff/intel/scoop?a=52EihOHPC20:f4zR8g_6DqM:yIl2AUoC8zA"
+            /&gt; &lt;a
+            href="http://feeds.feedburner.com/~ff/intel/scoop?a=52EihOHPC20:f4zR8g_6DqM:qj6IDK7rITs"
+            /&gt; &lt;a
+            href="http://feeds.feedburner.com/~ff/intel/scoop?a=52EihOHPC20:f4zR8g_6DqM:F7zBnMyn0Lo"
+            /&gt; &lt;img src="http://feeds.feedburner.com/~r/IntelBlogs/~4/gjrHvCWYIxc" height="1"
+            width="1"/&gt;</content>
+        <feedburner:origLink>http://feedproxy.google.com/~r/intel/scoop/~3/52EihOHPC20/</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">The Evolution of the Internet In Your TV</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/FSyWkWWytXo/"/>
+        <id>http://scoop.intel.com/?p=2543</id>
+
+        <published>2011-04-12T15:24:26Z</published>
+        <updated>2011-04-12T15:24:26Z</updated>
+
+        <summary type="html"/>
+
+        <author>
+
+            <name>Corvida Raven</name>
+
+
+        </author>
+
+
+
+
+        <category term="Widgets" label="Widgets"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> The concept of
+            bringing the internet to the TV has come a long way in terms of functionality and
+            design. Remember when everyone went crazy over TV widgets in 2008? TV widgets were
+            introduced as early as 2006 through Verizon FIOS. Limited in so many ways with basic
+            weather and traffic info, even photos and [...] &lt;a
+            href="http://feeds.feedburner.com/~ff/intel/scoop?a=gUWT69pRWR4:hCMAfrSD31E:yIl2AUoC8zA"
+            /&gt; &lt;a
+            href="http://feeds.feedburner.com/~ff/intel/scoop?a=gUWT69pRWR4:hCMAfrSD31E:qj6IDK7rITs"
+            /&gt; &lt;a
+            href="http://feeds.feedburner.com/~ff/intel/scoop?a=gUWT69pRWR4:hCMAfrSD31E:F7zBnMyn0Lo"
+            /&gt; &lt;img src="http://feeds.feedburner.com/~r/IntelBlogs/~4/FSyWkWWytXo" height="1"
+            width="1"/&gt;</content>
+        <feedburner:origLink>http://feedproxy.google.com/~r/intel/scoop/~3/gUWT69pRWR4/</feedburner:origLink>
+    </entry>
+
+
+    <entry>
+        <title type="html">Mobile Monday London – one week to go</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/OLf_bU5S28c/3492"/>
+        <id>3492 at http://appdeveloper.intel.com</id>
+
+        <published>2011-04-12T05:11:03Z</published>
+        <updated>2011-04-12T05:11:03Z</updated>
+
+        <summary type="html"/>
+
+        <author>
+
+            <name>Softtalkmobile</name>
+
+
+        </author>
+
+
+
+        <category term="EUPost" label="EUPost"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;p&gt;Mark your
+            diaries, demo night is returning to Mobile Monday London.&lt;br /&gt; It’s a bit later
+            than planned – the 18th of April, at CBI, Centrepoint, London – but they’ve got some
+            juicy demos lined up. It’s going to be popular for sure.&lt;br /&gt; If you haven’t
+            signed up to attend then don’t waste time – word has it that this MoMo is going to shake
+            a few demo mojos.&lt;br /&gt; You can sign up and RSVP at &lt;a
+            href="http://momolo.org"&gt;http://momolo.org&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;&lt;a
+            href="http://appdeveloper.intel.com/en-us/node/3492"&gt;read more&lt;/a&gt;&lt;/p&gt;
+            &lt;img src="http://feeds.feedburner.com/~r/IntelBlogs/~4/OLf_bU5S28c" height="1"
+            width="1"/&gt;</content>
+        <feedburner:origLink>http://appdeveloper.intel.com/en-us/node/3492</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">From Intel Developer Forum (IDF) Beijing: New Industry Collaborations in
+            China</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/UovZl3j7Ty8/3485"/>
+        <id>3485 at http://appdeveloper.intel.com</id>
+
+        <published>2011-04-11T19:48:03Z</published>
+        <updated>2011-04-11T19:48:03Z</updated>
+
+        <summary type="html"/>
+
+        <author>
+
+            <name>gunjan-rawal</name>
+
+
+        </author>
+
+
+
+        <category term="Atom" label="Atom"/>
+
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;p&gt;&lt;a
+            href="http://appdeveloper.intel.com/en-us/node/3485"&gt;read more&lt;/a&gt;&lt;/p&gt;
+            &lt;img src="http://feeds.feedburner.com/~r/IntelBlogs/~4/UovZl3j7Ty8" height="1"
+            width="1"/&gt;</content>
+        <feedburner:origLink>http://appdeveloper.intel.com/en-us/node/3485</feedburner:origLink>
+    </entry>
+
+    <entry>
+
+        <title type="html">IESC Vietnam: Making an Impact with Orphans</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/oNBl17B6Xwc/good_morning_from_vietnam.php"/>
+        <id>tag:blogs.intel.com,2011:/csr//16.4668</id>
+
+        <published>2011-04-11T13:08:25Z</published>
+        <updated>2011-04-11T15:15:46Z</updated>
+
+        <summary type="html">As part of Intel’s ongoing commitment to improving education through
+            the effective use of technology, Intel’s Education Market Platforms Group (EMPG)
+            launched the Intel Education Service Corps (IESC) in September 2009. This program is a
+            short-term service and career development...</summary>
+
+        <author>
+
+            <name>Jeanne Forbis</name>
+
+
+        </author>
+
+
+
+        <category term="education" label="education" scheme="http://blogs.intel.com/csr/education//"/>
+
+        <category term="general_csr" label="general_csr"
+            scheme="http://blogs.intel.com/csr/general-csr//"/>
+
+        <category term="classmatepc" label="classmatepc" scheme="http://blogs.intel.com/csr/tag/"/>
+
+        <category term="csr" label="csr" scheme="http://blogs.intel.com/csr/tag/"/>
+
+
+        <category term="education" label="education" scheme="http://blogs.intel.com/csr/tag/"/>
+
+        <category term="iesc" label="iesc" scheme="http://blogs.intel.com/csr/tag/"/>
+
+        <category term="intel_education_service_corps" label="intel_education_service_corps"
+            scheme="http://blogs.intel.com/csr/tag/"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;p&gt;&lt;a
+            href="http://blogs.intel.com/csr/assets_c/2011/04/Vietnamone-thumb-300x170.jpg"&gt;&lt;/a&gt;As
+            part of Intel&amp;#8217;s ongoing commitment to improving education through the
+            effective use of technology, Intel&amp;#8217;s Education Market Platforms Group (EMPG)
+            launched the &lt;a
+            href="http://blogs.intel.com/csr/2009/09/announcing_the_intel_education.php"&gt;Intel
+            Education Service Corps (IESC)&lt;/a&gt; in September 2009. This program is a short-term
+            service and career development opportunity, for a select group of Intel employees to
+            travel to a developing country to directly support the deployment of Intel-powered &lt;a
+            href="http://www.classmatepc.com/"&gt;classmate PCs&lt;/a&gt;. Sarah Frawley, an
+            Automation Engineer from Ireland, recaps her team&amp;#8217;s first few days in
+            Vietnam.&lt;/p&gt; &lt;p&gt;(In photo left to right: Gabe, Ben, Marissa, Sarah, Tad,
+            Bao)&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Good Morning Vietnam&lt;/strong&gt; &lt;em&gt;by
+            Sarah Frawley&lt;/em&gt;&lt;/p&gt; &lt;p&gt;I am one of five Intel employees that has
+            just arrived in Ho Chi Minh City, Vietnam as part of the Intel Education Service Corps
+            to work with the non-governmental organization (NGO) Orphans Overseas to help with their
+            &lt;a href="http://www.orphanimpact.org/"&gt;Orphan Impact project&lt;/a&gt;. Orphan
+            Impact has been delivering computer training to 800 children in 12 orphanages across 9
+            provinces in Vietnam since 2009 using &lt;a
+            href="http://www.classmatepc.com/"&gt;Intel-powered classmate PCs&lt;/a&gt;.&lt;/p&gt;
+            &lt;p&gt;My name is Sarah Frawley (Automation Engineer) and I will be working on this
+            team with 4 other Intel Employees: Marissa Mertzic (Process Engineer), Bao Nguyen
+            (Microprocessor Product Developer), Ben Young (Business Development Manager on 4G/
+            Wimax) and Gabe Schnaubelt (Technology &amp;amp; Manufacturing Group Software Engineer).
+            Gabe, Ben and Bao are all based in Oregon, Marissa is from Massachusetts, and I am based
+            in Ireland. Bao is originally from South Vietnam and has been helping us all with the
+            language translations and with ordering local food and especially requesting gluten-free
+            for Marissa!&lt;/p&gt; &lt;p&gt;We have been working together for ~30 hours the last 5
+            weeks preparing for the assignment incuding virtual training, face to face training and
+            regular meetings to sort out our logistics and project goals. The training phase of the
+            project was conducted in parallel with our existing roles at Intel.&lt;/p&gt;
+            &lt;p&gt;&lt;a href="http://blogs.intel.com/csr/vietnamtwo.jpg"&gt;&lt;/a&gt;&lt;/p&gt;
+            &lt;p&gt;We all arrived in Ho Chi Minh City April 1st when some of us met for the first
+            time while others had met at the face to face training day in Santa Clara a couple of
+            weeks back. Temperature has been ranging from 25 -37 degrees Celsius with humidity
+            averaging 83% so it&amp;#8217;s pretty hot and sticky!&lt;/p&gt; &lt;p&gt;We are all
+            very eager and excited in getting started with the project. We met Tad, our NGO
+            representative for the Orphan Impact project and went through the agenda for the next 2
+            weeks. Our team began to decide how best to tackle the tasks that were ahead of us. We
+            will be working with LEGO kits which will be used in the classes for the first time. We
+            are also planning lessons, revising existing lessons, and focusing especially on
+            training the local teachers on 21st century education skills. Gabe and I both have
+            technical backgrounds and began going through some initial setup and configuration on
+            the classmate PCs, as well as installing classroom management software which will
+            provide new capabilities to the students and teachers within the Vietnam orphanages. We
+            also worked with an experienced classmate PC representative at Intel Singapore, Bernd
+            Nordhausen, who gave us some useful advice with getting the classmate PCs
+            configured.&lt;/p&gt; &lt;p&gt;On Day 2 we met some of the local Ho Chi Minh City Orphan
+            Impact teachers, and Ben, Bao and Marissa got involved in their lesson-planning for the
+            week ahead. The teachers travel by motorcycle to each of the centres every week to roll
+            out 3 hours of computer training. They bring all the classmate PCs and equipment with
+            them which results in 30 machines getting spread across all the Ho Chi Minh City centres
+            and orphanages which reach up to 109 students. That evening we visited our first
+            orphanage in Binh An which is 15 kilometers from downtown Ho Chi Minh City. We got to
+            observe the local Orphan Impact teachers teaching a class on Microsoft Office. The kids
+            have been using the classmate PCs for over 6 months and are pretty comfortable with
+            their navigation and enthusiastic about learning more. Our team had some fruit to give
+            each of the kids and there were smiles all round at the end of class.&lt;/p&gt;
+            &lt;p&gt;The next day we had 2 orphanage visits. Marissa and I got the chance to ride to
+            one of the centres on the back of a motor bike wearing a &amp;#8220;Winne the
+            Pooh&amp;#8221; helmet with one of the Vietnamese teachers which was pretty exciting,
+            especially at rush hour! There are over 3 million motor bikes in Ho Chi Minh City making
+            it the main mode of transport. While she was riding on the back of motor bike, Marissa
+            asked her driver Bang, a local Vietnamese teacher, if she had been in many accidents and
+            Bang replied &amp;#8220;Many!&amp;#8221; Marissa made it through the ride ok
+            regardless.&lt;/p&gt; &lt;p&gt;We went to Tu Xuong in the morning which is a centre for
+            teenagers ranging between 14-18 years of age. Some kids attend the classes by day and
+            travel home to their families at night and are usually from economically disadvantaged
+            backgrounds (for example, single-parent families where the parent is sick or disabled
+            and unable to work). Some of them walk for 2 hours to get to the centre and others cycle
+            for 1.5 hours. The kids at this centre have been taught English for the last few years
+            and they all introduced themselves in English and told us what they would like to be
+            when they grow up. We had some budding song artists among us. Our team introduced
+            ourselves also in English, apart from Bao who was able to introduce himself in
+            Vietnamese.&lt;/p&gt; &lt;p&gt;&lt;a
+            href="http://blogs.intel.com/csr/vietnamthree.jpg"&gt;&lt;/a&gt;&lt;/p&gt; &lt;p&gt;Our
+            afternoon was spent observing a lesson at an orphanage in Thu Duc. The kids here are
+            either attending the orphanage full-time or are one of many undocumented kids who are
+            unable to attend public schools and attend this one by day. This was a busy and noisy
+            centre with other classes and break times taking place nearby the area where our
+            classmate PC lesson was happening. However this did not faze the students at all and
+            they were all focused on the Microsoft Word activity for their lesson. We chatted with
+            some of the kids at the oprhanage, again a lot of them had enough English to introduce
+            themselves and were also keen to find out things about us and they all loved my
+            sunglasses.&lt;/p&gt; &lt;p&gt;The last couple of days have given us an insight into the
+            exposure to technology that these kids have been given by the Orphan Impact project and
+            the opportunity it will give them to further their education. One of the Orphan Impact
+            teachers, Thao, is a previous student from one of the centres here. She is an
+            inspiration to the existing students on the many career paths available once they leave
+            the centres. &lt;/p&gt; &lt;p&gt;P.S. Click &lt;a
+            href="http://blogs.intel.com/csr/tag/iesc"&gt;here&lt;/a&gt; to catch up on the
+            adventures, experiences and learnings from the 14 previous Intel Education Service Corps
+            teams and the other two teams who are working right now in Kenya and India. &lt;/p&gt;
+            Comments (0) &lt;img src="http://feeds.feedburner.com/~r/IntelBlogs/~4/oNBl17B6Xwc"
+            height="1" width="1"/&gt;</content>
+
+        <feedburner:origLink>http://blogs.intel.com/csr/2011/04/good_morning_from_vietnam.php</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">Calling all web app developers…we’ve got something for you!</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/NRJc84fTISU/calling-all-web-app-developers-we-ve-got-something-you"/>
+        <id>3405 at http://appdeveloper.intel.com</id>
+
+        <published>2011-04-11T13:03:59Z</published>
+
+        <updated>2011-04-11T13:03:59Z</updated>
+
+        <summary type="html"/>
+
+        <author>
+
+            <name>Rhonda Peters</name>
+
+
+        </author>
+
+
+
+        <category term="web apps" label="web apps"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;p&gt; &lt;a
+            href="http://twitter.com/share"&gt;Tweet&lt;/a&gt;&lt;br /&gt; &lt;/p&gt;&lt;p&gt;The
+            Intel AppUp℠ developer program is excited to announce a new opportunity for web app
+            developers to transform web apps into Intel AppUp℠ center apps. This opportunity, called
+            Intel AppUp™ encapsulator, allows web app developers to expand their customer base and
+            revenue potential by making an app from their existing web code that is compatible and
+            available for the Intel AppUp℠ center. &lt;/p&gt;&lt;p&gt;&lt;a
+            href="http://appdeveloper.intel.com/en-us/blog/2011/03/31/calling-all-web-app-developers-we-ve-got-something-you"&gt;read
+            more&lt;/a&gt;&lt;/p&gt; &lt;img
+            src="http://feeds.feedburner.com/~r/IntelBlogs/~4/NRJc84fTISU" height="1"
+            width="1"/&gt;</content>
+        <feedburner:origLink>http://appdeveloper.intel.com/en-us/blog/2011/03/31/calling-all-web-app-developers-we-ve-got-something-you</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">My Application Lab Experience</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/LOQPwSql0Qw/3479"/>
+        <id>3479 at http://appdeveloper.intel.com</id>
+
+        <published>2011-04-11T11:34:31Z</published>
+        <updated>2011-04-11T11:34:31Z</updated>
+
+        <summary type="html"/>
+
+        <author>
+
+            <name>Brian_Intel</name>
+
+
+        </author>
+
+
+
+        <category term="MeeGo" label="MeeGo"/>
+
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;p&gt;Well
+            I&amp;apos;m spreading my wings on two fronts - my first blog and the first time
+            I&amp;apos;ll be running the show for an Intel AppUp Application Lab. My new role is to
+            manage the application labs that we put on for our user communities in the Intel AppUp
+            developer program. Fortunately I&amp;apos;m lucky to be surrounded by some pretty
+            awesome people here to help me on my journey! &lt;/p&gt; &lt;p&gt;Trial by fire. On the
+            job training. Thrown to the wolves. These were some of the thoughts that have entered my
+            mind in the 3 months that I&amp;apos;ve been here.&lt;/p&gt; &lt;p&gt;&lt;a
+            href="http://appdeveloper.intel.com/en-us/node/3479"&gt;read more&lt;/a&gt;&lt;/p&gt;
+            &lt;img src="http://feeds.feedburner.com/~r/IntelBlogs/~4/LOQPwSql0Qw" height="1"
+            width="1"/&gt;</content>
+        <feedburner:origLink>http://appdeveloper.intel.com/en-us/node/3479</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">AppUp Developers WANTED for APPNATION 2011! </title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/D_FS6Ax36S8/appup-developers-wanted-appnation-2011"/>
+        <id>3471 at http://appdeveloper.intel.com</id>
+
+        <published>2011-04-08T08:45:22Z</published>
+        <updated>2011-04-08T08:45:22Z</updated>
+
+        <summary type="html"/>
+
+        <author>
+
+            <name>Gina M Bovara</name>
+
+
+        </author>
+
+
+
+        <category term="training" label="training"/>
+
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;br /&gt;
+            How&amp;apos;d you like to have your own dedicated stage to showcase your apps or ideas
+            for fellow developers and industry experts at APPNATION 2011 in San Francisco? read more
+            &lt;img src="http://feeds.feedburner.com/~r/IntelBlogs/~4/D_FS6Ax36S8" height="1"
+            width="1"/&gt;</content>
+        <feedburner:origLink>http://appdeveloper.intel.com/en-us/blog/2011/04/08/appup-developers-wanted-appnation-2011</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">The Geek Travel Guide: Stop 1 – California Bay area science and
+            technology museums</title>
+
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/WBK0V2wfIeE/"/>
+        <id>http://scoop.intel.com/?p=2560</id>
+
+        <published>2011-04-07T05:00:27Z</published>
+        <updated>2011-04-07T05:00:27Z</updated>
+
+        <summary type="html"/>
+
+        <author>
+
+
+            <name>Marcia Hansen</name>
+
+
+        </author>
+
+
+
+        <category term="road trip" label="road trip"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> I’ve been daydreaming
+            about ways I could convince my employer to fund a summer road trip spent touring cool
+            science and technology centers, and sharing all my travels with you via this blog. Until
+            I can sell that plan, I’ll have to content myself writing blog posts about my road trip
+            travel dreams. I hope [...] &lt;a
+            href="http://feeds.feedburner.com/~ff/intel/scoop?a=vnaWVBmQ6pg:dUcECkMuZl0:yIl2AUoC8zA"
+            /&gt; &lt;a
+            href="http://feeds.feedburner.com/~ff/intel/scoop?a=vnaWVBmQ6pg:dUcECkMuZl0:qj6IDK7rITs"
+            /&gt; &lt;a
+            href="http://feeds.feedburner.com/~ff/intel/scoop?a=vnaWVBmQ6pg:dUcECkMuZl0:F7zBnMyn0Lo"
+            /&gt; &lt;img src="http://feeds.feedburner.com/~r/IntelBlogs/~4/WBK0V2wfIeE" height="1"
+            width="1"/&gt;</content>
+        <feedburner:origLink>http://feedproxy.google.com/~r/intel/scoop/~3/vnaWVBmQ6pg/</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">Are Our Mobile Devices Making Us Rude?</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/LI5dxXR4AiA/"/>
+        <id>http://scoop.intel.com/?p=2548</id>
+
+        <published>2011-04-06T14:10:37Z</published>
+        <updated>2011-04-06T14:10:37Z</updated>
+
+        <summary type="html"/>
+
+        <author>
+
+            <name>Jessica Hansen</name>
+
+
+        </author>
+
+
+
+
+        <category term="mobile computing" label="mobile computing"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> How many mobile
+            technology devices (laptops, netbooks, smartphones, tablets) do you own? How would you
+            rate your mobile manners when using the devices around others? According to a recent
+            Mobile Etiquette survey sponsored by Intel and conducted by Ipsos, 75 percent of U.S.
+            adults believe mobile manners are becoming worse (compared to 2009, when Intel [...]
+            &lt;a
+            href="http://feeds.feedburner.com/~ff/intel/scoop?a=NeH5Nvckp4I:xzMqdoiT34s:yIl2AUoC8zA"
+            /&gt; &lt;a
+            href="http://feeds.feedburner.com/~ff/intel/scoop?a=NeH5Nvckp4I:xzMqdoiT34s:qj6IDK7rITs"
+            /&gt; &lt;a
+            href="http://feeds.feedburner.com/~ff/intel/scoop?a=NeH5Nvckp4I:xzMqdoiT34s:F7zBnMyn0Lo"
+            /&gt; &lt;img src="http://feeds.feedburner.com/~r/IntelBlogs/~4/LI5dxXR4AiA" height="1"
+            width="1"/&gt;</content>
+        <feedburner:origLink>http://feedproxy.google.com/~r/intel/scoop/~3/NeH5Nvckp4I/</feedburner:origLink>
+    </entry>
+
+
+    <entry>
+        <title type="html">Choosing the right finance model for your app</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/UkWLrHXpcOI/choosing-right-finance-model-your-app"/>
+        <id>3452 at http://appdeveloper.intel.com</id>
+
+        <published>2011-04-06T05:57:06Z</published>
+        <updated>2011-04-06T05:57:06Z</updated>
+
+        <summary type="html"/>
+
+        <author>
+
+            <name>Softtalkmobile</name>
+
+
+        </author>
+
+
+
+        <category term="payments" label="payments"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;p&gt;You might be
+            tempted to think you can create your app now and worry about how you make money with it
+            later. The problem with that is that the way that people use your app will have an
+            influence on how you can make money with it. There are several options available to you:
+            &lt;ul&gt; &lt;li&gt;Sell the app: This model is the most obvious, and means you need to
+            convince people the app is worth buying and demonstrate that it is after they have
+            downloaded the app.&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt; &lt;p&gt;&lt;a
+            href="http://appdeveloper.intel.com/en-us/blog/2011/04/06/choosing-right-finance-model-your-app"&gt;read
+            more&lt;/a&gt;&lt;/p&gt; &lt;img
+            src="http://feeds.feedburner.com/~r/IntelBlogs/~4/UkWLrHXpcOI" height="1"
+            width="1"/&gt;</content>
+
+        <feedburner:origLink>http://appdeveloper.intel.com/en-us/blog/2011/04/06/choosing-right-finance-model-your-app</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">Interview with Dmitry Rizshkov / Intelloware</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/5mOvat15AZ8/interview-dmitry-rizshkov-intelloware"/>
+        <id>3445 at http://appdeveloper.intel.com</id>
+
+        <published>2011-04-05T00:57:32Z</published>
+
+        <updated>2011-04-05T00:57:32Z</updated>
+
+        <summary type="html"/>
+
+        <author>
+
+            <name>zehjotkah</name>
+
+
+        </author>
+
+
+
+        <category term="MeeGo" label="MeeGo"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;p&gt;We are here
+            together with Dmitry Rizskov, better known as &lt;a
+            href="http://www.appup.com/applications/publisher-Intelloware"&gt;Intelloware&lt;/a&gt;.&lt;br
+            /&gt; Dmitry released some really cool Apps for Windows and MeeGo in the recent
+            past.&lt;br /&gt;During the next minutes we&amp;apos;ll try to find out why Dmitry is
+            developing for MeeGo and what he thinks about the Intel AppUp Developer Program.&lt;br
+            /&gt; Have fun!&lt;/p&gt;&lt;p /&gt;&lt;p&gt;&lt;a
+            href="http://appdeveloper.intel.com/en-us/blog/2011/04/04/interview-dmitry-rizshkov-intelloware"&gt;read
+            more&lt;/a&gt;&lt;/p&gt; &lt;img
+            src="http://feeds.feedburner.com/~r/IntelBlogs/~4/5mOvat15AZ8" height="1"
+            width="1"/&gt;</content>
+        <feedburner:origLink>http://appdeveloper.intel.com/en-us/blog/2011/04/04/interview-dmitry-rizshkov-intelloware</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">Summing up Texas Linux Fest 2011</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/lcu2fPEXkDg/summing-texas-linux-fest-2011"/>
+        <id>3434 at http://appdeveloper.intel.com</id>
+
+        <published>2011-04-04T16:04:31Z</published>
+        <updated>2011-04-04T16:04:31Z</updated>
+
+        <summary type="html"/>
+
+        <author>
+
+            <name>Randall Arnold</name>
+
+
+        </author>
+
+
+
+        <category term="Texas" label="Texas"/>
+
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;p&gt;This past
+            Saturday I had the honor of speaking at the 2011 &lt;a
+            href="http://texaslinuxfest.org/"&gt;Texas Linux Fest&lt;/a&gt; in Austin, Texas. You
+            can read &lt;a
+            href="http://tabulacrypticum.wordpress.com/2011/04/04/texas-linux-fest-2011/"&gt;the
+            details in my main blog&lt;/a&gt;, but the essential point is that it was a productive
+            event for me and I&amp;apos;m glad I got the opportunity to go. I&amp;apos;ll post my
+            presentation soon.&lt;/p&gt; &lt;p&gt;For a one-day conference, quite a bit was covered.
+            One thing missing, though was &lt;a
+            href="http://meego.com"&gt;MeeGo&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;&lt;a
+            href="http://appdeveloper.intel.com/en-us/blog/2011/04/04/summing-texas-linux-fest-2011"&gt;read
+            more&lt;/a&gt;&lt;/p&gt; &lt;img
+            src="http://feeds.feedburner.com/~r/IntelBlogs/~4/lcu2fPEXkDg" height="1"
+            width="1"/&gt;</content>
+
+        <feedburner:origLink>http://appdeveloper.intel.com/en-us/blog/2011/04/04/summing-texas-linux-fest-2011</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">Intel MeeGo 1.2 Tablet UX now open sourced. This and more now on
+            MeeGo.com </title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/NhVCYrLofHc/intel-meego-12-tablet-ux-now-open-sourced-available-meegocom"/>
+        <id>3426 at http://appdeveloper.intel.com</id>
+
+        <published>2011-04-04T11:17:16Z</published>
+
+        <updated>2011-04-04T11:17:16Z</updated>
+
+        <summary type="html"/>
+
+        <author>
+
+            <name>Bob Duffy</name>
+
+
+        </author>
+
+
+
+        <category term="tablet" label="tablet"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;p /&gt;
+            &lt;p&gt;Mid February of this year, Intel released the MeeGo 1.2 Tablet UX pre-alpha to
+            our developer community. And now a month later we are happy to announce that this
+            release has been fully open sourced, where it is supported and available under the open
+            source MeeGo project at MeeGo.com.read more&lt;/p&gt; &lt;img
+            src="http://feeds.feedburner.com/~r/IntelBlogs/~4/NhVCYrLofHc" height="1"
+            width="1"/&gt;</content>
+        <feedburner:origLink>http://appdeveloper.intel.com/en-us/blog/2011/04/04/intel-meego-12-tablet-ux-now-open-sourced-available-meegocom</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">Weekend Gaming – Medieval Times</title>
+
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/OMkyrIWB1Hk/"/>
+        <id>http://scoop.intel.com/?p=1956</id>
+
+        <published>2011-04-01T14:03:35Z</published>
+        <updated>2011-04-01T14:03:35Z</updated>
+
+        <summary type="html"/>
+
+        <author>
+
+
+            <name>Regina Wu</name>
+
+
+        </author>
+
+
+
+        <category term="pc games" label="pc games"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> The weekend is here
+            again! I just got a copy of The Sims Medieval, the newest addition to the Sims
+            franchise. I’ve been a big fan of the Sims for a long time, and it will be great to play
+            in a different setting. While trying to install the game, I actually got an error [...]
+            &lt;a
+            href="http://feeds.feedburner.com/~ff/intel/scoop?a=Xg1xHIZueds:uybtR-RSKDM:yIl2AUoC8zA"
+            /&gt; &lt;a
+            href="http://feeds.feedburner.com/~ff/intel/scoop?a=Xg1xHIZueds:uybtR-RSKDM:qj6IDK7rITs"
+            /&gt; &lt;a
+            href="http://feeds.feedburner.com/~ff/intel/scoop?a=Xg1xHIZueds:uybtR-RSKDM:F7zBnMyn0Lo"
+            /&gt; &lt;img src="http://feeds.feedburner.com/~r/IntelBlogs/~4/OMkyrIWB1Hk" height="1"
+            width="1"/&gt;</content>
+        <feedburner:origLink>http://feedproxy.google.com/~r/intel/scoop/~3/Xg1xHIZueds/</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">Connection 11</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/aa0CRzQmckk/connection_11.php"/>
+        <id>tag:blogs.intel.com,2011:/csr//16.4637</id>
+
+        <published>2011-04-01T10:58:00Z</published>
+        <updated>2011-04-01T11:33:43Z</updated>
+
+        <summary type="html">iPhones, iPads, Blackberries, netbooks. Being connected has become a
+            central theme in our lives. With an arsenal of gadgets, we access the Internet and each
+            other 24/7. For my role working in CSR, staying connected is more than just
+            being...</summary>
+
+        <author>
+
+            <name>Revital Bitan</name>
+
+
+            <uri>http://blogs.intel.com/csr/2007/06/profile_revital_bitan.php</uri>
+
+
+        </author>
+
+
+
+        <category term="general_csr" label="general_csr"
+            scheme="http://blogs.intel.com/csr/general-csr//"/>
+
+        <category term="csr" label="csr" scheme="http://blogs.intel.com/csr/tag/"/>
+
+        <category term="digitaldivide" label="digitaldivide"
+            scheme="http://blogs.intel.com/csr/tag/"/>
+
+        <category term="intel" label="intel" scheme="http://blogs.intel.com/csr/tag/"/>
+
+        <category term="youbridge" label="youbridge" scheme="http://blogs.intel.com/csr/tag/"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;p&gt;iPhones,
+            iPads, Blackberries, netbooks. Being connected has become a central theme in our lives.
+            With an arsenal of gadgets, we access the Internet and each other 24/7. &lt;/p&gt;
+            &lt;p&gt;For my role working in CSR, staying connected is more than just being able to
+            read emails while riding the commuter train. It is also about connecting people in order
+            to bridge gaps. Rich/poor, educated/illiterate, healthy/sick. It is our mission at Intel
+            to transcend these divides to make the world a better, fairer place. &lt;/p&gt;
+            &lt;p&gt;In my role working in CSR, one of the things that I look for are examples of
+            Intel employees finding innovative ways to connect with external partners to help
+            address social challenges. My colleague, Kurt De Buck from our Intel Belgium
+            office,worked with his group to kick start the Wonderful Digital Future initiative by
+            donating laptops to 11 university students (why 11? Because this year is 2011!) at the
+            International Health Science University (IHSU) in Uganda. Wonderful Digital Future
+            focuses on programs in which Europe and Africa reach out to each other. &lt;a
+            href="http://www.youtube.com/watch?v=UwmOhMyUtm8&amp;amp;feature=related"&gt;Watch the
+            video&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;&lt;strong&gt;Bridging the digital
+            divide&lt;/strong&gt; Kurt&amp;#8217;s group donated part of the money designated for
+            New Year&amp;#8217;s customer gifts to YouBridge.org. YouBridge, a Belgian initiative,
+            allows people to give new laptops to students in developing countries. The donor chooses
+            who will receive the laptop and then joins an online social network of donors and
+            recipients. The beauty of YouBridge is it lets people connect across physical and
+            economic barriers. &lt;/p&gt; &lt;p&gt;For both donor and recipient, &lt;a
+            href="http://www.youbridge.org/"&gt;YouBridge&lt;/a&gt; opens a new
+            &amp;#8216;digital&amp;#8217; window to the world. As Pieter Dewinter from YouBridge
+            describes it: &amp;#8220;At YouBridge, we are very positive about this project with
+            Intel. Not only because Intel is one of the few companies where CSR is a genuine and
+            fundamental part of the corporate philosophy, but also because of the direct impact our
+            collaboration has: the TV-spot was made possible and for 11 young and ambitious people,
+            thanks to Intel we have made a true difference in their lives and given them a window to
+            the world. We hope this is just the start of a great partnership!&amp;#8221;&lt;/p&gt;
+            &lt;p&gt;Also Intel&amp;#8217;s customers, whose &amp;#8220;gifts&amp;#8221; have been
+            donated in part to this charity, also get something from the initiative: a mouse pad
+            featuring pictures of the 11 participating students, allowing them to see the
+            transformative power of technology and learn about these impressive students. &lt;/p&gt;
+            Comments (0) &lt;img src="http://feeds.feedburner.com/~r/IntelBlogs/~4/aa0CRzQmckk"
+            height="1" width="1"/&gt;</content>
+        <feedburner:origLink>http://blogs.intel.com/csr/2011/04/connection_11.php</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">Intel &amp; Smart TV: An Interview from IPTV World Forum</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/hxyQTP5OSp4/intel_smart_tv_an_interview_fr.php"/>
+
+        <id>tag:blogs.intel.com,2011:/technology//10.4636</id>
+
+        <published>2011-04-01T03:22:11Z</published>
+        <updated>2011-04-01T03:29:27Z</updated>
+
+        <summary type="html"
+            ><![CDATA[Intel had a great show at IP&amp;TV World Forum 2011 last week, lots of positive responses to our work from the industry players. I managed to catch up with the General Manager of IPTV at Intel, Mr Keith Wehmeyer, who...]]></summary>
+
+        <author>
+
+            <name>Paul Tapp</name>
+
+
+
+            <uri>http://www.facebook.com/IntelSmartTV</uri>
+
+        </author>
+
+
+
+        <category term="digital_home" label="digital_home"
+            scheme="http://blogs.intel.com/technology/digital-home//"/>
+
+        <category term="technologies_for_our_lives" label="technologies_for_our_lives"
+            scheme="http://blogs.intel.com/technology/add-category//"/>
+
+        <category
+            term="intelsmarttvsmarttviptviptvworldforumlondonvodottboxeefreeorangetelecomitaliacubovisionbouygues"
+            label="intelsmarttvsmarttviptviptvworldforumlondonvodottboxeefreeorangetelecomitaliacubovisionbouygues"
+            scheme="http://blogs.intel.com/technology/tag/"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;p&gt;Intel had a
+            great show at IP&amp;amp;TV World Forum 2011 last week, lots of positive responses to
+            our work from the industry players. I managed to catch up with the General Manager of
+            IPTV at Intel, Mr Keith Wehmeyer, who shares his thoughts with us on the direction of
+            Smart TV in this short video.&lt;/p&gt; &lt;p&gt;&lt;/p&gt; Comments (0) &lt;img
+            src="http://feeds.feedburner.com/~r/IntelBlogs/~4/hxyQTP5OSp4" height="1"
+            width="1"/&gt;</content>
+        <feedburner:origLink>http://feedproxy.google.com/~r/TechnologyIntel/~3/cK5X3Ukv_2k/intel_smart_tv_an_interview_fr.php</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">Early Thoughts on Proposed ACO Rules</title>
+
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/JQKeQnuo5DE/early_thoughts_on_proposed_aco_rules.php"/>
+        <id>tag:blogs.intel.com,2011:/healthcare//38.4635</id>
+
+        <published>2011-03-31T21:16:04Z</published>
+        <updated>2011-03-31T21:16:47Z</updated>
+
+        <summary type="html"
+            ><![CDATA[ Hear ye, hear ye, read all about it! For those of you who have been waiting with bated breath (you know who you are!), the U.S. Department of Health &amp; Human Services has just published the proposed rules and...]]></summary>
+
+        <author>
+
+
+            <name>Eric Dishman</name>
+
+
+        </author>
+
+
+
+        <category term="healthcare" label="healthcare" scheme="http://blogs.intel.com/healthcare//"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/">
+            &lt;p&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt; &lt;p&gt;Hear ye, hear ye, read all about it! For
+            those of you who have been waiting with bated breath (you know who you are!), the U.S.
+            Department of Health &amp;amp; Human Services has just published the proposed rules and
+            guidelines for Accountable Care Organizations (ACOs) and the Medicare Shared Savings
+            Program (SSP). You can download the 428-page document &lt;a
+            href="http://www.ofr.gov/OFRUpload/OFRData/2011-07880_PI.pdf"&gt;here&lt;/a&gt; and see
+            the official press release &lt;a
+            href="http://www.hhs.gov/news/press/2011pres/03/20110331a.html"&gt;here&lt;/a&gt;.
+            Though, unless you are a policy or healthcare reform geek (which I guess I am becoming,
+            frighteningly enough), you might want to wait for the inevitable summaries to be done by
+            various consulting firms, non-profits, and individuals. I will post some of the good
+            ones here when I see them.&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;These
+            rule-makings around ACOs are a major component of the Affordable Care Act signed by
+            President Obama last March, though most citizens and press outside of the healthcare
+            industry have no clue what this is all about. ACOs are the primary mechanism for
+            beginning to shift the American healthcare system from a volume-driven to a value-driven
+            paradigm. In other words, today, the majority of healthcare is paid based on the volume
+            of face-to-face visits, labwork, and prescriptions generated more than the value of the
+            care provided. And these payments occur regardless of whether the treatments given (and
+            charged for) are effective or helpful. The strategic intent of the health reform bill is
+            to shift to a mode of payment that focuses much more on rewarding the
+            &lt;i&gt;quality&lt;/i&gt; of care over the volume of care. &lt;/p&gt;
+            &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;There are three primary aims of these reform
+            efforts (sometimes referred to as "the triple aims" or as "Berwick's triple aims" named
+            for Don Berwick, the current Administrator for the Centers for Medicare and Medicaid
+            Services). First, the goal is to provide better care for individuals. Second is to
+            improve care for populations. And third is to lower the growth in healthcare costs and
+            expenditures. ACOs are one of many tools to achieve these three aims, and healthcare
+            providers and companies have been eager to see what the Secretary would propose as the
+            specific requirements for becoming an ACO.&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt;
+            &lt;p&gt;Basically, an ACO is a group of care providers--usually centered around primary
+            care physicians--who commit, according to the proposed rules released today, for a
+            minimum of three years to manage the overall care and costs of at least 5000 Medicare
+            patients. And the ACO has to have a legal structure (though they are very flexible on
+            the different kinds of structures permissible) that allows the organization to receive
+            and distribute payments to all its care providers in the management of the care.
+            &lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;So imagine, for example, several
+            physician practices, a hospital, and a home care agency within a particular town coming
+            together to form an ACO to care for at least 5000 Medicare beneficiaries in that
+            community. They would be paid what is often referred to as a "bundled" or "global
+            payment" annually to care for all of the health needs of those patients, and they could
+            participate in the Shared Savings Program by which they could get bonuses based on
+            helping to reduce healthcare expenditures while boosting quality. Lest you think these
+            providers would just ignore the needs of the sickest patients to keep their costs low
+            and leave more shared savings in their pockets (and I should say that I have never met
+            any clinicians in our 10+ years of fieldwork who would be so inclined--the majority are
+            good people who went into medicine to &lt;i&gt;help&lt;/i&gt; people), there are clear
+            rules and data-driven quality measurement mechanisms that prevent that from
+            happening.&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;I am particularly heartened
+            to see some of the following language in the proposed rules:&lt;/p&gt;
+            &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;• The ACO shall define processes to promote
+            evidence-based medicine and&lt;/p&gt; &lt;p&gt;patient engagement, report on quality and
+            cost measures, and coordinate care, such as through the use of telehealth, remote
+            patient monitoring, and other such enabling technologies (p.17) &lt;/p&gt;
+            &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;• The ACO shall demonstrate to the Secretary that
+            it meets patient-centeredness&lt;/p&gt; &lt;p&gt;criteria specified by the Secretary,
+            such as the use of patient and caregiver assessments or the use of individualized care
+            plans (p.17)&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;• An ACO will manage
+            resources carefully and respectfully. It will ensure continual waste reduction, and that
+            every step in care adds value to the beneficiary. An ACO will be able to make
+            investments where investments count, and move resources to meet beneficiaries' needs.
+            Because of its capabilities with respect to prevention and anticipation, especially for
+            chronically ill people, an ACO will be able to continually reduce its dependence on
+            inpatient care. Instead, its patients will more likely be able to be home, where they
+            often want to be, and, during a hospital admission, they receive assurance that their
+            discharges will be well coordinated, and that they will not return due to avoidable
+            complications (p. 25)&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;• An ACO will be
+            proactive by reaching out to patients with reminders and&lt;/p&gt; &lt;p&gt;advice that
+            can help them stay healthy and let them know when it is time for a checkup or a test
+            (p.25)&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;• An ACO will collect, evaluate,
+            and use data on health care processes and&lt;/p&gt; &lt;p&gt;outcomes sufficiently to
+            measure what it achieves for beneficiaries and communities over time and use such data
+            to improve care delivery and patient outcomes (p. 25)&lt;/p&gt;
+            &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;• An ACO will be innovative in the service of the
+            three-part aim of better care for&lt;/p&gt; &lt;p&gt;individuals, better health for
+            populations, and lower growth in expenditures. It will draw upon the best, most advanced
+            models of care, using modern technologies, including telehealth and electronic health
+            records, and other tools to continually reinvent care in the modern age. It will monitor
+            and compare its performance to other ACOs, identify and examine new processes for care
+            improvement, and adopt those approaches that are demonstrated to be effective
+            (p.25)&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;While I have several hundred
+            more pages to go, my initial read shows some very promising directions. The rules feel
+            very innovation-friendly and leave lots of flexibility and experimentation for
+            communities to try different approaches to setting up ACOs. The focus on "patient
+            engagement" shows a much-needed momentum around providing tools and expectations for
+            patients to be a more proactive and responsible party in our own care. The explicit
+            references to the use of telehealth and remote patient monitoring and the calling out of
+            the need to move care to the home shows that CMS "gets it" in terms of the need to
+            "place-shift" (a topic I bring up frequently in this blog) where care occurs away from
+            more expensive settings like hospitals. And the requirements for incorporating and using
+            data-driven, evidence-based tools to drive best practice care and continuous
+            innovation/improvement will help us finally achieve a 21st century healthcare
+            infrastructure that is scalable and competitive, internationally.&lt;/p&gt;
+            &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;I will post more of my own and other peoples'
+            summaries over the next week. Meanwhile, what say ye?&lt;/p&gt;
+            &lt;p&gt;&amp;nbsp;&lt;/p&gt; Comments (0) &lt;img
+            src="http://feeds.feedburner.com/~r/IntelBlogs/~4/JQKeQnuo5DE" height="1"
+            width="1"/&gt;</content>
+
+        <feedburner:origLink>http://blogs.intel.com/healthcare/2011/03/early_thoughts_on_proposed_aco_rules.php</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">How to integrate AppUp SDK and create RPM package for MeeGo
+            applications</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/uja2Qw4hr7g/how-integrate-appup-sdk-and-create-rpm-package-meego-applications"/>
+        <id>3401 at http://appdeveloper.intel.com</id>
+
+        <published>2011-03-30T18:28:36Z</published>
+
+        <updated>2011-03-30T18:28:36Z</updated>
+
+        <summary type="html"/>
+
+        <author>
+
+            <name>dmitry-rizshkov</name>
+
+
+        </author>
+
+
+
+        <category term="rpm" label="rpm"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;p&gt;In this
+            article i will show you how to prepare your MeeGo app to be validated in the Intel AppUp
+            Center. This article is based on the project from my another article &lt;a
+            href="http://appdeveloper.intel.com/en-us/blog/2010/12/24/modern-mobile-applications-qt-and-qml"&gt;Modern
+            mobile applications with Qt and QML&lt;/a&gt;. No changes will be made in the project
+            source code. Thanks to Qt, our Windows application could be launched on MeeGo without
+            any changes in code, all you need is just to recompile it. &lt;br /&gt;&lt;br
+            /&gt;&lt;/p&gt;&lt;p&gt;&lt;a
+            href="http://appdeveloper.intel.com/en-us/blog/2011/03/30/how-integrate-appup-sdk-and-create-rpm-package-meego-applications"&gt;read
+            more&lt;/a&gt;&lt;/p&gt; &lt;img
+            src="http://feeds.feedburner.com/~r/IntelBlogs/~4/uja2Qw4hr7g" height="1"
+            width="1"/&gt;</content>
+
+        <feedburner:origLink>http://appdeveloper.intel.com/en-us/blog/2011/03/30/how-integrate-appup-sdk-and-create-rpm-package-meego-applications</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">Oregon's Opportunity for Innovating Aging: A City Club Follow Up</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/b2gRGCsDtuY/oregons_opportunity_for_innovating_aging_a_city_club_follow_up.php"/>
+        <id>tag:blogs.intel.com,2011:/healthcare//38.4633</id>
+
+        <published>2011-03-30T16:33:38Z</published>
+
+        <updated>2011-03-31T21:42:31Z</updated>
+
+        <summary type="html">Last week I had the honor of speaking to the City Club of Portland, an
+            organization founded in 1916 to highlight the diverse opinions, issues, and talents of
+            local leaders and organizations. I often hear their Friday Forums on Oregon...</summary>
+
+        <author>
+
+            <name>Eric Dishman</name>
+
+
+        </author>
+
+
+
+        <category term="healthcare" label="healthcare" scheme="http://blogs.intel.com/healthcare//"/>
+
+        <category term="careinnovations" label="careinnovations"
+            scheme="http://blogs.intel.com/healthcare/tag/"/>
+
+
+        <category term="cityclubofportland" label="cityclubofportland"
+            scheme="http://blogs.intel.com/healthcare/tag/"/>
+
+        <category term="dishman" label="dishman" scheme="http://blogs.intel.com/healthcare/tag/"/>
+
+        <category term="graytechnologies" label="graytechnologies"
+            scheme="http://blogs.intel.com/healthcare/tag/"/>
+
+        <category term="independentliving" label="independentliving"
+            scheme="http://blogs.intel.com/healthcare/tag/"/>
+
+        <category term="intelpolicy" label="intelpolicy"
+            scheme="http://blogs.intel.com/healthcare/tag/"/>
+
+        <category term="orcatech" label="orcatech" scheme="http://blogs.intel.com/healthcare/tag/"/>
+
+        <category term="tril" label="tril" scheme="http://blogs.intel.com/healthcare/tag/"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;p&gt;Last week I
+            had the honor of speaking to the City Club of Portland, an organization founded in 1916
+            to highlight the diverse opinions, issues, and talents of local leaders and
+            organizations. I often hear their Friday Forums on Oregon Public Broadcasting radio
+            while I am driving home from work, so it was a real treat to be there in person in the
+            grand Governor Hotel in downtown Portland. I very much appreciate the City Club members
+            inviting me and giving visibility to the important issues of Global Aging and what I
+            have frequently referred to in this blog as "gray technologies."&lt;/p&gt;
+            &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;The title of my talk was "Technological
+            Innovation and the Future of Aging"--you can click &lt;a
+            href="http://www.pdxcityclub.org/content/future-aging-through-technological-innovation"&gt;here&lt;/a&gt;
+            to find a free download of the audio cast of the speech--in which I focused on Oregon's
+            opportunity to lead in the development of new technologies, services, and jobs that
+            promote independent living for our graying population. I shared some of the research
+            prototypes and findings that Intel, Oregon Health &amp;amp; Science University (OHSU),
+            and the Oregon Center for Aging and Technology (ORCATECH) have developed from our more
+            than ten years of exploration into home-based technologies that can help people to
+            age-in-place with good health, social engagement, purposefulness, dignity, and
+            choice.&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;I promised attendees (and the
+            many radio and TV listeners who have been writing to me ever since!) that I would post
+            some links where you can find more information. To that end, here are a few that I
+            referred to in my talk...&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt;
+            &lt;p&gt;&lt;b&gt;ORACTECH&lt;/b&gt;, the Oregon Center for Aging and Technology at
+            &lt;a href="http://www.orcatech.org/"&gt;www.orcatech.org&lt;/a&gt;, is a
+            passion-driven, grass-roots center founded in Oregon Health &amp;amp; Science University
+            to help coordinate statewide collaborations around independent living technologies
+            amongst universities, companies large and small, non-profits, and government agencies.
+            The funding to get this started came from Intel's $3 million dollar donation to OHSU and
+            a prestigious NIH Roybal Center Grant awarded to ORCATECH director, Dr. Jeff Kaye and
+            his collaborators. You can join the mailing list by emailing &lt;a
+            href="mailto:orcatech@ohsu.edu"&gt;orcatech@ohsu.edu&lt;/a&gt; or, if you are local to
+            Portland, come join "upcoming events" announced on the web page.&lt;/p&gt;
+            &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;&lt;b&gt;CAST&lt;/b&gt;, the Center for Aging
+            Services Technologies at &lt;a
+            href="http://www.agingtech.org/"&gt;www.agingtech.org&lt;/a&gt;, is a non-profit
+            advocacy organization I helped to develop with the American Association of Homes
+            &amp;amp; Services for the Aging who recently changed their name to &lt;a
+            href="http://www.leadingage.org/"&gt;LeadingAge&lt;/a&gt;. CAST is a national (or
+            actually, now international) version of ORCATECH, designed to bring together providers,
+            university researchers, technology companies, and others to help ignite a wide array of
+            innovative technologies and services to help seniors to age-in-place from the "home" of
+            their choice. Be sure to view the &lt;a
+            href="http://www.leadingage.org/article_cast.aspx?id=10153"&gt;free CAST vision
+            video&lt;/a&gt; shown to Congress and the last White House Conference on Aging.
+            &lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;&lt;b&gt;The TRIL Center&lt;/b&gt;, or
+            Technology Research for Independent Living, at &lt;a
+            href="http://www.trilcentre.org/"&gt;www.trilcentre.org&lt;/a&gt; based near Dublin,
+            Ireland, is Intel's largest investment in independent living technology research with a
+            $30M joint investment with the Irish government. TRIL includes our multidisciplinary
+            Intel team and three universities in collaboration with St. James Hospital in Dublin to
+            invent and test out these home health and independent living technologies. You can learn
+            more about the falls work there at the TRIL Center site, as well as go &lt;a
+            href="http://www.shimmer-research.com/"&gt;here&lt;/a&gt; to read more about the Shimmer
+            "matchbox-sized wireless computer" I described in the talk. &lt;/p&gt;
+            &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;&lt;b&gt;ETAC&lt;/b&gt;, the Everyday
+            Technologies for Alzheimer's Care initiative, a collaborative program between Intel and
+            the national office of the Alzheimer's Association, has published information &lt;a
+            href="http://www.alz.org/professionals_and_researchers_everyday_technologies_for_alzheimer_care.asp"&gt;here&lt;/a&gt;
+            about the grants that we have funded since 2004. This was one of our first programs to
+            start funding university research on independent living technologies and has produced a
+            great international community of dedicated researchers and entrepreneurs focused on
+            Alzheimer's care specifically.&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt;
+            &lt;p&gt;&lt;b&gt;Care Innovations&lt;/b&gt;, at &lt;a
+            href="http://www.careinnovations.com/"&gt;www.careinnovations.com&lt;/a&gt;, is the name
+            of the newly formed &lt;a
+            href="http://newsroom.intel.com/community/intel_newsroom/blog/2011/01/03/ge-and-intels-telehealth-and-independent-living-company-is-operational-today"&gt;joint
+            venture&lt;/a&gt; between Intel and GE to produce disease management, independent
+            living, and assistive technologies for the home. Full disclosure: I run healthcare
+            policy for Care Innovations (in addition to my Intel role). I didn't feature our
+            products at the City Club talk because my focus was on the R&amp;amp;D infrastructure
+            that Oregon has built, not a commercial for our products. But I don't want to leave the
+            impression that everything is stuck in research...Care Innovations (and many other
+            companies) is diligently working to get these kinds of aging-in-place solutions to
+            market worldwide!&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;And realizing now
+            that I had to fly through my recommendations to the state of Oregon at the end of that
+            lecture (I warned everyone that, without PowerPoint, there was no predicting what I
+            might say!), I want to highlight some of the main points I tried to make last week. My
+            overall thesis was that Oregon has some enormous advantages in trying to become an
+            international leader of independent living technologies and jobs. Just as we have with
+            Wave Energy and Biotech, our state needs to bluntly ask ourselves as Oregonians what
+            future industries we could really lead in?&amp;nbsp; I argue that Oregon is already a
+            big fish in the small pond of independent living R&amp;amp;D and that we should put
+            forth a state plan to go after this opportunity.&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt;
+            &lt;p&gt;So, why Oregon?&amp;nbsp; What are our particular strengths?&lt;/p&gt;
+            &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;1) We have a head start: We can build upon the
+            foundational technologies, data, and know-how of ORCATECH, OHSU, Intel and many others
+            in our state who are recognized leaders internationally in this emerging field. Today,
+            we already host numerous Minister of Health and other visitors in our labs, as other
+            countries and states come to see what Oregon is doing. Now we need to make sure our own
+            state knows the assets we have!&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;2) We
+            have our own fiscal challenges: Oregon itself is already in the top ten of states with
+            the highest percentage of an aging population, and we likely face cuts to our Home and
+            Community Based services as we, like so many other states, try to balance a budget in
+            the midst of a recession. We need independent living and home health technologies just
+            to drive up quality and drive down costs of the care for seniors--and people of all
+            ages--in our own backyard.&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;3) We have
+            flexibility. Though many of my friends and colleagues in the long term care industry in
+            our state would like to see even more flexibility, we need to realize that we have more
+            regulatory/licensure freedom to pilot and develop new care models for seniors than do
+            many other states. Less red tape for us means faster innovation cycles and learnings
+            than many other states can produce!&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;4)
+            We know high tech. There is a large information technology presence here in Oregon to
+            draw upon--not just Intel but many other technology companies who have intellectual
+            property, innovation methodologies, and entrepreneurs to bring to the challenge of
+            addressing Global Aging. &lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;5) We are the
+            right size. I believe we are the right size and geography of a state to develop
+            independent living technologies and the care models to use them. It is hard to imagine a
+            state as large as California or as small as Delaware doing this. With our four million
+            citizens living in a mix of rural and urban environments across the state, it is
+            conceivable and achievable to build a state-wide strategy and infrastructure to enable
+            aging-in-place.&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;6) We can collaborate
+            with Asia. Oregon is already seen as a "gateway to the Pacific Rim" with a wide range of
+            trade and research collaborations going on with Asian countries. Having just keynoted to
+            the APEC (Asia Pacific Economic Cooperation) meeting just weeks ago in D.C., I can tell
+            you that the need and market for independent living solutions in Asia is significant
+            given the longevity in many of the countries there. If done right, our state plan for
+            Global Aging should foster collaboration and export of our Oregon technologies and
+            services to some of these countries.&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;7)
+            We have national political leaders for aging issues. It is rare as I make visits to
+            Congress that members know much about gerontology, but when I visit the Oregon
+            delegation, they often end up teaching me more than I do them! Senator Wyden has a
+            background in gerontology, as does Congressman Peter DeFazio, and both have shown a
+            commitment to aging and health reform issues in their political careers. I believe we
+            should be leveraging their understanding and leadership on aging issues to make Oregon
+            the center of the independent living technology universe!&lt;/p&gt;
+            &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;8) We are committed to healthcare reform. I had
+            the pleasure of hearing last week's "Think Out Loud" radio segment on OPB that was
+            exploring healthcare reform in the state of Oregon. Dr. Bruce Goldberg, head of the
+            Oregon Health Authority, was clear (and I couldn't agree more!) that we need to
+            transform our culture and infrastructure to do health reform right. At the end of the
+            day, aging-in-place is not about technology but about transforming our culture of care
+            for seniors, and the technology is simply a tool to help do that. But if we are a state
+            prepared to be at the forefront of acute care/hospital/insurance reform, let's make sure
+            we do the same for long term care!&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;9)
+            We have a legacy to uphold. Last but not least, innovating aging is in our blood...is in
+            our history...as a state. Oregon is widely credited as the state who invented
+            end-of-life or hospice care, which became a national standard and movement. Similarly,
+            we are known for pioneering the concept of "assisted living" which is, of course, now
+            common-place and taken-for-granted. In many ways, the rest of the country is just
+            waiting for Oregon to invent "what's next?" for the care of seniors, so let's not
+            disappoint them!&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;We should make no
+            mistake as a state to think that we can rest on our laurels or that we will just end up
+            becoming the leader of independent living technologies without investment or a plan.
+            Other states are competing to create these technologies and jobs; I have worked with
+            officials in New York, Minnesota, California, and Florida who are trying to get their
+            act together on this front. I am biased as an Oregonian to want to make sure it happens
+            here, but at the end of the day, may the most organized and proactive state win!
+            &lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;So what would my calls to action be
+            for Oregon? What should we be doing to capitalize upon this opportunity?&lt;/p&gt;
+            &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;1. I call upon Governor Kitzhaber to put together
+            a commission to develop a state Global Aging response plan. Let's bring together
+            industry, community, and academic experts to identify how we can use independent living
+            technologies to care for our own elders and families and also evaluate new business and
+            job opportunities in this segment. I will certainly volunteer my time to
+            participate!&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;2. Let's commission an
+            inventory of Oregon's assets on aging-in-place...let's show what we've got and what we
+            are missing in terms of building out an R&amp;amp;D and new business incubation
+            infrastructure for independent living technologies and services.&lt;/p&gt;
+            &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;3. We need to identify, with our nursing and
+            medical schools, what new kinds of careworkers and curriculums are needed to enable
+            aging-in-place care for seniors (and people of all ages). If Oregon can develop the
+            models for training and credentialing community workers and volunteers who can use these
+            new technologies to do care delivery in the home, community, and electronically, then we
+            will be the likely creator of the first national call center for electronic care
+            &amp;amp; support for elders. With that asset, we would be a fierce competitor
+            nationwide!&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;4. Let's make sure that our
+            current and future technology infrastructure investments--for broadband, for Electronic
+            Health Records, for insurance exchanges--are being designed and built to support
+            aging-in-place and to carry data/transactions from hospital to home. If all we do is
+            connect and coordinate care in hospitals and clinics, then we will fail to achieve the
+            kind of health reform required to make us fiscally, morally, and medically
+            strong.&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;5. We need to build upon
+            ORCATECH to develop the nation's first 10,000 household cohort of seniors who can help
+            test and prove the value of these aging-in-place technologies and care models. Today, we
+            have about 300 households in the Portland metro area who are outfitted with these kinds
+            of systems, but we need 10,000 homes across the state to deliver the statistical and
+            economic data that proves which systems are most valuable, usable, and useful. If we
+            build this kind of large-scale R&amp;amp;D infrastructure, it will be very difficult for
+            any other state to supplant our position as a leader in this sector.&lt;/p&gt;
+            &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;6. Like many other states are exploring, let's
+            develop a policy framework for seniors in our state that makes aging-in-place a right.
+            If we set that as an overarching policy goal, then it will help to guide our activities
+            and priorities for the full range of services--meals, medication assistance,
+            transportation, social support, mental health, healthcare, etc.--that are needed to give
+            people a high quality of life at an affordable cost from a place of their
+            choice.&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;7. Let's set an audacious
+            goal--a 2020 vision--to move 50% of care in Oregon out of institutions and into homes
+            and the community in 10 years. We may not achieve 50% or it may happen faster than 10
+            years, but if we set a goal that everyone knows and can aim for, then we will achieve
+            great progress towards an aging-in-place agenda!&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt;
+            &lt;p&gt;In closing, I want to reiterate a message I have played over and over again in
+            the pages of these blog entries: we need to prepare for Global Aging much as we do
+            Global Warming. Just as our state (and our nation), are competing to try to become a
+            leader in Green Tech industries to address Global Warming, so too, we should be
+            competing to become a leader in Gray Tech industries for Global Aging. The issues and
+            needs are no less urgent or pervasive; the opportunities for economic growth for the
+            state are no less promising. And if we are truly a state committed to healthcare reform,
+            then let's make sure that commitment includes long term care as we figure out how to
+            improve cost, quality, and access for people of all ages.&lt;/p&gt;
+            &lt;p&gt;&amp;nbsp;&lt;/p&gt; Comments (1) &lt;img
+            src="http://feeds.feedburner.com/~r/IntelBlogs/~4/b2gRGCsDtuY" height="1"
+            width="1"/&gt;</content>
+        <feedburner:origLink>http://blogs.intel.com/healthcare/2011/03/oregons_opportunity_for_innovating_aging_a_city_club_follow_up.php</feedburner:origLink>
+    </entry>
+
+    <entry>
+
+        <title type="html">Jewelry, Gold and Intel?</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/y5vdGCNDSVM/jewelry_gold_and_intel.php"/>
+        <id>tag:blogs.intel.com,2011:/csr//16.4628</id>
+
+        <published>2011-03-28T16:21:22Z</published>
+        <updated>2011-03-28T16:37:35Z</updated>
+
+        <summary type="html">Intel has been working hard to set-up the systems and processes so we
+            can source “conflict-free” tin, tantalum and tungsten - and we feel we have a pretty
+            good plan for these metals. However, gold is particularly challenging because
+            the...</summary>
+
+
+        <author>
+
+            <name>Gary Niekerk</name>
+
+
+            <uri>http://blogs.intel.com/csr/2007/06/profile_garys_niekirk.php</uri>
+
+        </author>
+
+
+
+        <category term="general_csr" label="general_csr"
+            scheme="http://blogs.intel.com/csr/general-csr//"/>
+
+        <category term="conflcitminerals" label="conflcitminerals"
+            scheme="http://blogs.intel.com/csr/tag/"/>
+
+        <category term="conflictmetals" label="conflictmetals"
+            scheme="http://blogs.intel.com/csr/tag/"/>
+
+        <category term="conflictfree" label="conflictfree" scheme="http://blogs.intel.com/csr/tag/"/>
+
+
+        <category term="gold" label="gold" scheme="http://blogs.intel.com/csr/tag/"/>
+
+        <category term="responsiblesourcing" label="responsiblesourcing"
+            scheme="http://blogs.intel.com/csr/tag/"/>
+
+        <category term="supplychain" label="supplychain" scheme="http://blogs.intel.com/csr/tag/"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;p&gt;Intel has
+            been working hard to set-up the systems and processes so we can source
+            &amp;#8220;conflict-free&amp;#8221; tin, tantalum and tungsten - and we feel we have a
+            pretty good plan for these metals. However, gold is particularly challenging because the
+            vast majority of all gold goes into jewelry, not technology. Also, gold is so valuable
+            that smuggling is a serious issue so tracking becomes a greater challenge. &lt;/p&gt;
+            &lt;p&gt;It quickly became clear to us that if we wanted to address the challenges
+            related to responsible gold sourcing - we would need to bring together the biggest
+            players in the gold and jewelry industry; so that&amp;#8217;s just what we did in a
+            meeting last month in Denver. &lt;/p&gt; &lt;p&gt;On March 8th, 2011 companies from the
+            electronics industry met with leading companies and associations from the gold and
+            jewelry industries to share their knowledge and experience regarding responsible supply
+            chain practices. Electronics companies shared their learning and latest initiatives to
+            acquire responsibly-sourced minerals throughout their supply chains, particularly for
+            tin and tantalum. Gold mining, jewelry and refining companies shared the knowledge and
+            expertise gained in their efforts to validate responsibly-sourced supply chains for
+            gold. &lt;/p&gt; &lt;p&gt;Attendees at the meeting included multi-national gold mining
+            and refining companies, large and small jewelry retail and manufacturing chains, and
+            representatives from leading industry organizations. The meeting was convened by Intel
+            Corporation and hosted by Newmont Mining in its Denver offices. The collaboration
+            between the various sectors was facilitated by RESOLVE, an organization that works to
+            support critical policy initiatives, and advance collaborative learning and best
+            practices. &lt;/p&gt; &lt;p&gt;The attendees at the meeting agreed to continue dialogue
+            as they explore solutions. They discussed and evaluated processes to validate sources of
+            responsibly mined gold and differentiate it from illicit sources. They will take
+            appropriate next steps such as testing programs to validate sources and recognize
+            responsible actors in the gold supply chain. &lt;/p&gt; &lt;p&gt;Participants will be
+            reaching out to and welcome input from other related industries and stakeholders as part
+            of this effort. &lt;/p&gt; &lt;p&gt;Participants included: Intel, HP, Birks, Johnson
+            Matthey, AngloGold Ashanti, Kinross, Metalor, Newmont, Richline, Rio Tinto/Kennecott,
+            Tiffany &amp;amp; Co., Responsible Jewellery Council, Valcambi, World Gold Council,
+            RESOLVE and others.&lt;/p&gt; Comments (0) &lt;img
+            src="http://feeds.feedburner.com/~r/IntelBlogs/~4/y5vdGCNDSVM" height="1"
+            width="1"/&gt;</content>
+        <feedburner:origLink>http://blogs.intel.com/csr/2011/03/jewelry_gold_and_intel.php</feedburner:origLink>
+    </entry>
+
+
+    <entry>
+        <title type="html">Future Lab: Intel Science Talent Search 2011</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/M5H3skurr6I/future_lab_intel_science_talen.php"/>
+        <id>tag:blogs.intel.com,2011:/research//17.4627</id>
+
+        <published>2011-03-28T15:41:14Z</published>
+        <updated>2011-03-28T15:52:14Z</updated>
+
+        <summary type="html">Where do the inventors and researchers of the future come from? They
+            are in high school right now! This year’s Intel Science Talent Search brought together
+            kids from across the country who are doing research that will knock your
+            socks...</summary>
+
+        <author>
+
+            <name>Cheryl Miller</name>
+
+
+        </author>
+
+
+
+        <category term="futurelab" label="futurelab" scheme="http://blogs.intel.com/research/tag/"/>
+
+        <category term="intelsciencetalentsearch" label="intelsciencetalentsearch"
+            scheme="http://blogs.intel.com/research/tag/"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;p&gt;Where do the
+            inventors and researchers of the future come from? They are in high school right now!
+            This year&amp;#8217;s Intel Science Talent Search brought together kids from across the
+            country who are doing research that will knock your socks off! We spoke with 3 finalists
+            who are investigating such topics as formation of protein shapes in the human body,
+            long-term impact of environmental cleanup using Organoclay, and alternative methods for
+            approximating the square root of integers.&lt;/p&gt; &lt;p&gt;It is inspiring to see the
+            enthusiasm and amazing work that these kids are bringing to their various fields of
+            study. &lt;/p&gt; &lt;p&gt;&lt;/p&gt; Comments (0) &lt;img
+            src="http://feeds.feedburner.com/~r/IntelBlogs/~4/M5H3skurr6I" height="1"
+            width="1"/&gt;</content>
+        <feedburner:origLink>http://feedproxy.google.com/~r/Researchintel/~3/hPNOhdhgSVs/future_lab_intel_science_talen.php</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">Join us this Friday at the City Club of Portland - with Eric
+            Dishman</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/TRtGYnKIIWM/join_us_this_friday_at_the_city_club_of_portland_-_dishman_speaking.php"/>
+        <id>tag:blogs.intel.com,2011:/healthcare//38.4621</id>
+
+        <published>2011-03-21T15:42:28Z</published>
+        <updated>2011-03-30T16:51:17Z</updated>
+
+        <summary type="html"
+            ><![CDATA[ Our planet is aging. 1 out of 7 people will be 65+ by 2025 and there will be a shortage of doctors, nurses, and midwives worldwide (*WHO reported that this shortage was already&nbsp; 4 million in 2006) to care...]]></summary>
+
+        <author>
+
+            <name>Charing Riolo</name>
+
+
+        </author>
+
+
+
+
+        <category term="healthcare" label="healthcare" scheme="http://blogs.intel.com/healthcare//"/>
+
+        <category term="dishman" label="dishman" scheme="http://blogs.intel.com/healthcare/tag/"/>
+
+        <category term="health" label="health" scheme="http://blogs.intel.com/healthcare/tag/"/>
+
+        <category term="healthpolicy" label="healthpolicy"
+            scheme="http://blogs.intel.com/healthcare/tag/"/>
+
+        <category term="healthcare" label="healthcare"
+            scheme="http://blogs.intel.com/healthcare/tag/"/>
+
+        <category term="orcatech" label="orcatech" scheme="http://blogs.intel.com/healthcare/tag/"/>
+
+        <category term="portlandcityclub" label="portlandcityclub"
+            scheme="http://blogs.intel.com/healthcare/tag/"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;p&gt;Our planet
+            is aging. 1 out of 7 people will be 65+ by 2025 and there will be a shortage of doctors,
+            nurses, and midwives worldwide (*WHO reported that this shortage was already&amp;nbsp; 4
+            million in 2006) to care for them. With more and more care moving home, 1 out of 3
+            American adults, 53 million people today deliver informal care. The value of the
+            services family caregivers in the US provide for "free" is estimated to be $306 billion
+            a year. Several factors like this are already pushing for the need to better manage our
+            aging population and move traditional care to home-based models.&lt;/p&gt;
+            &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;To learn more about this important topic,
+            you&amp;nbsp;are invited to the City Club of Portland's Friday Forum on March
+            25th.&amp;nbsp; To reserve your ticket &lt;a
+            href="http://www.pdxcityclub.org/content/future-aging-through-technological-innovation"&gt;click
+            here&lt;/a&gt;. &lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt; &lt;p&gt;Eric Dishman, Intel
+            Fellow and Director of Health Innovation and Policy,&amp;nbsp;Intel Architecture Group,
+            will discuss new "gray technologies" that may enhance social engagement, disease
+            management, cognitive support and healthcare at home.&amp;nbsp; For the past 12 years,
+            Intel researchers in Oregon--in collaboration with the Oregon Center for Aging and
+            Technology (ORCATECH)--have studied the needs of more than 1000 elderly households in 20
+            countries to invent and test out new technologies.&amp;nbsp; Dishman&amp;nbsp;will
+            provide examples of research conducted and&amp;nbsp;he will also address how Oregon is
+            at the forefront of developing new technologies, services, care models and jobs that
+            address the challenge of global aging.&lt;/p&gt; &lt;p&gt;&amp;nbsp;&lt;/p&gt;
+            &lt;p&gt;If you are interested in attending this event, please&amp;nbsp; &lt;a
+            href="http://www.pdxcityclub.org/content/future-aging-through-technological-innovation"&gt;click
+            here&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;&amp;nbsp;*United nations department of economic and
+            social affairs. 2007b&lt;/p&gt; Comments (1) &lt;img
+            src="http://feeds.feedburner.com/~r/IntelBlogs/~4/TRtGYnKIIWM" height="1"
+            width="1"/&gt;</content>
+
+        <feedburner:origLink>http://blogs.intel.com/healthcare/2011/03/join_us_this_friday_at_the_city_club_of_portland_-_dishman_speaking.php</feedburner:origLink>
+    </entry>
+
+    <entry>
+        <title type="html">Smart Broadcasters are Adapting to Smart TV</title>
+        <link rel="alternate" type="text/html"
+            href="http://feedproxy.google.com/~r/IntelBlogs/~3/S46wGI1U6LA/smart_broadcasters_are_adaptin.php"/>
+        <id>tag:blogs.intel.com,2011:/technology//10.4616</id>
+
+        <published>2011-03-17T01:01:01Z</published>
+
+        <updated>2011-03-16T12:13:15Z</updated>
+
+        <summary type="html"> The television was the first screen to appear in our home, yet it has
+            become the last to connect to the Internet. The first “connected” TV and Blu-ray players
+            appeared in 2008 and, from the outset, they merely offered...</summary>
+
+        <author>
+
+            <name>Paul Tapp</name>
+
+
+            <uri>http://www.facebook.com/IntelSmartTV</uri>
+
+        </author>
+
+
+
+
+        <category term="digital_home" label="digital_home"
+            scheme="http://blogs.intel.com/technology/digital-home//"/>
+
+        <category term="technologies_for_our_lives" label="technologies_for_our_lives"
+            scheme="http://blogs.intel.com/technology/add-category//"/>
+
+        <category term="broadband" label="broadband" scheme="http://blogs.intel.com/technology/tag/"/>
+
+        <category term="broadcasters" label="broadcasters"
+            scheme="http://blogs.intel.com/technology/tag/"/>
+
+        <category term="connectedtv" label="connectedtv"
+            scheme="http://blogs.intel.com/technology/tag/"/>
+
+        <category term="content" label="content" scheme="http://blogs.intel.com/technology/tag/"/>
+
+        <category term="hollywood" label="hollywood" scheme="http://blogs.intel.com/technology/tag/"/>
+
+        <category term="netflix" label="netflix" scheme="http://blogs.intel.com/technology/tag/"/>
+
+        <category term="smarttv" label="smarttv" scheme="http://blogs.intel.com/technology/tag/"/>
+
+
+        <category term="william" label="william" scheme="http://blogs.intel.com/technology/tag/"/>
+
+
+        <content type="html" xml:lang="en" xml:base="http://blogs.intel.com/"> &lt;p&gt; The
+            television was the first screen to appear in our home, yet it has become the last to
+            connect to the Internet. &lt;/p&gt; &lt;p&gt;The first &amp;#8220;connected&amp;#8221;
+            TV and Blu-ray players appeared in 2008 and, from the outset, they merely offered basic
+            and limited content portals. They &lt;em&gt;couldn&amp;#8217;t&lt;/em&gt; do more
+            because the processors inside a TV were designed to process &lt;em&gt;images&lt;/em&gt;;
+            they were never intended to run the software or apps we use on the Internet. So the
+            &amp;#8220;connected TV&amp;#8221; was - and still is - slow, complicated and limited in
+            its capacity to drive change.&lt;/p&gt; &lt;p&gt;&lt;a
+            href="http://scoop.intel.com/smart-tv-most-significant-change-tv-history/"&gt;Smart
+            TV&lt;/a&gt; disrupts things, however, sporting fully capable browsers which flawlessly
+            present the Internet videos and applications that we use daily. It enables genuinely new
+            interactive and Internet-centric television experiences.&lt;/p&gt; &lt;p&gt;Immediate
+            benefits of having fully Internet-capable TVs go far beyond being able to browse the
+            web. Of course there are apps, games and huge social networking implications - and
+            I&amp;#8217;ll cover these in future blogs. Hugely significant though, is that media
+            conglomerates no longer determine which content will and will not be available on our TV
+            sets. No longer confined to schedules, we can watch on demand. &lt;/p&gt; &lt;p&gt;Smart
+            TV introduces a virtuous circle, which gives &lt;em&gt;consumers&lt;/em&gt; a lot more
+            freedom and choice, whilst also enabling &lt;em&gt;content creators&lt;/em&gt; to reach
+            new, global audiences.&lt;/p&gt; &lt;p&gt;Would be script-writers, playwrights, experts,
+            comedians and a lot of other talent is entering the fray and producing innovative
+            content for emerging audiences. We saw the dawn of this activity a couple of years ago
+            with Joss Whedon&amp;#8217;s &lt;a
+            href="http://en.wikipedia.org/wiki/Dr._Horrible's_Sing-Along_Blog"&gt;Dr
+            Horrible&lt;/a&gt; which according to a &lt;a
+            href="http://blogs.forbes.com/michaelhumphrey/2010/11/08/who-can-save-google-tv-dr-horrible-thats-who"&gt;great
+            blog&lt;/a&gt; on Forbes.com &amp;#8220;[took] six days, no budget and a lot of talent.
+            Out came millions of viewers, brisk sales, and an Emmy&amp;#8221;. There are others too,
+            like &lt;a href="http://www.watchtheguild.com/"&gt;The Guild&lt;/a&gt; and &lt;a
+            href="http://www.lstudio.com/web-therapy/introducing-web-therapy.html"&gt;Web
+            Therapy&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Now that we are free to watch such content on our
+            TV sets, the creative floodgates have been opened. Check out the &lt;a
+            href="http://www.laughfactory.com/"&gt;Laugh Factory&lt;/a&gt; or the &lt;a
+            href="http://www.ifc.com/onn/"&gt;Onion News Network&lt;/a&gt; for example (preferably
+            from your smart TV!) These content creators are now able to directly reach huge
+            audiences, niche or otherwise, on a global scale without having to worry about whether
+            they&amp;#8217;ll be able to sell their content to a TV network in order for it to get
+            viewed. See what Black Eyed Peas frontman has to say about it in this &lt;a
+            href="http://www.youtube.com/watch?v=2woxmf38ekc&amp;amp;feature=player_detailpage#t=460s"&gt;interview
+            with will.i.am&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Smart TV also enables an entire new line of
+            independent broadcasters. &lt;a href="http://revision3.com/"&gt;Revision 3&lt;/a&gt;
+            calls itself &amp;#8220;the leading television network for the internet
+            generation&amp;#8221;. &lt;a href="http://smibs.tv/"&gt;smibs.tv&lt;/a&gt; has just
+            materialised &amp;#8220;for people with a passion&amp;#8221;&amp;#8230; there are many
+            others. Finally the .tv domain can live up to its destiny (sorry, Tuvaluans!) &lt;/p&gt;
+            &lt;p&gt;Content publishing is no longer in the hands of a select few. As more and more
+            viewers have the means to easily watch Internet programming on the TV, more innovative
+            broadcasts will emerge.&lt;/p&gt; &lt;p&gt;And the more content that exists, the easier
+            it will be for smart TVs to bring you content tailored to your preferences&amp;#8230; so
+            they&amp;#8217;ll keep getting smarter.&lt;/p&gt; &lt;p&gt;Smart TV is redefining
+            television as we know it. To keep up-to-date on the latest smart TV news and trends,
+            follow the Intel smart TV team on &lt;a
+            href="http://www.twitter.com/IntelSmartTV"&gt;Twitter&lt;/a&gt; and &lt;a
+            href="http://www.facebook.com/IntelSmartTV"&gt;Facebook&lt;/a&gt;. If you want to learn
+            more, check out this smart TV video.&lt;/p&gt; Comments (0) &lt;img
+            src="http://feeds.feedburner.com/~r/IntelBlogs/~4/S46wGI1U6LA" height="1"
+            width="1"/&gt;</content>
+        <feedburner:origLink>http://feedproxy.google.com/~r/TechnologyIntel/~3/Zx4aieXIHLw/smart_broadcasters_are_adaptin.php</feedburner:origLink>
+    </entry>
+
+
+
+
+
+</feed>

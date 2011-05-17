@@ -2,14 +2,15 @@
     xsi:schemaLocation="http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd"
     xmlns="http://www.openmashup.org/schemas/v1.0/EMML"
     xmlns:macro="http://www.openmashup.org/schemas/v1.0/EMMLMacro"
-    xmlns:presto="http://www.jackbe.com/v1.0/EMMLPrestoExtensions" name="conversations_parser_feed">
+    xmlns:presto="http://www.jackbe.com/v1.0/EMMLPrestoExtensions" 
+    name="conversations_parser_feed">
     <operation name="invoke">
         <output name="result" type="document"/>
         
          <!-- Input -->
- 	 <input name="url" type="string" default="http://feeds.feedburner.com/IADPBlog"></input>
+ 	 <input name="url" type="string" default="http://feeds.feedburner.com/IntelBlogs"></input>
  	 <input name="counter" type="number" default="1"></input>
- 	 <input name="repetitive_elem" type="string" default="item"></input>
+ 	 <input name="repetitive_elem" type="string" default="entry"></input>
  	 <input name="limit" type="number" default="7"></input>
  	 <input name="feed_sourcetype" type="string" default="feed_source"></input>
  
@@ -51,7 +52,7 @@
  				
  				//Created Time
  				item_string = item_string  + '<created_time>'
- 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:pubDate' + '[1]//text()' +'}'
+ 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:published' + '[1]//text()' +'}'
  				item_string = item_string  + '</created_time>'
  				
  				//Source
@@ -61,12 +62,12 @@
  				
  				//Source URI / Link
  				item_string = item_string + '<link>';
- 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:link/text()' +'}'
+ 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:link/@href' +'}'
  				item_string = item_string + '</link>';
  				
  				// Author
  				item_string = item_string + '<author>';
- 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:creator/text()' +'}'
+ 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:author//*:name/text()' +'}'
  				item_string = item_string + '</author>';
  				
  				//Closing Item
