@@ -1,0 +1,41 @@
+<configuration>
+				<name>beachMashup</name>
+				<feeds>
+					<feed>
+						<url>http://twitter.com/statuses/user_timeline/intel.atom</url>
+						<keywords></keywords>
+						<description>News about Intel and greetings from fans</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>twitter</source_name>
+						<source_type>twitter</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>10</limit>
+					</feed>
+					<feed>
+						<url>http://twitter.com/statuses/user_timeline/intelinside.atom</url>
+						<keywords></keywords>
+						<description>Tweets about IntelInisde</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>twitter</source_name>
+						<source_type>twitter</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>5</limit>
+					</feed>
+					<feed>
+						<url>http://twitter.com/statuses/user_timeline/jobsatintel.atom</url>
+						<keywords></keywords>
+						<description>Tweets about intel jobs</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>twitter</source_name>
+						<source_type>twitter</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>5</limit>
+					</feed>
+				</feeds>
+			</configuration>

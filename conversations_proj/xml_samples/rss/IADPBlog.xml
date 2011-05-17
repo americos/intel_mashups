@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2full.xsl"?>
+<?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0" xml:base="http://appdeveloper.intel.com">
+    <channel>
+        <title>Intel AppUp(SM) developer program blogs</title>
+        <link>http://appdeveloper.intel.com/en-us/blog</link>
+        <description />
+        <language>en</language>
+        <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://feeds.feedburner.com/IADPBlog" /><feedburner:info uri="iadpblog" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" /><item>
+            <title>Get your MeeGo on in San Francisco!</title>
+            
+            <link>http://feedproxy.google.com/~r/IADPBlog/~3/SsoUBSropfQ/get-your-meego-san-francisco</link>
+            <description>&lt;P&gt;&lt;IMG src="http://appdeveloper.intel.com/sites/files/Blog%20MeeGo%20Conf_0.jpg" width=331 height=189 /&gt;&amp;nbsp;&lt;/p&gt;
+                &lt;P&gt;Well my first time for running the show for an Application Lab wasn't too bad and I met some great people the 2 days I was at APPNATION.&amp;nbsp; The engagement, conversation, and excitement that I had and saw at this event was awesome!&amp;nbsp; Now comes round 2 for me and once again it's San Francisco on the show card, this time the MeeGo Conference.&amp;nbsp; Well we're actually having 2 Intel AppUp Applications Labs on Sunday, May 22 for the pre-event warm-up (&lt;A href="http://appdeve&lt;/p&gt;&lt;p&gt;&lt;a href="http://appdeveloper.intel.com/en-us/blog/2011/05/12/get-your-meego-san-francisco" target="_blank"&gt;read more&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/IADPBlog/~4/SsoUBSropfQ" height="1" width="1"/&gt;</description>
+            
+            <comments>http://appdeveloper.intel.com/en-us/blog/2011/05/12/get-your-meego-san-francisco#comments</comments>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/app-lab">app lab</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/app">App Up</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/application-lab">application lab</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/events">events</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/meego">MeeGo</category>
+            
+            <video domain="http://appdeveloper.intel.com/en-us/taxonomy/term/961">something</video>
+            <pubDate>Wed, 11 May 2011 23:21:21 +0000</pubDate>
+            <dc:creator>Brian_Intel</dc:creator>
+            <guid isPermaLink="false">3815 at http://appdeveloper.intel.com</guid>
+            <feedburner:origLink>http://appdeveloper.intel.com/en-us/blog/2011/05/12/get-your-meego-san-francisco</feedburner:origLink></item>
+        <item>
+            <title>New AppUp MSI packager plus more in new program releases</title>
+            
+            <link>http://feedproxy.google.com/~r/IADPBlog/~3/0GBVOQIOpck/new-appup-msi-packager-program-releases</link>
+            <description>&lt;p&gt;&lt;img src="https://secure-appdeveloper.intel.com/sites/files/msi.jpg" width="450" height="189" /&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="font-weight: normal;"&gt;We've recently released some new bits and pieces for the program to make building apps for AppUp even easier. Also some continual improvement with support for evolving technologies. Here's are things to note from the recent release. Enjoy&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="http://appdeveloper.intel.com/en-us/blog/2011/05/04/new-appup-msi-packager-program-releases" target="_blank"&gt;read more&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/IADPBlog/~4/0GBVOQIOpck" height="1" width="1"/&gt;</description>
+            
+            <comments>http://appdeveloper.intel.com/en-us/blog/2011/05/04/new-appup-msi-packager-program-releases#comments</comments>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/announcement">announcement</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/msi">MSI</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/qt-creator">Qt Creator</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/release">release</category>
+            <category domain="http://appdeveloper.intel.com/en-us/taxonomy/term/925">updates</category>
+            
+            <video domain="http://appdeveloper.intel.com/en-us/taxonomy/term/961">something</video>
+            <pubDate>Mon, 09 May 2011 19:39:20 +0000</pubDate>
+            <dc:creator>Bob Duffy</dc:creator>
+            <guid isPermaLink="false">3619 at http://appdeveloper.intel.com</guid>
+            <feedburner:origLink>http://appdeveloper.intel.com/en-us/blog/2011/05/04/new-appup-msi-packager-program-releases</feedburner:origLink></item>
+        <item>
+            <title>dotnet Cologne</title>
+            
+            <link>http://feedproxy.google.com/~r/IADPBlog/~3/TzEyAwYKciQ/3788</link>
+            <description>&lt;p&gt;&lt;img src="http://appdeveloper.intel.com/sites/files/dnc11_banner.png" /&gt;&lt;br /&gt;
+                Das wunderbare an meinem Job ist unter anderem, dass ich in den beiden großen Welten der OpenSource und der Windows Plattform unterwegs sein kann. So hatte ich das Vergnügen nach dem MeeGo AppLab in Berlin, am Freitag auf der &lt;a href="http://www.dotnet-cologne.de" target="_blank" rel="nofollow"&gt; dotnet Cologne&lt;/a&gt; – logischerweise in Köln – anwesend zu sein.&lt;/p&gt;
+                
+                &lt;p&gt;&lt;a href="http://appdeveloper.intel.com/en-us/node/3788" target="_blank"&gt;read more&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/IADPBlog/~4/TzEyAwYKciQ" height="1" width="1"/&gt;</description>
+            <comments>http://appdeveloper.intel.com/en-us/node/3788#comments</comments>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/net">.net</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/community">community</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/windows">windows</category>
+            
+            <video domain="http://appdeveloper.intel.com/en-us/taxonomy/term/961">something</video>
+            <pubDate>Mon, 09 May 2011 11:34:53 +0000</pubDate>
+            <dc:creator>Monika Lischke</dc:creator>
+            <guid isPermaLink="false">3788 at http://appdeveloper.intel.com</guid>
+            <feedburner:origLink>http://appdeveloper.intel.com/en-us/node/3788</feedburner:origLink></item>
+        <item>
+            <title>Tips for Success with the Intel AppUp developer challenge</title>
+            
+            <link>http://feedproxy.google.com/~r/IADPBlog/~3/fk4MOBLypSY/3775</link>
+            <description>&lt;p&gt;I’m on the Intel AppUp developer program marketing team. Over the past few months a few developers have reached out to us at events or through support asking for advice or clarification of rules for the Intel AppUp developer challenge.  I’d like to thank those who have reached out to us and share some tips our team has provided with the broader AppUp developer community.&lt;/p&gt;
+                &lt;p&gt;1. Enter the contest to get visibility for both you and your app.&lt;/p&gt;
+                &lt;p&gt;If you have apps in the store today, consider entering them into the contest. There is a one page web form.&lt;/p&gt;
+                &lt;p&gt;&lt;a href="http://appdeveloper.intel.com/en-us/node/3775" target="_blank"&gt;read more&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/IADPBlog/~4/fk4MOBLypSY" height="1" width="1"/&gt;</description>
+            
+            <comments>http://appdeveloper.intel.com/en-us/node/3775#comments</comments>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/award">award</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/contest">contest</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/developer-challenge">developer challenge</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/development">Development</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/funding">funding</category>
+            
+            <category domain="http://appdeveloper.intel.com/en-us/tags/opportunities">opportunities</category>
+            <category domain="http://appdeveloper.intel.com/en-us/taxonomy/term/934">prizes</category>
+            <video domain="http://appdeveloper.intel.com/en-us/taxonomy/term/961">something</video>
+            <pubDate>Fri, 06 May 2011 19:11:47 +0000</pubDate>
+            <dc:creator>Kelli Gizzi</dc:creator>
+            <guid isPermaLink="false">3775 at http://appdeveloper.intel.com</guid>
+            
+            <feedburner:origLink>http://appdeveloper.intel.com/en-us/node/3775</feedburner:origLink></item>
+        <item>
+            <title>Intel and the Open Ecosystem</title>
+            <link>http://feedproxy.google.com/~r/IADPBlog/~3/38e4ZDYKxc4/3761</link>
+            <description>&lt;p&gt;&lt;i&gt;(reposted from my main blog at &lt;a href="http://tabulacrypticum.wordpress.com" title="http://tabulacrypticum.wordpress.com" rel="nofollow"&gt;http://tabulacrypticum.wordpress.com&lt;/a&gt;)&lt;/i&gt;&lt;/p&gt;
+                
+                &lt;p&gt;I have a confession to make that might not sit well in the AppUp World:&lt;/p&gt;
+                &lt;p&gt;I'm a longtime AMD system builder.&lt;/p&gt;
+                &lt;p&gt;I have to qualify that though.  Eons ago, when I first started assembling my own personal computers, CPU competition was fairly open.  Intel could not keep up with the demand at the time, so they licensed &lt;a href="http://en.wikipedia.org/wiki/X86" rel="nofollow"&gt;x86&lt;/a&gt; production to various foundries-- many that aren't even around now.&lt;/p&gt;
+                
+                &lt;p&gt;&lt;a href="http://appdeveloper.intel.com/en-us/node/3761" target="_blank"&gt;read more&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/IADPBlog/~4/38e4ZDYKxc4" height="1" width="1"/&gt;</description>
+            <comments>http://appdeveloper.intel.com/en-us/node/3761#comments</comments>
+            <category domain="http://appdeveloper.intel.com/en-us/taxonomy/term/926">AMD</category>
+            <category domain="http://appdeveloper.intel.com/en-us/taxonomy/term/927">Cyrix</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/intel">Intel</category>
+            
+            <category domain="http://appdeveloper.intel.com/en-us/tags/meego">MeeGo</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/nokia">Nokia</category>
+            <video domain="http://appdeveloper.intel.com/en-us/taxonomy/term/961">something</video>
+            <pubDate>Fri, 06 May 2011 05:37:19 +0000</pubDate>
+            <dc:creator>Randall Arnold</dc:creator>
+            <guid isPermaLink="false">3761 at http://appdeveloper.intel.com</guid>
+            
+            <feedburner:origLink>http://appdeveloper.intel.com/en-us/node/3761</feedburner:origLink></item>
+        <item>
+            <title>Augmented Reality with Qt. Part 3 - Tracking position of real world object.</title>
+            <link>http://feedproxy.google.com/~r/IADPBlog/~3/ZZnikJ_zqNE/3756</link>
+            <description>&lt;p&gt;Lets add some magic to our project. In the previous parts we learn how to capture and display video from the web-cam, how to render 3D objects using OpenGL over our video. In this part we will learn how to capture a real world object coordinates, learn how to translate these cordinates to our scene coordinates and how to display our 3D object using these coordinates.
+                &lt;br /&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="http://appdeveloper.intel.com/en-us/node/3756" target="_blank"&gt;read more&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/IADPBlog/~4/ZZnikJ_zqNE" height="1" width="1"/&gt;</description>
+            
+            <comments>http://appdeveloper.intel.com/en-us/node/3756#comments</comments>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/augmented-reality">Augmented Reality</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/meego">MeeGo</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/qt">Qt</category>
+            <video domain="http://appdeveloper.intel.com/en-us/taxonomy/term/961">something</video>
+            <pubDate>Thu, 05 May 2011 09:22:18 +0000</pubDate>
+            
+            <dc:creator>dmitry-rizshkov</dc:creator>
+            <guid isPermaLink="false">3756 at http://appdeveloper.intel.com</guid>
+            <feedburner:origLink>http://appdeveloper.intel.com/en-us/node/3756</feedburner:origLink></item>
+        <item>
+            <title>TweetCap - MeeGo Flavors Delight</title>
+            <link>http://feedproxy.google.com/~r/IADPBlog/~3/r9vGGvqHrOk/tweetcap-meego-flavors-delight</link>
+            <description>&lt;P&gt;&amp;nbsp;&lt;/p&gt;
+                
+                &lt;P&gt;&lt;IMG src="http://appdeveloper.intel.com/sites/files/meego-newlook-idf.jpg" width=300 /&gt;&lt;/p&gt;
+                &lt;P&gt;During IDF a lot of buzz was created about a 3rd party MeeGo tablet user experience running on an Oaktrail prototype tablet.&amp;nbsp; I saw many tweets that week about a new MeeGo UI.&lt;/p&gt;
+                &lt;P&gt;As noted by Nicole Scott in a &lt;A href="http://www.netbooknews.com/23533/meego-gets-a-new-look-at-idf-beijing-2011/"&gt;post &lt;/a&gt;about this UI, she noted it is&amp;nbsp;a different look than the Intel User Experience we saw during Mobile World Congress&amp;nbsp;&lt;/p&gt;
+                
+                &lt;BLOCKQUOTE&gt;
+                &lt;P&gt;“What is interesting to no&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;a href="http://appdeveloper.intel.com/en-us/blog/2011/05/02/tweetcap-meego-flavors-delight" target="_blank"&gt;read more&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/IADPBlog/~4/r9vGGvqHrOk" height="1" width="1"/&gt;</description>
+            <comments>http://appdeveloper.intel.com/en-us/blog/2011/05/02/tweetcap-meego-flavors-delight#comments</comments>
+            
+            <category domain="http://appdeveloper.intel.com/en-us/taxonomy/term/924">concepts</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/innovation">innovation</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/meego">MeeGo</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/tablet">tablet</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/ui">UI</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/ux">UX</category>
+            
+            <video domain="http://appdeveloper.intel.com/en-us/taxonomy/term/961">something</video>
+            <pubDate>Tue, 03 May 2011 02:19:26 +0000</pubDate>
+            <dc:creator>Bob Duffy</dc:creator>
+            <guid isPermaLink="false">3541 at http://appdeveloper.intel.com</guid>
+            <feedburner:origLink>http://appdeveloper.intel.com/en-us/blog/2011/05/02/tweetcap-meego-flavors-delight</feedburner:origLink></item>
+        <item>
+            <title>MeeGo AppLab in Berlin</title>
+            
+            <link>http://feedproxy.google.com/~r/IADPBlog/~3/3GmiZtUguhM/3734</link>
+            <description>&lt;img src="http://appdeveloper.intel.com/sites/files/MeeGo-AppLab-Freeday3.jpg" alt="MeeGo AppLab in Berlin" /&gt;&lt;p&gt;&lt;a href="http://appdeveloper.intel.com/en-us/node/3734" target="_blank"&gt;read more&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/IADPBlog/~4/3GmiZtUguhM" height="1" width="1"/&gt;</description>
+            <comments>http://appdeveloper.intel.com/en-us/node/3734#comments</comments>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/applab">applab</category>
+            
+            <category domain="http://appdeveloper.intel.com/en-us/tags/meego">MeeGo</category>
+            <video domain="http://appdeveloper.intel.com/en-us/taxonomy/term/961">something</video>
+            <pubDate>Mon, 02 May 2011 22:00:00 +0000</pubDate>
+            <dc:creator>Monika Lischke</dc:creator>
+            <guid isPermaLink="false">3734 at http://appdeveloper.intel.com</guid>
+            <feedburner:origLink>http://appdeveloper.intel.com/en-us/node/3734</feedburner:origLink></item>
+        
+        <item>
+            <title>Age of Entrepreneurial Engineers - APPNATION 2011 panel with Peter Biddle</title>
+            <link>http://feedproxy.google.com/~r/IADPBlog/~3/-OTJBHKZqoI/age-entrepreneurial-engineers-appnation-panel-peter-biddle</link>
+            <description>&lt;p&gt;&lt;img src="http://appdeveloper.intel.com/sites/files/panel.jpg" width="300" /&gt;&lt;/p&gt;&lt;p&gt;At AppNation, Peter hosted a panel discussion of a new age of companies, driving a new model in the app economy. &amp;nbsp;The following are my notes on the panel discussion.&lt;/p&gt;&lt;p&gt;Peter and panel take the stage. &amp;nbsp;The group is described as a motley crew.&lt;/p&gt;&lt;p&gt;&lt;a href="http://appdeveloper.intel.com/en-us/blog/2011/04/28/age-entrepreneurial-engineers-appnation-panel-peter-biddle" target="_blank"&gt;read more&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/IADPBlog/~4/-OTJBHKZqoI" height="1" width="1"/&gt;</description>
+            
+            <comments>http://appdeveloper.intel.com/en-us/blog/2011/04/28/age-entrepreneurial-engineers-appnation-panel-peter-biddle#comments</comments>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/appnation">appnation</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/appup">AppUp</category>
+            <category domain="http://appdeveloper.intel.com/en-us/tags/event">event</category>
+            <category domain="http://appdeveloper.intel.com/en-us/taxonomy/term/914">panel</category>
+            <category domain="http://appdeveloper.intel.com/en-us/taxonomy/term/923">peter biddle</category>
+            
+            <video domain="http://appdeveloper.intel.com/en-us/taxonomy/term/961">something</video>
+            <pubDate>Thu, 28 Apr 2011 20:51:08 +0000</pubDate>
+            <dc:creator>Bob Duffy</dc:creator>
+            <guid isPermaLink="false">3668 at http://appdeveloper.intel.com</guid>
+            <feedburner:origLink>http://appdeveloper.intel.com/en-us/blog/2011/04/28/age-entrepreneurial-engineers-appnation-panel-peter-biddle</feedburner:origLink></item>
+        <item>
+            <title>MeetUp with Intel AppUp @ AppNation!</title>
+            
+            <link>http://feedproxy.google.com/~r/IADPBlog/~3/5I9RReIGNTs/3583</link>
+            <description>&lt;p&gt;&lt;img src="http://appdeveloper.intel.com/sites/files/Chefs_Bob_Rhonda-2.png" width="300" /&gt;&lt;/p&gt;
+                &lt;p&gt;Bob and I are hosting hosting a meetup at AppNation in the Intel AppUp Developer Lounge in Moscone South, Hall A, booth E3.  We'd like any developers who will be attending AppNation to stop by and meet us and hang out for a little while or at least until your next session.  We will have some fun snacks and cool give-away items!   Drop us a note if you're attending.&lt;/p&gt;
+                &lt;p&gt;&lt;a href="http://appdeveloper.intel.com/en-us/node/3583" target="_blank"&gt;read more&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/IADPBlog/~4/5I9RReIGNTs" height="1" width="1"/&gt;</description>
+            
+            <comments>http://appdeveloper.intel.com/en-us/node/3583#comments</comments>
+            <video domain="http://appdeveloper.intel.com/en-us/taxonomy/term/961">something</video>
+            <pubDate>Sat, 23 Apr 2011 00:36:23 +0000</pubDate>
+            <dc:creator>Rhonda Peters</dc:creator>
+            <guid isPermaLink="false">3583 at http://appdeveloper.intel.com</guid>
+            <feedburner:origLink>http://appdeveloper.intel.com/en-us/node/3583</feedburner:origLink></item>
+        
+    </channel>
+</rss>

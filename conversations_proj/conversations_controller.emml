@@ -28,17 +28,17 @@
 		<input name="jsonp" type="string" default="parseResponse"></input>
 		<input name="config" type="document">
 			<configuration>
-				<name>beachMashup</name>
+				<name>ameMiami</name>
 				<feeds>
 					<feed>
-						<url>http://twitter.com/statuses/user_timeline/intel.atom</url>
+						<url>http://feeds.feedburner.com/IADPBlog</url>
 						<keywords></keywords>
-						<description>News about Intel and greetings from fans</description>
+						<description>Some desc</description>
 						<timeout>10000</timeout>
 						<mandatory>true</mandatory>
 						<active>true</active>
-						<source_name>twitter</source_name>
-						<source_type>twitter</source_type>
+						<source_name>rss</source_name>
+						<source_type>rss</source_type>
 						<repeating_element>entry</repeating_element>
 						<limit>10</limit>
 					</feed>
@@ -46,18 +46,6 @@
 						<url>http://twitter.com/statuses/user_timeline/intelinside.atom</url>
 						<keywords></keywords>
 						<description>Tweets about IntelInisde</description>
-						<timeout>10000</timeout>
-						<mandatory>true</mandatory>
-						<active>true</active>
-						<source_name>twitter</source_name>
-						<source_type>twitter</source_type>
-						<repeating_element>entry</repeating_element>
-						<limit>5</limit>
-					</feed>
-					<feed>
-						<url>http://twitter.com/statuses/user_timeline/jobsatintel.atom</url>
-						<keywords></keywords>
-						<description>Tweets about intel jobs</description>
 						<timeout>10000</timeout>
 						<mandatory>true</mandatory>
 						<active>true</active>
@@ -95,12 +83,12 @@
 			 <if condition="$feed_sourcetype eq 'twitter' ">
 				<!-- TWITTER -->
 				<variable name="repetitive_elem" type="string" default="entry"></variable>
-				<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype" outputvariable="feed_data"/>
+				<invoke operation="invoke" service="conversations_parser_twitter" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype" outputvariable="feed_data"/>
 				
-				<!-- FEEDS -->
-				<elseif condition="$feed_sourcetype eq 'feed' ">
+				<!-- RSS -->
+				<elseif condition="$feed_sourcetype eq 'rss' ">
 					<variable name="repetitive_elem" type="string" default="item"></variable>
-					<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype" outputvariable="feed_data"/>
+					<invoke operation="invoke" service="conversations_parser_rss" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype" outputvariable="feed_data"/>
 				</elseif>
 			</if>
 		

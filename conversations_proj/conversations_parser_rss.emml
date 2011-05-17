@@ -2,7 +2,8 @@
     xsi:schemaLocation="http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd"
     xmlns="http://www.openmashup.org/schemas/v1.0/EMML"
     xmlns:macro="http://www.openmashup.org/schemas/v1.0/EMMLMacro"
-    xmlns:presto="http://www.jackbe.com/v1.0/EMMLPrestoExtensions" name="conversations_parser_feed">
+    xmlns:presto="http://www.jackbe.com/v1.0/EMMLPrestoExtensions" 
+    name="conversations_parser_rss">
     <operation name="invoke">
         <output name="result" type="document"/>
         
