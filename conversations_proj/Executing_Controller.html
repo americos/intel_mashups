@@ -20,9 +20,9 @@ Controller</title>
 NOTE: Currently only twitter feeds are accepted (please look at the June30thConversationsFeeds_DSL_v1.xls file for a sample of possible twitter feeds url, this must use the .atom extension for now)  
 <p>
 <form
-	action="http://216.255.76.119:8080/presto/edge/api/rest/conversations_controller/invoke?x-presto-resultFormat=json&x-p-anonymous=true"
+	action="http://localhost:8080/presto/edge/api/rest/conversations_controller/invoke?x-presto-resultFormat=json&x-p-anonymous=true"
 	method="POST">
-		jsonp Function Name:<input type="text" id="jsonp_function" name="jsonp_function" value="parseResponse"></input>
+		jsonp Function Name:<input type="text" id="jsonp" name="jsonp" value="parseResponse"></input>
 		<p/>
 		<textarea rows="40" cols="130" id="config" name="config">
 			<configuration>
