@@ -20,12 +20,12 @@
 			<variable name="mashup_name" type="string"></variable>
 			<variable name="serviceID" type="string"></variable>
 			<variable name="feed_sourcetype" type="string"></variable>
-			<variable name="jsonp" type="string"></variable>
+			<variable name="jsonp_result" type="string"></variable>
 			
 		</variables>
 		
 		<!-- INPUT's -->
-		<input name="jsonp_function" type="string" default="parseResponse"></input>
+		<input name="jsonp" type="string" default="parseResponse"></input>
 		<input name="config" type="document">
 			<configuration>
 				<name>beachMashup</name>
@@ -126,7 +126,7 @@
   			var mashup_header = "<mashup xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd' xmlns='http://www.openmashup.org/schemas/v1.0/EMML' xmlns:macro='http://www.openmashup.org/schemas/v1.0/EMMLMacro' xmlns:presto='http://www.jackbe.com/v1.0/EMMLPrestoExtensions'";
   			mashup_header = mashup_header + " name='"+ mashup_name +"'><operation name='runMashup'>";
   			
-  			var output = '<output name="result" type="document"></output>';
+  			var output = '<output name="result" type="string"></output>';
   			dynamicScript = mashup_header + output;
 		]]>
 		</script>
@@ -149,7 +149,7 @@
 		<script>
  	 		<![CDATA[  				
   				constructor = '<constructor outputvariable="result">';
-  				constructor = constructor + '<mashup_result><items>';
+  				constructor = constructor + '<mashup>';
 			]]>
 		</script>
 		
@@ -167,7 +167,7 @@
 		<!-- Closing final constructor -->
 		<script>
  	 		<![CDATA[  				
-  				constructor = constructor + '</items></mashup_result>';
+  				constructor = constructor + '</mashup>';
   				constructor = constructor + '</constructor>';
 			]]>
 		</script>
@@ -199,11 +199,11 @@
 	 	 <script>
  	 	<![CDATA[
  	 		//BUILDING THE JSONP STRING FOR RESULT
- 	 		var jsonp = jsonp_function + '({"mashup":{"id":"'+ serviceID + '", "url":"/presto/edge/api/rest/'+ serviceID + '/runMashup?x-p-anonymous=true"' +'}})';
+ 	 		var jsonp_result = '{"mashup":{"id":"'+ serviceID + '", "url":"/presto/edge/api/rest/'+ serviceID + '/runMashup?x-p-anonymous=true&x-presto-resultFormat=json&callback='+ jsonp +'"}}';
  	 	
 		]]>
 		</script>
-	 	<assign fromvariable="jsonp" outputvariable="result"/>
+	 	<assign fromvariable="jsonp_result" outputvariable="result"/>
 	 	 
 		<display message="Result:" variable="result"/>
 		

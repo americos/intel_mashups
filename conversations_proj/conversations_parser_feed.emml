@@ -59,10 +59,10 @@
  					item_string = item_string + feed_sourcetype;
  				item_string = item_string + '</source>';
  				
- 				//Source URI
- 				item_string = item_string + '<source_uri>';
+ 				//Source URI / Link
+ 				item_string = item_string + '<link>';
  					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:link'+ '[1]/@href' +'}'
- 				item_string = item_string + '</source_uri>';
+ 				item_string = item_string + '</link>';
  				
  				//Closing Item
  				item_string = item_string + '</item>';
