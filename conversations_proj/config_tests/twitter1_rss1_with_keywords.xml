@@ -27,17 +27,5 @@
 		<repeating_element>entry</repeating_element>
 		<limit>5</limit>
 	</feed>
-	<feed>
-		<url>http://feeds.feedburner.com/IADPBlog
-		</url>
-		<keywords>MeeGo AGK</keywords>
-		<description></description>
-		<timeout>10000</timeout>
-		<mandatory>true</mandatory>
-		<active>true</active>
-		<source_name>rss</source_name>
-		<source_type>rss</source_type>
-		<repeating_element>entry</repeating_element>
-		<limit>5</limit>
-	</feed>
+	
 </configuration>
