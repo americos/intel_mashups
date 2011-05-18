@@ -26,9 +26,9 @@
 		
 		<!-- INPUT's -->
 		<input name="jsonp" type="string" default="parseResponse"></input>
-		<input name="config" type="document">
+		<input name="configuration" type="document">
 			<configuration>
-				<name>beachMashup</name>
+				<name>sandMashup</name>
 				<feeds>
 					<feed>
 						<url>http://feeds.feedburner.com/IntelBlogs</url>
@@ -77,7 +77,7 @@
 		<display message="===BEGIN MASHUP CONTROLLER EXECUTION===" />
 		
 		<!-- ITERATE ON ALL THE FEEDS -->
-		<foreach items="$config//feed" variable="feed">
+		<foreach items="$configuration//feed" variable="feed">
 			<!-- FEED URL -->
 			<assign fromexpr="$feed//url/node()" outputvariable="feed_url" />
 			<display message="::Controller will ask to visit url:" variable="feed_url" />
@@ -128,7 +128,7 @@
 		<display message="Emml_String:" variable="emml_xml"/>
 		
 		<!-- Get Final MASHUP NAME -->
-		<assign fromexpr="$config//name/node()" outputvariable="mashup_name"/>
+		<assign fromexpr="$configuration//name/node()" outputvariable="mashup_name"/>
 		<!-- CREATE FINAL MASHUP CODE -->
 		<script>
  	 	<![CDATA[
@@ -152,7 +152,7 @@
 			</script>
 		</foreach>
 		<!-- Closing operation & mashup tag -->
-		<assign fromexpr="count($config//feed)" outputvariable="feed_count"/>
+		<assign fromexpr="count($configuration//feed)" outputvariable="feed_count"/>
 		<display message="FEED COUNT:" variable="feed_count"/>
 		
 		<!-- Opening final Constructor -->
