@@ -21,6 +21,7 @@
 			<variable name="serviceID" type="string"></variable>
 			<variable name="feed_sourcetype" type="string"></variable>
 			<variable name="jsonp_result" type="string"></variable>
+			<variable name="feed_keywords" type="string"></variable>
 			
 		</variables>
 		
@@ -30,33 +31,10 @@
 			<configuration>
 				<name>sandMashup</name>
 				<feeds>
-					<feed>
-						<url>http://feeds.feedburner.com/IntelBlogs</url>
-						<keywords></keywords>
-						<description>Tweets about IntelInisde</description>
-						<timeout>10000</timeout>
-						<mandatory>true</mandatory>
-						<active>true</active>
-						<source_name>feed</source_name>
-						<source_type>feed</source_type>
-						<repeating_element>entry</repeating_element>
-						<limit>6</limit>
-					</feed>
-					<feed>
-						<url>http://feeds.feedburner.com/IADPBlog</url>
-						<keywords></keywords>
-						<description>Some desc</description>
-						<timeout>10000</timeout>
-						<mandatory>true</mandatory>
-						<active>true</active>
-						<source_name>rss</source_name>
-						<source_type>rss</source_type>
-						<repeating_element>entry</repeating_element>
-						<limit>10</limit>
-					</feed>
+					
 					<feed>
 						<url>http://twitter.com/statuses/user_timeline/intelinside.atom</url>
-						<keywords></keywords>
+						<keywords>#2ndgen @addthis</keywords>
 						<description>Tweets about IntelInisde</description>
 						<timeout>10000</timeout>
 						<mandatory>true</mandatory>
@@ -84,6 +62,8 @@
 			<!-- Limit -->
 			<assign fromexpr="$feed//limit/node()" outputvariable="feed_limit" />
 			<display message="::Limit results to:" variable="feed_limit" />
+			<!-- Keywords -->
+			<assign fromexpr="$feed//keywords/node()" outputvariable="feed_keywords" />
 			<script>
 			<![CDATA[
   				counter = counter + 1; 
@@ -95,7 +75,7 @@
 			 <if condition="$feed_sourcetype eq 'twitter' ">
 				<!-- TWITTER -->
 				<variable name="repetitive_elem" type="string" default="entry"></variable>
-				<invoke operation="invoke" service="conversations_parser_twitter" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype" outputvariable="feed_data"/>
+				<invoke operation="invoke" service="conversations_parser_twitter" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords" outputvariable="feed_data"/>
 				
 				<!-- RSS -->
 				<elseif condition="$feed_sourcetype eq 'rss' ">
