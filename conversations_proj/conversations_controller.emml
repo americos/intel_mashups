@@ -31,7 +31,8 @@
 			<configuration>
 				<name>sandMashup</name>
 				<feed>
-					<url>http://feeds.feedburner.com/IntelBlogs</url>
+					<url>http://feeds.feedburner.com/IntelBlogs
+					</url>
 					<keywords>Tablet Rocks</keywords>
 					<description>Feed on IntelInisde</description>
 					<timeout>10000</timeout>
@@ -44,7 +45,8 @@
 				</feed>
 			
 				<feed>
-					<url>http://twitter.com/statuses/user_timeline/intelinside.atom</url>
+					<url>http://twitter.com/statuses/user_timeline/intelinside.atom
+					</url>
 					<keywords>#2ndgen @addthis</keywords>
 					<description>Tweets about IntelInisde</description>
 					<timeout>10000</timeout>
@@ -56,7 +58,8 @@
 					<limit>5</limit>
 				</feed>
 				<feed>
-					<url>http://feeds.feedburner.com/IADPBlog</url>
+					<url>http://feeds.feedburner.com/IADPBlog
+					</url>
 					<keywords>MeeGo AGK</keywords>
 					<description></description>
 					<timeout>10000</timeout>
@@ -67,6 +70,20 @@
 					<repeating_element>entry</repeating_element>
 					<limit>5</limit>
 				</feed>
+				<feed>
+					<url></url>
+					<keywords>IdeaJam</keywords>
+					<description>Intel's Facebook</description>
+					<timeout>10000</timeout>
+					<mandatory>true</mandatory>
+					<active>true</active>
+					<source_name>facebook</source_name>
+					<source_type>facebook</source_type>
+					<repeating_element>item</repeating_element>
+					<limit>6</limit>
+				</feed>
+			
+			
 			</configuration>
 		</input>
 		
@@ -109,6 +126,12 @@
 				<elseif condition="$feed_sourcetype eq 'feed' ">
 					<variable name="repetitive_elem" type="string" default="entry"></variable>
 					<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords" outputvariable="feed_data"/>
+				</elseif>
+				
+				<!-- FACEBOOK -->				
+				<elseif condition="$feed_sourcetype eq 'facebook' ">
+					<variable name="repetitive_elem" type="string" default="item"></variable>
+					<invoke operation="invoke" service="conversations_parser_facebook" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords" outputvariable="feed_data"/>
 				</elseif>
 				
 				<!-- FEED NOT SUPPORTED -->
