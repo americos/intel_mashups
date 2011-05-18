@@ -31,7 +31,6 @@
 			<configuration>
 				<name>sandMashup</name>
 				<feeds>
-					
 					<feed>
 						<url>http://twitter.com/statuses/user_timeline/intelinside.atom</url>
 						<keywords>#2ndgen @addthis</keywords>
@@ -41,6 +40,18 @@
 						<active>true</active>
 						<source_name>twitter</source_name>
 						<source_type>twitter</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>5</limit>
+					</feed>
+					<feed>
+						<url>http://feeds.feedburner.com/IADPBlog</url>
+						<keywords>MeeGo AGK</keywords>
+						<description></description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>rss</source_name>
+						<source_type>rss</source_type>
 						<repeating_element>entry</repeating_element>
 						<limit>5</limit>
 					</feed>
@@ -80,7 +91,7 @@
 				<!-- RSS -->
 				<elseif condition="$feed_sourcetype eq 'rss' ">
 					<variable name="repetitive_elem" type="string" default="item"></variable>
-					<invoke operation="invoke" service="conversations_parser_rss" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype" outputvariable="feed_data"/>
+					<invoke operation="invoke" service="conversations_parser_rss" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords" outputvariable="feed_data"/>
 				</elseif>
 				
 				<!-- FEED -->				
@@ -149,7 +160,8 @@
 			<script>
  	 		<![CDATA[  	
  	 			var output_number = 'output' + feed_number;
- 	 			constructor = constructor + '{$'+ output_number +'//item}'; //This last item is the tag name created in conversations_parser_feed.emml
+ 	 			constructor = constructor + '{$'+ output_number +'//item[string-length( entry/string()) != 0]}'; //This last item is the tag name created in conversations_parser_feed.emml
+ 	 																											//Checking against the length of entry to put only items with valid text values (due to keyword filtering)
 			]]>
 			</script>
 			

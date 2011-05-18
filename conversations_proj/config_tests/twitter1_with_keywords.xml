@@ -1,0 +1,18 @@
+<configuration>
+				<name>sandMashup</name>
+				<feeds>
+					
+					<feed>
+						<url>http://twitter.com/statuses/user_timeline/intelinside.atom</url>
+						<keywords>#2ndgen @addthis</keywords>
+						<description>Tweets about IntelInisde</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>twitter</source_name>
+						<source_type>twitter</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>5</limit>
+					</feed>
+				</feeds>
+			</configuration>
