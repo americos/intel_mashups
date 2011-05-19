@@ -29,7 +29,7 @@
 		<input name="jsonp" type="string" default="parseResponse"></input>
 		<input name="configuration" type="document">
 			<configuration>
-				<name>sandMashup</name>
+				<name>smartTrade</name>
 				<feed>
 					<url>http://feeds.feedburner.com/IntelBlogs
 					</url>

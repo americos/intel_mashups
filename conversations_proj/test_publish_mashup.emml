@@ -9,7 +9,7 @@
  	<output name='result' type='string' />
  	
  	<!-- MAHSUP NAME -->
- 	<input name="mashup_name" type="string" default="smartAmerico"></input>
+ 	<input name="mashup_name" type="string" default="smartTrade"></input>
  	<!-- MASHUP CODE -->
  	<input name="mashup_code" type="string"></input>
  	
@@ -34,7 +34,20 @@
 
 			var mashup1 = mashup_code; //"<mashup xmlns='http://www.openmashup.org/schemas/v1.0/EMML' name='SmartDog'>	<output name='result' type='document'> <sampledata/> </output> </mashup> ";
 			
+			
+			//Removing Mashup
+			var service_exists = Packages.com.jackbe.jbp.jems.moe.commons.JEMSUtil.findService(mashup_name);
+			if (service_exists != null){
+				//Deactivate service
+				var rds = new Packages.com.jackbe.jbp.sas.services.RdsUIFacadeImpl();
+				//Service Exists so remove it first
+				rds.deactivateService(mashup_name);
+				designer.unregisterService(mashup_name);
+			}
+			
+			//Registering Mashup
 			var serviceID = designer.registerService(svcRegInfo, mashup1 );
+			//Publish Mashup
 			designer.publishService(serviceID)
         ]]>
     </script>
