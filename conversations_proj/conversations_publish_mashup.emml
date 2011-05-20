@@ -1,0 +1,41 @@
+<mashup xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd"
+    xmlns="http://www.openmashup.org/schemas/v1.0/EMML" 
+    xmlns:macro="http://www.openmashup.org/schemas/v1.0/EMMLMacro" 
+    name = "converastions_publish_mashup" >
+    
+   <operation name="invoke">
+   
+   <output name='result' type='string' />
+   
+   <!-- MAHSUP NAME -->
+   <input name="mashup_name" type="string" default="smartTrade"></input>
+   <!-- MASHUP CODE -->
+   <input name="mashup_code" type="string"></input>
+   
+   <variable name="serviceID" type="string"></variable>
+   
+    <script type="text/javascript">
+        <![CDATA[
+      var designer = new Packages.com.jackbe.jbp.jems.moe.runtime.JEMSDesignerImpl();
+      var svcRegInfo = new Packages.com.jackbe.jbp.sas.services.ServiceRegistrationInfo();
+      svcRegInfo.setName( mashup_name );
+   
+
+      var mashup1 = mashup_code; //"<mashup xmlns='http://www.openmashup.org/schemas/v1.0/EMML' name='SmartDog'>  <output name='result' type='document'> <sampledata/> </output> </mashup> ";
+      
+      
+      
+      //Registering Mashup
+      var serviceID = designer.registerService(svcRegInfo, mashup1 );
+      //Publish Mashup
+      designer.publishService(serviceID)
+        ]]>
+    </script>
+    <display message="ServiceID: " variable="serviceID"/>
+    
+    <!-- RETURN THE SERVICEID -->
+    <assign fromvariable="serviceID" outputvariable="result"/>
+    
+    </operation>
+</mashup>

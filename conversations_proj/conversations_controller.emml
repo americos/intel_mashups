@@ -31,10 +31,9 @@
 			<configuration>
 				<name>smartTrade</name>
 				<feed>
-					<url>http://feeds.feedburner.com/IntelBlogs
-					</url>
-					<keywords>Tablet Rocks</keywords>
-					<description>Feed on IntelInisde</description>
+					<url>http://blogs.intel.com/atom.xml</url>
+					<keywords></keywords>
+					<description>Feed on blogs Intel</description>
 					<timeout>10000</timeout>
 					<mandatory>true</mandatory>
 					<active>true</active>
@@ -43,30 +42,28 @@
 					<repeating_element>entry</repeating_element>
 					<limit>6</limit>
 				</feed>
-			
 				<feed>
-					<url>http://twitter.com/statuses/user_timeline/intelinside.atom
-					</url>
-					<keywords>#2ndgen @addthis</keywords>
+					<url>http://feeds.feedburner.com/Healthcareintel</url>
+					<keywords></keywords>
 					<description>Tweets about IntelInisde</description>
 					<timeout>10000</timeout>
 					<mandatory>true</mandatory>
 					<active>true</active>
-					<source_name>twitter</source_name>
-					<source_type>twitter</source_type>
+					<source_name>feed</source_name>
+					<source_type>feed</source_type>
 					<repeating_element>entry</repeating_element>
 					<limit>5</limit>
 				</feed>
 				<feed>
-					<url>http://feeds.feedburner.com/IADPBlog
+					<url>http://twitter.com/statuses/user_timeline/intelinside.atom
 					</url>
 					<keywords>MeeGo AGK</keywords>
 					<description></description>
 					<timeout>10000</timeout>
 					<mandatory>true</mandatory>
 					<active>true</active>
-					<source_name>rss</source_name>
-					<source_type>rss</source_type>
+					<source_name>twitter</source_name>
+					<source_type>twitter</source_type>
 					<repeating_element>entry</repeating_element>
 					<limit>5</limit>
 				</feed>
@@ -82,8 +79,6 @@
 					<repeating_element>item</repeating_element>
 					<limit>6</limit>
 				</feed>
-			
-			
 			</configuration>
 		</input>
 		
@@ -225,7 +220,7 @@
 		<display message="This is the Groovy: " variable="dynamicScript"/>		
 	
 		<!-- SAVE MASHUP -->
-		<invoke operation="invoke" service="test_publish_mashup" inputvariables="mashup_name, dynamicScript" outputvariable="serviceID"/>
+		<invoke operation="invoke" service="converastions_publish_mashup" inputvariables="mashup_name, dynamicScript" outputvariable="serviceID"/>
 	 	
 	 	<!-- CONSTRUCTING FINAL RESULT jsonp FOR CLIENT
 	 		parseResponse({"mashup":{"id":"Mashup_Generated_Name","url":"/presto/edge/api/rest/Mashup_Generated_Name/runMashup"}})
