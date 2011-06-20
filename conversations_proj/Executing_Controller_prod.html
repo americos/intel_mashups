@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Intel Conversations - Test for Executing the Mashup
+Controller</title>
+</head>
+<body>
+<b>Instructions</b>
+<p>
+<ul>
+	<li>Type the config xml in the text area below</li>
+	<li>Type the function name for the jsonp callback function</li>
+	<li>Make sure your set the mashup name in the "name" xml tag as
+	shown on the second line in the example below</li>
+	<li>Click the submit button to create the mashup</li>
+</ul>
+
+<p>
+<b>UPDATE (05/18/2001):</b>: Now Keywords are accepted. (Note in the case for twitter, hashtags can be place in the keyword field as shown on the sample below)    
+<p>
+<i>The sample config below shows: an Atom FEED, an RSS feed, facebook, and a twitter source</i>
+<p>
+<form
+	action="http://216.255.76.119/presto/edge/api/rest/conversations_controller/invoke?x-presto-resultFormat=json&x-p-anonymous=true"
+	method="POST">
+		jsonp Function Name:<input type="text" id="jsonp" name="jsonp" value="parseResponse"></input>
+		<p/>
+		<textarea rows="40" cols="130" id="config" name="configuration">
+			<configuration>
+				<name>rainMashup</name>
+				<feed>
+					<url>http://feeds.feedburner.com/IntelBlogs</url>
+					<keywords>Tablet Rocks</keywords>
+					<description>Feed on IntelInisde</description>
+					<timeout>10000</timeout>
+					<mandatory>true</mandatory>
+					<active>true</active>
+					<source_name>feed</source_name>
+					<source_type>feed</source_type>
+					<repeating_element>entry</repeating_element>
+					<limit>6</limit>
+				</feed>
+				<feed>
+					<url>http://twitter.com/statuses/user_timeline/intelinside.atom</url>
+					<keywords>#2ndgen @addthis</keywords>
+					<description>Tweets about IntelInisde</description>
+					<timeout>10000</timeout>
+					<mandatory>true</mandatory>
+					<active>true</active>
+					<source_name>twitter</source_name>
+					<source_type>twitter</source_type>
+					<repeating_element>entry</repeating_element>
+					<limit>5</limit>
+				</feed>
+				<feed>
+					<url>http://feeds.feedburner.com/IADPBlog</url>
+					<keywords>MeeGo AGK</keywords>
+					<description></description>
+					<timeout>10000</timeout>
+					<mandatory>true</mandatory>
+					<active>true</active>
+					<source_name>rss</source_name>
+					<source_type>rss</source_type>
+					<repeating_element>entry</repeating_element>
+					<limit>5</limit>
+				</feed>
+				<feed>
+					<url>http://www.facebook.com/feeds/page.php?id=22707976849format=rss20</url>
+					<keywords>IdeaJam</keywords>
+					<description>Intel's Facebook</description>
+					<timeout>10000</timeout>
+					<mandatory>true</mandatory>
+					<active>true</active>
+					<source_name>facebook</source_name>
+					<source_type>facebook</source_type>
+					<repeating_element>item</repeating_element>
+					<limit>6</limit>
+				</feed>
+			</configuration>
+		</textarea>
+<p /><input type="submit" value="Submit">
+</form>
+</body>
+</html>
