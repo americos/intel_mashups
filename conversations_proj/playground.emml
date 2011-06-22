@@ -111,7 +111,7 @@
  	 				//Then get Minutes
  	 				var mins = parseInt(date_difference_milisecs / 60000)
  	 				
- 	 				final_result = mins + " minutes ago"
+ 	 				final_result = mins + " Minutes ago"
  	 				
  	 				print("Mins:"+ final_result);
  	 				

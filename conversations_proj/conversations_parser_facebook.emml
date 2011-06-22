@@ -8,15 +8,13 @@
         <output name="result" type="document"/>
         
          <!-- Input -->
- 	 <input name="url_xx" type="string" default="http://www.facebook.com/feeds/page.php?id=22707976849format=rss20"></input>
+ 	 <input name="url" type="string" default="http://www.facebook.com/feeds/page.php?id=22707976849format=rss20"></input>
  	 <input name="counter" type="number" default="1"></input>
  	 <input name="repetitive_elem" type="string" default="item"></input>
  	 <input name="limit" type="number" default="7"></input>
  	 <input name="feed_sourcetype" type="string" default="feed_source"></input>
  	 <input name="feed_keywords" type="string" default=""></input>
  	 
- 	 <variable name="url" type="string" default="http://www.facebook.com/feeds/page.php?id=22707976849format=rss20"></variable>
- 
         <script>
  	 	<![CDATA[
  	 		//OUTPUT VARIABLE FOR ALL
@@ -24,7 +22,8 @@
  	 	
   			//Direct Invoke of the URL
   				//Fuzzy Logic for & on Facebook URL
-  				url = url.replace("2707976849","2707976849&amp;");
+  				//url = url.replace("2707976849","2707976849&amp;");
+  				url = url.replace("format=rss20","&amp;format=rss20");
   			var res = ' <directinvoke endpoint="' + url + '" outputvariable="'+ my_output +'"/>'
   			
 			//NOTE: SEEMS LIKE RSS DO NOT NEED: Removing &'s to be able to parse this response.			  			

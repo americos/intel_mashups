@@ -1,0 +1,213 @@
+<mashup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd"
+	xmlns="http://www.openmashup.org/schemas/v1.0/EMML" xmlns:macro="http://www.openmashup.org/schemas/v1.0/EMMLMacro"
+	xmlns:presto="http://www.jackbe.com/v1.0/EMMLPrestoExtensions" name="conversations_parser_feed">
+	<operation name="invoke">
+		<output name="result" type="document" />
+
+		<variables>
+			<variable name="config" type="document">
+				<item>
+					<entry>Intelinside: System Builder Marathon, June 2011:
+						$2000 Performance PC : A True Enthusiast Build?:
+						http://t.co/mhk6Kkv via @addthis #2ngen #Core i7</entry>
+					<created_time>Wed, 22 Jun 2011 16:09:58 +0000</created_time>
+					<source>twitter</source>
+					<link href="http://twitter.com/Intelinside/statuses/83213447080312832" />
+				</item>
+				
+		
+			</variable>
+			<variable name="pubDates" type="string" default=""></variable>
+			<variable name="xx" type="string" default=""></variable>
+			<variable name="date_string" type="string" default=""></variable>
+
+
+		</variables>
+
+
+		<assign fromexpr="$config//created_time/string()" outputvariable="pubDates" />
+
+		<display message="Pubdates:" variable="pubDates" />
+
+
+		<script>
+ 	 	<![CDATA[
+ 	 		//Check the date format.
+ 	 		print("Index of:" + pubDates.indexOf(",") )
+ 	 		
+ 	 		//////
+ 	 		// Case When date is on this format: Mon, 20 Jun 2011 21:05:09 +0400
+ 	 		/////
+ 	 		if( pubDates.indexOf(",") >= 0){
+ 	 			
+ 	 			//Break date and time
+	 	 		var date_time_split = pubDates.split(" ");
+	 	 	
+	 	 		//Construct Date
+	 	 		var year = date_time_split[3];
+	 	 		var month = date_time_split[2];
+	 	 		var day = date_time_split[1];
+	 	 		
+	 	 		if(month == 'Jan') month = "01"
+	 	 		else if(month == 'Feb') month = "02"
+	 	 		else if(month == 'Mar') month = "03"
+	 	 		else if(month == 'Abr') month = "04"
+	 	 		else if(month == 'May') month = "05"
+	 	 		else if(month == 'Jun') month = "06"
+	 	 		else if(month == 'Jul') month = "07"
+	 	 		else if(month == 'Aug') month = "08"
+	 	 		else if(month == 'Sep') month = "09"
+	 	 		else if(month == 'Oct') month = "10"
+	 	 		else if(month == 'Nov') month = "11"
+	 	 		else if(month == 'Dec') month = "12"
+	 	 		 		
+	 	 		//Construct Time
+	 	 		var time = date_time_split[4];
+	 	 		var time_split = time.split(":");
+	 	 		var hour = time_split[0];
+	 	 		var min = time_split[1];
+	 	 		var sec = time_split[2];
+	 	 		
+	 	 		//Create Date-Time javascript obj
+	 	 		var today = new Date();
+	 	 		var that_date = new Date(year, month-1, day, hour-4, min, sec); //Month is zero based index, -4 Cause the server is in the US EAST Coast
+	 	 		print("that_date:" + that_date);
+	 	 		
+	 	 		var date_difference_milisecs = today - that_date
+	 	 		
+	 	 		var days_difference = parseInt( date_difference_milisecs / 86400000)
+	 	 		//print("days_difference:" + days_difference);
+	 	 		
+	 	 		var final_result = days_difference
+	 	 		
+	 	 		if( final_result == 0){
+	 	 			//Get hours then
+	 	 			var hours = parseInt(date_difference_milisecs / 3600000)
+	 	 			
+	 	 			//print("Hours:"+hours);
+	 	 			
+	 	 			final_result = hours
+	 	 			
+	 	 			if(final_result == 0){
+	 	 				//Then get Minutes
+	 	 				var mins = parseInt(date_difference_milisecs / 60000)
+	 	 				
+	 	 				final_result = mins + " Minutes ago"
+	 	 				
+	 	 				print("Mins:"+ final_result);
+	 	 				
+	 	 			}
+	 	 			else{
+	 	 				//Return hours ago
+	 	 				final_result += " Hours ago"
+	 	 			}
+	 	 		}	
+	 	 		else{
+	 	 			//Return days ago
+	 	 			final_result += " Days ago"
+	 	 		}
+	 	 		
+	 	 		print("final_result:"+final_result);
+ 	 			
+ 	 			
+ 	 		}
+ 	 		//////
+ 	 		// Case When date is on this format: 2011-06-21T16:43:26+00:00
+ 	 		/////
+ 	 		else{
+ 	 			
+				//Break date and time
+	 	 		var date_time_split = pubDates.split("T"); //Date in format: 2011-06-21T16:43:26+00:00
+	 	 		print("date_time_split:"+ date_time_split);
+	 	 		
+	 	 		var date_split = date_time_split[0];
+	 	 		var time_split = date_time_split[1];
+	 	 		
+	 	 		var date = date_split.split("-");
+	 	 		var time = time_split.split(":");
+	 	 		
+	 	 		
+	 	 		//var time_zone_plus = time_split.indexOf("+"); //If time_zone_plus != 0, then it has a +
+	 	 		//var time_zone = time[2].split("+"); //This will get me the hours on index 1.
+	 	 		//print("time_zone:"+time_zone[1]);
+	 	 		
+	 	 		print("index of:" + time_split.indexOf("+"));
+	 	 		
+	 	 		print("date:"+date);
+	 	 		print("time:"+time);
+	 	 		
+	 	 		
+	 	 		//Construct Date
+	          	var year = date[0];
+	           	var month = date[1];
+	        	var day = date[2];
+	        	
+	        	  if(month == 'Jan') month = "01"
+		          else if(month == 'Feb') month = "02"
+		          else if(month == 'Mar') month = "03"
+		          else if(month == 'Abr') month = "04"
+		          else if(month == 'May') month = "05"
+		          else if(month == 'Jun') month = "06"
+		          else if(month == 'Jul') month = "07"
+		          else if(month == 'Aug') month = "08"
+		          else if(month == 'Sep') month = "09"
+		          else if(month == 'Oct') month = "10"
+		          else if(month == 'Nov') month = "11"
+		          else if(month == 'Dec') month = "12"
+	        	
+	        	var hour = time[0];
+	        	var min = time[1];
+	        	var sec = "00"; //Ignoring seconds for now.
+	        	
+	        	var today = new Date();
+	        	var that_date = new Date(year, month-1, day, hour-4, min, sec); //Month is zero based index, -4 Cause the server is in the US EAST Coast
+	        	print("that_date:" + that_date);
+	        	
+	        	var date_difference_milisecs = today - that_date
+	            
+	            var days_difference = parseInt( date_difference_milisecs / 86400000)
+	            //print("days_difference:" + days_difference);
+	            
+	            var final_last_updated_value = days_difference
+	            
+	            if( final_last_updated_value == 0){
+		            //Get hours then
+		            var hours = parseInt(date_difference_milisecs / 3600000)
+		            
+		            //print("Hours:"+hours);
+		            
+		            final_last_updated_value = hours
+		            
+		            if(final_last_updated_value == 0){
+			            //Then get Minutes
+			            var mins = parseInt(date_difference_milisecs / 60000)
+			            
+			            final_last_updated_value = mins + " Minutes ago"
+			            
+			            print("Mins:"+ final_last_updated_value);
+			        
+			        }
+			          else{
+			          //Return hours ago
+			          final_last_updated_value += " Hours ago"
+			          }
+	         	 }  
+		          else{
+		          //Return days ago
+		          final_last_updated_value += " Days ago"
+		          }
+	          
+	          print("final_last_updated_value:"+final_last_updated_value);
+ 	 		
+ 	 		}//End if
+ 	 	
+ 	 		
+        	
+		]]>
+	</script>
+
+
+
+	</operation>
+</mashup>

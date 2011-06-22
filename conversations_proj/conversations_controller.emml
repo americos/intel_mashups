@@ -29,22 +29,45 @@
 		<input name="jsonp" type="string" default="parseResponse"></input>
 		<input name="configuration" type="document">
 			<configuration>
-				<name>smartTrade</name>
-			
-				<feed>
-					<url>http://twitter.com/statuses/user_timeline/intelinside.atom
-					</url>
-					<keywords>MeeGo AGK</keywords>
-					<description></description>
-					<timeout>10000</timeout>
-					<mandatory>true</mandatory>
-					<active>true</active>
-					<source_name>twitter</source_name>
-					<source_type>twitter</source_type>
-					<repeating_element>entry</repeating_element>
-					<limit>5</limit>
-				</feed>
-			
+				<name>ameMiami2</name>
+				<feeds>
+					<feed>
+						<url>http://feeds.feedburner.com/IADPBlog</url>
+						<keywords></keywords>
+						<description>Some desc</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>rss</source_name>
+						<source_type>rss</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>10</limit>
+					</feed>
+					<feed>
+						<url>http://twitter.com/statuses/user_timeline/intelinside.atom</url>
+						<keywords></keywords>
+						<description>Tweets about IntelInisde</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>twitter</source_name>
+						<source_type>twitter</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>5</limit>
+					</feed>
+					<feed>
+						<url>http://www.facebook.com/feeds/page.php?id=22707976849format=rss20</url>
+						<keywords></keywords>
+						<description>Tweets about IntelInisde</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>facebook</source_name>
+						<source_type>facebook</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>5</limit>
+					</feed>
+				</feeds>
 			</configuration>
 		</input>
 		
@@ -144,7 +167,7 @@
 		<!-- Opening final Constructor -->
 		<script>
  	 		<![CDATA[  				
-  				constructor = '<constructor outputvariable="result">';
+  				constructor = '<constructor outputvariable="mashup_almost_ready">';
   				constructor = constructor + '<mashup>';
 			]]>
 		</script>
@@ -166,6 +189,203 @@
  	 		<![CDATA[  				
   				constructor = constructor + '</mashup>';
   				constructor = constructor + '</constructor>';
+  				
+  				//////////////
+  				// Adding last_updated
+  				/////////////
+  				
+  				constructor = constructor + '<variable name="final_last_updated_value" type="string" default=""></variable>'
+  				constructor = constructor + '<variable name="counter_for_items" type="number" default="0"></variable>'
+  				//constructor = constructor + '<variable name="mashup_almost_ready" type="document" default=""></variable>'
+    
+    			constructor = constructor + "<foreach outputvariable='xx' variable='i' items='$mashup_almost_ready//*:created_time'>"
+      
+    			constructor = constructor + '<variable name="pubDates" type="string" default=""></variable>'
+    			
+    			constructor = constructor + "<assign fromexpr='$i/string()' outputvariable='pubDates' />"
+    			
+    			////Javascript logic
+    			constructor = constructor + '<script><![CDATA['
+    			constructor = constructor + 'counter_for_items++;'
+          
+		          //constructor = constructor + '//Check the date format.'
+		          //constructor = constructor + 'print("Index of:" + pubDates.indexOf(",") )'
+		          
+		          //////
+		          //constructor = constructor + '// Case When date is on this format: Mon, 20 Jun 2011 21:05:09 +0400'
+		          /////
+		          constructor = constructor + 'if( pubDates.indexOf(",") >= 0){'
+		          
+		          //constructor = constructor + '//Break date and time'
+		          constructor = constructor + 'var date_time_split = pubDates.split(" ");'
+		          
+		          //constructor = constructor + '//Construct Date'
+		          constructor = constructor + 'var year = date_time_split[3];'
+		           constructor = constructor + 'var month = date_time_split[2];'
+		        constructor = constructor + 'var day = date_time_split[1];'
+		        
+		        constructor = constructor + 'if(month == "Jan") month = "01";'
+		          constructor = constructor + 'else if(month == "Feb") month = "02";'
+		          constructor = constructor + 'else if(month == "Mar") month = "03";'
+		          constructor = constructor + 'else if(month == "Abr") month = "04";'
+		          constructor = constructor + 'else if(month == "May") month = "05";'
+		          constructor = constructor + 'else if(month == "Jun") month = "06";'
+		          constructor = constructor + 'else if(month == "Jul") month = "07";'
+		          constructor = constructor + 'else if(month == "Aug") month = "08";'
+		          constructor = constructor + 'else if(month == "Sep") month = "09";'
+		          constructor = constructor + 'else if(month == "Oct") month = "10";'
+		          constructor = constructor + 'else if(month == "Nov") month = "11";'
+		          constructor = constructor + 'else if(month == "Dec") month = "12";'
+		          
+		          //constructor = constructor + '//Construct Time'
+		          constructor = constructor + 'var time = date_time_split[4];'
+		        constructor = constructor + 'var time_split = time.split(":");'
+		        constructor = constructor + 'var hour = time_split[0];'
+		        constructor = constructor + 'var min = time_split[1];'
+		        constructor = constructor + 'var sec = time_split[2];'
+		        
+		        //constructor = constructor + '//Create Date-Time javascript obj'
+		        constructor = constructor + 'var today = new Date();'
+		        constructor = constructor + 'var that_date = new Date(year, month-1, day, hour-4, min, sec);' //Month is zero based index,-4 Cause the server is in the US EAST Coast
+		        //print("that_date:" + that_date);
+		        
+		        constructor = constructor + 'var date_difference_milisecs = today - that_date;'
+		            
+		            constructor = constructor + 'var days_difference = parseInt( date_difference_milisecs / 86400000);'
+		            //print("days_difference:" + days_difference);
+		            
+		            constructor = constructor + 'final_last_updated_value = days_difference;'
+		            
+		            constructor = constructor + 'if( final_last_updated_value == 0){'
+		            //constructor = constructor + '//Get hours then'
+		            constructor = constructor + 'var hours = parseInt(date_difference_milisecs / 3600000);'
+		            
+		            //print("Hours:"+hours);
+		            
+		            constructor = constructor + 'final_last_updated_value = hours;'
+		            
+		            constructor = constructor + 'if(final_last_updated_value == 0){'
+		            //constructor = constructor + '//Then get Minutes'
+		            constructor = constructor + 'var mins = parseInt(date_difference_milisecs / 60000);'
+		            
+		            constructor = constructor + 'final_last_updated_value = mins + " Minutes ago";'
+		            
+		            //print("Mins:"+ final_last_updated_value);
+		        
+		        constructor = constructor + '}'
+		          constructor = constructor + 'else{'
+		          	//constructor = constructor + '//Return hours ago'
+		          	constructor = constructor + 'final_last_updated_value += " Hours ago";'
+		          	constructor = constructor + '}'
+		          constructor = constructor + '}'  
+		          constructor = constructor + 'else{'
+		          	//constructor = constructor + '//Return days ago'
+		          	constructor = constructor + 'final_last_updated_value += " Days ago";'
+		          	constructor = constructor +'}'
+		          
+		          //print("final_last_updated_value:"+final_last_updated_value);
+		        
+		        
+		        constructor = constructor + '}'
+		          //constructor = constructor +'//////'
+		          //constructor = constructor + '// Case When date is on this format: 2011-06-21T16:43:26+00:00'
+		          //constructor = constructor + '/////'
+		          constructor = constructor + 'else{'
+		          
+		          	//constructor = constructor + '//Break date and time'
+		          	constructor = constructor + 'var date_time_split = pubDates.split("T");'
+		        	//print("date_time_split:"+ date_time_split);
+		        
+		        	constructor = constructor + 'var date_split = date_time_split[0];'
+		        	constructor = constructor + 'var time_split = date_time_split[1];'
+		        
+		        	constructor = constructor + 'var date = date_split.split("-");'
+		        	constructor = constructor + 'var time = time_split.split(":");'
+		        
+		        	//constructor = constructor + '//PENDING'
+		        	//constructor = constructor + '//var time_zone_plus = time_split.indexOf("+"); //If time_zone_plus != 0, then it has a +'
+		        	//constructor = constructor + '//var time_zone = time[2].split("+"); //This will get me the hours on index 1.'
+		        	//print("time_zone:"+time_zone[1]);
+		        
+		        	//print("index of:" + time_split.indexOf("+"));
+		        
+		        	//print("date:"+date);
+		        	//print("time:"+time);
+		        
+		        
+		        	//constructor = constructor + '//Construct Date'
+		        	constructor = constructor + 'var year = date[0];'
+		        	constructor = constructor + 'var month = date[1];'
+		        	constructor = constructor + 'var day = date[2];'
+		        
+		        	constructor = constructor + 'if(month == "Jan") month = "01";'
+		          	constructor = constructor + 'else if(month == "Feb") month = "02";'
+		          	constructor = constructor + 'else if(month == "Mar") month = "03";'
+		          	constructor = constructor + 'else if(month == "Abr") month = "04";'
+		          	constructor = constructor + 'else if(month == "May") month = "05";'
+		          	constructor = constructor + 'else if(month == "Jun") month = "06";'
+		          	constructor = constructor + 'else if(month == "Jul") month = "07";'
+		          	constructor = constructor + 'else if(month == "Aug") month = "08";'
+		          	constructor = constructor + 'else if(month == "Sep") month = "09";'
+		          	constructor = constructor + 'else if(month == "Oct") month = "10";'
+		          	constructor = constructor + 'else if(month == "Nov") month = "11";'
+		          	constructor = constructor + 'else if(month == "Dec") month = "12";'
+		          
+		          	constructor = constructor + 'var hour = time[0];'
+		        	constructor = constructor + 'var min = time[1];'
+		        	constructor = constructor + 'var sec = "00";'
+		        
+		        	constructor = constructor + 'var today = new Date();'
+		        	constructor = constructor + 'var that_date = new Date(year, month-1, day, hour-4, min, sec);' //Month is zero based index, -4 Cause the server is in the US EAST Coast
+		        	//print("that_date:" + that_date);
+		        
+		        	constructor = constructor + 'var date_difference_milisecs = today - that_date;'
+		            
+		            constructor = constructor + 'var days_difference = parseInt( date_difference_milisecs / 86400000);'
+		            //print("days_difference:" + days_difference);
+		            
+		            constructor = constructor + 'final_last_updated_value = days_difference;'
+		            
+		            constructor = constructor + 'if( final_last_updated_value == 0){'
+		            	//constructor = constructor + '//Get hours then'
+		            	constructor = constructor + 'var hours = parseInt(date_difference_milisecs / 3600000);'
+		            
+		            	//print("Hours:"+hours);
+		            
+		            	constructor = constructor + 'final_last_updated_value = hours;'
+		            
+		            	constructor = constructor + 'if(final_last_updated_value == 0){'
+		            		//constructor = constructor + '//Then get Minutes'
+		            		constructor = constructor + 'var mins = parseInt(date_difference_milisecs / 60000);'
+		            
+		            		constructor = constructor + 'final_last_updated_value = mins + " Minutes ago";'
+		            
+		            		//print("Mins:"+ final_last_updated_value);
+		        
+		        		constructor = constructor + '}'
+		          		constructor = constructor + 'else{'
+		          			//constructor = constructor +'//Return hours ago'
+		          			constructor = constructor + 'final_last_updated_value += " Hours ago";'
+		          		constructor = constructor +'}'
+		          	constructor = constructor +'}'  
+		          	constructor = constructor +'else{'
+		          		//constructor = constructor +'//Return days ago'
+		          		constructor = constructor + 'final_last_updated_value += " Days ago";'
+		          	constructor = constructor +'}'
+		          
+		          	//print("final_last_updated_value:"+final_last_updated_value);
+		        
+		        	constructor = constructor +'}'		 
+		        	constructor = constructor + "]]xxxx></script>"
+		        
+		        
+		        constructor = constructor + "<annotate variable='mashup_almost_ready' expr='/*:mashup/*:item[$counter_for_items]'>"
+        		constructor = constructor + "element last_updated {$final_last_updated_value}"
+      			constructor = constructor + "</annotate>"      
+      			
+      			constructor = constructor + "</foreach>"
+    
+    			constructor = constructor + "<assign fromvariable='mashup_almost_ready' outputvariable='result' />"   
 			]]>
 		</script>
 		
@@ -178,6 +398,7 @@
  	 		var res = new Packages.java.lang.String(dynamicScript);
   			res = res.replaceAll("<mashup_code>" , "");
   			res = res.replaceAll("</mashup_code>" , "");
+  			res = res.replaceAll("xxxx" , "");
   			dynamicScript = res + "</operation></mashup>";
 		]]>
 		</script>
