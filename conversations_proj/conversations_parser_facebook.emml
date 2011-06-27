@@ -24,7 +24,7 @@
   				//Fuzzy Logic for & on Facebook URL
   				//url = url.replace("2707976849","2707976849&amp;");
   				url = url.replace("format=rss20","&amp;format=rss20");
-  			var res = ' <directinvoke endpoint="' + url + '" outputvariable="'+ my_output +'"/>'
+  			var res = ' <directinvoke feedtype="rss" endpoint="' + url + '" outputvariable="'+ my_output +'"/>'
   			
 			//NOTE: SEEMS LIKE RSS DO NOT NEED: Removing &'s to be able to parse this response.			  			
   			//res = res + ' <variable name="mystring" type="string"/>'
