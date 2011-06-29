@@ -1,136 +1,175 @@
-<mashup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd"
-	xmlns="http://www.openmashup.org/schemas/v1.0/EMML" xmlns:macro="http://www.openmashup.org/schemas/v1.0/EMMLMacro"
-	xmlns:presto="http://www.jackbe.com/v1.0/EMMLPrestoExtensions" name="conversations_parser_feed">
-	<operation name="invoke">
-		<output name="result" type="document" />
+<mashup xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:schemaLocation='http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd'
+	xmlns='http://www.openmashup.org/schemas/v1.0/EMML' xmlns:macro='http://www.openmashup.org/schemas/v1.0/EMMLMacro'
+	xmlns:presto='http://www.jackbe.com/v1.0/EMMLPrestoExtensions' name='davidchanassetdetail'>
+	<operation name='runMashup'>
+		<output name="result" type="document"></output>
 
 		<variables>
-			<variable name="config" type="document">
-				<item>
-					<guid isPermaLink="false">www.facebook.com/notification/e2f5a0673817d5350e7c4461fb8fe4da</guid>
-					<title> Check out The Escape - espionage, chases, fists flying and
-						cool gadgets - Do you
-						have what it takes? http://pub.vitrue.com/ZWp</title>
-					<link>http://www.facebook.com/Intel/posts/10150208111766850</link>
-					<description>Check out The Escape - espionage, chases, fists
-						flying and cool gadgets - Do
-						you have what it takes? &lt;a href=&quot;http://pub.vitrue.com/ZWp&quot;
-            onmousedown=&quot;UntrustedLink.bootstrap($(this), &quot;00744&quot;, event,
-            bagof({}));&quot; rel=&quot;nofollow&quot;
-            target=&quot;_blank&quot;&gt;http://pub.vitrue.com/ZWp&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;a
-            href=&quot;&quot; id=&quot;&quot; title=&quot;&quot; target=&quot;&quot;
-            onclick=&quot;&quot; style=&quot;&quot;&gt;&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;a
-            href=&quot;http://pub.vitrue.com/ZWp&quot; id=&quot;&quot; target=&quot;_blank&quot;
-            style=&quot;&quot; onmousedown=&quot;UntrustedLink.bootstrap($(this), &quot;00744&quot;,
-            event, bagof({}));&quot; rel=&quot;nofollow&quot;&gt;Intel® presents The
-            Escape&lt;/a&gt;&lt;br/&gt;Source: pub.vitrue.com</description>
-        <pubDate>Mon, 20 Jun 2011 21:05:09 +0400</pubDate>
-        <author>Intel</author>
-
-    </item>
-    <item>
-        <guid isPermaLink="false"
-            >www.facebook.com/notification/bb81b4c889fb831dfa57ec0e503d2dac</guid>
-        <title> Watch Intel leaders tell the story of Intel&apos;s journey ahead - Defining the next
-            era of personal computing!</title>
-        <link>http://www.facebook.com/Intel/posts/10150201797026850</link>
-        <description>Watch Intel leaders tell the story of Intel&apos;s journey ahead - Defining the
-            next era of personal computing!&lt;br/&gt;&lt;br/&gt;&lt;a href=&quot;&quot;
-            id=&quot;&quot; title=&quot;&quot; target=&quot;&quot; onclick=&quot;&quot;
-            style=&quot;&quot;&gt;&lt;/a&gt;&lt;br/&gt;</description>
-        <pubDate>Fri, 10 Jun 2011 20:23:21 +0100</pubDate>
-        <author>Intel</author>
-
-    </item>
-        	</variable>
-        	<variable name="pubDates" type="string" default=""></variable>
-        	<variable name="xx" type="string" default=""></variable>
-        	<variable name="date_string" type="string" default=""></variable>
-        	
-        	
-        </variables>
-        
-        
-        <assign fromexpr="$config//pubDate/string()" outputvariable="pubDates"/>
-        
-        <display message="Pubdates:" variable="pubDates"/>
-         
-        
-        <script>
- 	 	<![CDATA[
- 	 		//Break date and time
- 	 		var date_time_split = pubDates.split(" ");
- 	 	
- 	 		//Construct Date
- 	 		var year = date_time_split[3];
- 	 		var month = date_time_split[2];
- 	 		var day = date_time_split[1];
- 	 		
- 	 		if(month == 'Jan') month = "01"
- 	 		else if(month == 'Feb') month = "02"
- 	 		else if(month == 'Mar') month = "03"
- 	 		else if(month == 'Abr') month = "04"
- 	 		else if(month == 'May') month = "05"
- 	 		else if(month == 'Jun') month = "06"
- 	 		else if(month == 'Jul') month = "07"
- 	 		else if(month == 'Aug') month = "08"
- 	 		else if(month == 'Sep') month = "09"
- 	 		else if(month == 'Oct') month = "10"
- 	 		else if(month == 'Nov') month = "11"
- 	 		else if(month == 'Dec') month = "12"
- 	 		 		
- 	 		//Construct Time
- 	 		var time = date_time_split[4];
- 	 		var time_split = time.split(":");
- 	 		var hour = time_split[0];
- 	 		var min = time_split[1];
- 	 		var sec = time_split[2];
- 	 		
- 	 		//Create Date-Time javascript obj
- 	 		var today = new Date();
- 	 		var that_date = new Date(year, month-1, day, hour, min, sec); //Month is zero based index
- 	 		print("that_date:" + that_date);
- 	 		
- 	 		var date_difference_milisecs = today - that_date
- 	 		
- 	 		var days_difference = parseInt( date_difference_milisecs / 86400000)
- 	 		//print("days_difference:" + days_difference);
- 	 		
- 	 		var final_result = days_difference
- 	 		
- 	 		if( final_result == 0){
- 	 			//Get hours then
- 	 			var hours = parseInt(date_difference_milisecs / 3600000)
- 	 			
- 	 			//print("Hours:"+hours);
- 	 			
- 	 			final_result = hours
- 	 			
- 	 			if(final_result == 0){
- 	 				//Then get Minutes
- 	 				var mins = parseInt(date_difference_milisecs / 60000)
- 	 				
- 	 				final_result = mins + " Minutes ago"
- 	 				
- 	 				print("Mins:"+ final_result);
- 	 				
- 	 			}
- 	 			else{
- 	 				//Return hours ago
- 	 				final_result += " Hours ago"
- 	 			}
- 	 		}	
- 	 		else{
- 	 			//Return days ago
- 	 			final_result += " Days ago"
- 	 		}
- 	 		
- 	 		print("final_result:"+final_result);
-		]]>
-	</script>
-	
+			<variable name="dateToText" type="document" default=""></variable>
+			<variable name="contains_dateToText" type="string" default=""></variable>
+     		<variable name="document_with_dateToText" type="document" default=""></variable>
+     		<variable name="amount" type="string" default=""></variable>
+     		<variable name="final_dateToText" type="string" default=""></variable>
+     		
+     		<variable name="stu" type="string" default=""></variable>
 			
+			<variable name="mashup_almost_ready" type="document">
+				<mashupx>
+					<item>
+						<entry>problem with wireless Intel centrino advanced-N 6250
+							AGN</entry>
+						<created_time>Tue, 19 Oct 2010 15:32:53 GMT</created_time>
+						<datetotext>2 minutes ago</datetotext>
+						<source>rss</source>
+						<link>http://communities.intel.com/thread/16772</link>
+						<author />
+						<last_updated>252 Days ago</last_updated>
+					</item>
+					<item>
+						<entry>Raid uninstall on DX58OG</entry>
+						<created_time>Tue, 28 Jun 2011 18:39:28 GMT</created_time>
+						<datetotext>18 minutes ago</datetotext>
+						<source>rss</source>
+						<link>http://communities.intel.com/thread/22906</link>
+						<author />
+						<last_updated>18 Minutes ago</last_updated>
+					</item>
+					<item>
+					      <entry>Join other MeeGo fans in Birmingham (UK) next week</entry>
+					      <created_time>Mon, 20 Jun 2011 13:09:07 +0000</created_time>
+					      <datetotext/>
+					      <source>rss</source>
+					      <link>http://feedproxy.google.com/~r/IADPBlog/~3/nrjMk4F4eYk/join-other-meego-fans-birmingham-next-week</link>
+					      <author>Softtalkmobile</author>
+					  </item>
+					<item>
+						<entry>Motherboard Boots with Blank screen until
+							Windows, then OK</entry>
+						<created_time>Mon, 13 Jun 2011 01:49:25 GMT</created_time>
+						<datetotext>1 hour, 01 minutes ago</datetotext>
+						<source>rss</source>
+						<link>http://communities.intel.com/thread/22509</link>
+						<author />
+						<last_updated>15 Days ago</last_updated>
+					</item>
+					
+				</mashupx>
+			</variable>
+		</variables>
 		
-    </operation>
+		<variable name="item_counter" type="string" default="0"></variable>
+		<variable name="has_datetotext" type="string" default="0"></variable>
+		<variable name="items_with_texttodate_str" type="string" default=""></variable>
+		<variable name="final_dateToText" type="string" default=""></variable>
+		<variable name="items_with_texttodate_arr" type="string" default=""></variable>
+		
+		<script>
+			<![CDATA[
+				final_dateToText = [];
+				items_with_texttodate_arr= [];
+				//asd = "<ss>";
+			]]>
+		</script>
+		
+		<foreach items="$mashup_almost_ready//item" variable="item">
+			<assign fromexpr="$item//datetotext/node()" outputvariable="has_datetotext"/>
+			
+			<script>
+			<![CDATA[
+				item_counter++;
+				//print("has_datetotext::"+has_datetotext+"::");
+				if(has_datetotext != ""){
+					//print("item: " + item_counter + " Has date to Text!");
+					items_with_texttodate_arr.push( item_counter);
+					
+					
+					var spit_dateToText = has_datetotext.split(" ")
+	 	 			amount = spit_dateToText[0];
+	 	 			var time = spit_dateToText[1]
+	 	 			print("spit_dateToText:"+spit_dateToText + " :length:"+ spit_dateToText.length);
+	 	 			print("Amount:" + amount + "::"+ " Time:" + time );
+	 	 			
+	 	 			//Logic for adding the dates
+	 	 			var d = new Date();
+	 	 			//Minutes
+	 	 			if( time == "minutes"){
+	 	 				//print("Date beofre sub:" + amount +" minutes:" + d);
+	 	 				d.setMinutes(d.getMinutes() - amount);
+	 	 				//print("Date AFTER sub:" + amount +" minutes:" + d);
+	 	 				
+	 	 				final_dateToText.push(d);
+	 	 				
+	 	 			}
+	 	 			else if (time.indexOf("hour") != -1){
+	 	 				//print("Date beofre sub:" + amount +" hours:" + d);
+	 	 				d.setHours(d.getHours() - amount);
+	 	 				//print("Date AFTER sub:" + amount +" hours:" + d);
+	 	 				
+	 	 				//Now take minutes into account.
+	 	 				if(spit_dateToText.length > 4){
+	 	 					var hour_minutes = spit_dateToText[2];
+	 	 					print("==Going to sub minutes: " + hour_minutes);
+	 	 					d.setMinutes(d.getMinutes() - hour_minutes);
+	 	 				}
+	 	 				
+	 	 				final_dateToText.push(d)
+	 	 			}
+	 	 			else{
+	 	 				//So just 1 minutes away... set todays date.
+	 	 				final_dateToText.push(d)
+	 	 			}
+	 	 			
+	 	 			//asd = asd + "<a>"+ item_counter +"</a>";
+				}
+				else{
+					//print("item: " + item_counter + " DONT date to Text");
+				}
+				
+				//print("final_dateToText:" +final_dateToText);
+				
+				
+			]]>
+			</script>
+		</foreach>
+		
+		<script>
+		<![CDATA[
+			//asd = asd + "</ss>";
+		
+			//LOGIC for creating date in format: Tue, 19 Oct 2010 15:32:53 GMT
+ 	 		//stu = "<aa>";
+ 	 		var date_to_manipulate = "";
+ 	 		var date_to_manipulate_strip = "";
+ 	 		var new_date = ""
+ 	 		
+ 	 		var new_date_arr = []
+ 	 		
+ 	 		for(var i =0; i< final_dateToText.length; i++){
+ 	 			date_to_manipulate = final_dateToText[i].toString();
+ 	 			date_to_manipulate_strip = date_to_manipulate.split(" ");
+ 	 			//print("date_to_manipulate_strip:"+date_to_manipulate_strip); //Tue,Jun,28,2011,16:37:06,GMT-0400,(EDT) 
+ 	 			//I get : Tue Jun 28 2011 16:32:28 GMT-0400 (EDT)
+ 	 			//I need: Tue, 19 Oct 2010 15:32:53 GMT
+ 	 			
+ 	 			new_date = date_to_manipulate_strip[0] + ", " + date_to_manipulate_strip[2] + " " + date_to_manipulate_strip[1] + " " + date_to_manipulate_strip[3] + " " +date_to_manipulate_strip[4] + " GMT" 
+ 	 			
+ 	 			new_date_arr.push(new_date);
+ 	 			
+ 	 			//stu = stu + "<a>"+new_date+"</a>"
+ 	 		}
+ 	 		//stu = stu + "</aa>"
+ 	 		
+ 	 		print("new_date_arr:" + new_date_arr);
+ 	 		print("items_with_texttodate_arr:" + items_with_texttodate_arr);
+ 	 		
+ 	 		//Crear emml para que haga el annotate
+ 	 		
+		]]>
+		</script>
+		
+		
+				
+
+	</operation>
 </mashup>

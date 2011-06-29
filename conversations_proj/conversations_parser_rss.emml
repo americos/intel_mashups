@@ -8,7 +8,7 @@
         <output name="result" type="document"/>
         
          <!-- Input -->
- 	 <input name="url" type="string" default="http://feeds.feedburner.com/IADPBlog"></input>
+ 	 <input name="url" type="string" default="http://communities.intel.com/community/feeds/allcontent?community=2081"></input>
  	 <input name="counter" type="number" default="1"></input>
  	 <input name="repetitive_elem" type="string" default="item"></input>
  	 <input name="limit" type="number" default="7"></input>
@@ -16,9 +16,24 @@
  	 <input name="feed_keywords" type="string" default="MeeGo AGK"></input>
  
  	 <variable name="new_limit" type="number" default="0"></variable>
+ 	 
+ 	 <variable name="contains_dateToText" type="string" default=""></variable>
+ 	 <directinvoke outputvariable="beach" endpoint="$url"/>
+     <assign fromexpr="$beach//*:dateToText" outputvariable="contains_dateToText"/>
+     <display message="This is beach:" variable="beach"/> 
+ 	  <display message="Found dateToText Values:" expr="$beach//*:dateToText/node()"/>   
+     <if condition="$contains_dateToText != '' ">
+     	<display message="contains dateToText:" variable="contains_dateToText"/>
+ 	 
+ 	 <else>
+ 	 	<display message="NO contains dateToText!:" variable="contains_dateToText"/>
+ 	 	<display message="===End directinvoke from RSS==="/>
+ 	 </else>
+ 	 </if>
         
         <script>
  	 	<![CDATA[
+ 	 		
  	 		//OUTPUT VARIABLE FOR ALL
  	 		var my_output = "output" + counter
  	 	
@@ -72,10 +87,19 @@
  					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:title' + '[1]//text()' +'}'
  				item_string = item_string + '</entry>';
  				
- 				//Created Time
- 				item_string = item_string  + '<created_time>'
- 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:pubDate' + '[1]//text()' +'}'
- 				item_string = item_string  + '</created_time>'
+ 				if( contains_dateToText != ''){
+ 					//Adding clearspace:dateToText
+ 					item_string = item_string  + '<datetotext>'
+ 						item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:dateToText' + '[1]//text()' +'}'
+ 					item_string = item_string  + '</datetotext>'
+ 				}
+ 				else{
+ 					//Created Time
+ 					item_string = item_string  + '<created_time>'
+ 						item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:pubDate' + '[1]//text()' +'}'
+	 				item_string = item_string  + '</created_time>'
+ 				}
+ 				
  				
  				//Source
  				item_string = item_string + '<source>';
@@ -89,7 +113,13 @@
  				
  				// Author
  				item_string = item_string + '<author>';
- 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:creator/text()' +'}'
+ 					//Jive puts author in 'author'
+ 					if( contains_dateToText != ''){
+ 						item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:author/text()' +'}'
+ 					}
+ 					else{
+ 						item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:creator/text()' +'}'
+ 					}
  				item_string = item_string + '</author>';
  				
  				//Closing Item
