@@ -8,12 +8,13 @@
 		<variables>
 			<variable name="dateToText" type="document" default=""></variable>
 			<variable name="contains_dateToText" type="string" default=""></variable>
-     		<variable name="document_with_dateToText" type="document" default=""></variable>
-     		<variable name="amount" type="string" default=""></variable>
-     		<variable name="final_dateToText" type="string" default=""></variable>
-     		
-     		<variable name="stu" type="string" default=""></variable>
-			
+			<variable name="document_with_dateToText" type="document"
+				default=""></variable>
+			<variable name="amount" type="string" default=""></variable>
+			<variable name="final_dateToText" type="string" default=""></variable>
+
+			<variable name="stu" type="string" default=""></variable>
+
 			<variable name="mashup_almost_ready" type="document">
 				<mashupx>
 					<item>
@@ -36,13 +37,14 @@
 						<last_updated>18 Minutes ago</last_updated>
 					</item>
 					<item>
-					      <entry>Join other MeeGo fans in Birmingham (UK) next week</entry>
-					      <created_time>Mon, 20 Jun 2011 13:09:07 +0000</created_time>
-					      <datetotext/>
-					      <source>rss</source>
-					      <link>http://feedproxy.google.com/~r/IADPBlog/~3/nrjMk4F4eYk/join-other-meego-fans-birmingham-next-week</link>
-					      <author>Softtalkmobile</author>
-					  </item>
+						<entry>“The Devil Made Me Do It”: Results of an Informal
+							Security Survey</entry>
+						<datetotext>6 days, 4 hours ago</datetotext>
+						<source>rss</source>
+						<link>http://communities.intel.com/community/openportit/vproexpert/blog/2011/06/23/the-devil-made-me-do-it-results-of-an-informal-security-survey</link>
+						<author>webadmin@intel.com</author>
+						<created_time>Wed, 29 Jun 2011 22:24:45 GMT</created_time>
+					</item>
 					<item>
 						<entry>Motherboard Boots with Blank screen until
 							Windows, then OK</entry>
@@ -53,17 +55,19 @@
 						<author />
 						<last_updated>15 Days ago</last_updated>
 					</item>
-					
+
 				</mashupx>
 			</variable>
 		</variables>
-		
+
 		<variable name="item_counter" type="string" default="0"></variable>
 		<variable name="has_datetotext" type="string" default="0"></variable>
-		<variable name="items_with_texttodate_str" type="string" default=""></variable>
+		<variable name="items_with_texttodate_str" type="string"
+			default=""></variable>
 		<variable name="final_dateToText" type="string" default=""></variable>
-		<variable name="items_with_texttodate_arr" type="string" default=""></variable>
-		
+		<variable name="items_with_texttodate_arr" type="string"
+			default=""></variable>
+
 		<script>
 			<![CDATA[
 				final_dateToText = [];
@@ -71,10 +75,10 @@
 				//asd = "<ss>";
 			]]>
 		</script>
-		
+
 		<foreach items="$mashup_almost_ready//item" variable="item">
-			<assign fromexpr="$item//datetotext/node()" outputvariable="has_datetotext"/>
-			
+			<assign fromexpr="$item//datetotext/node()" outputvariable="has_datetotext" />
+
 			<script>
 			<![CDATA[
 				item_counter++;
@@ -92,6 +96,7 @@
 	 	 			
 	 	 			//Logic for adding the dates
 	 	 			var d = new Date();
+	 	 			
 	 	 			//Minutes
 	 	 			if( time == "minutes"){
 	 	 				//print("Date beofre sub:" + amount +" minutes:" + d);
@@ -101,6 +106,8 @@
 	 	 				final_dateToText.push(d);
 	 	 				
 	 	 			}
+	 	 			
+	 	 			//Hours
 	 	 			else if (time.indexOf("hour") != -1){
 	 	 				//print("Date beofre sub:" + amount +" hours:" + d);
 	 	 				d.setHours(d.getHours() - amount);
@@ -111,6 +118,22 @@
 	 	 					var hour_minutes = spit_dateToText[2];
 	 	 					print("==Going to sub minutes: " + hour_minutes);
 	 	 					d.setMinutes(d.getMinutes() - hour_minutes);
+	 	 				}
+	 	 				
+	 	 				final_dateToText.push(d)
+	 	 			}
+
+	 	 			//Days
+	 	 			else if(time.indexOf("day") != -1){
+	 	 				print("Date beofre sub:" + amount +" days:" + d);
+	 	 				d.setDate(d.getDate() - amount);
+	 	 				print("Date AFTER sub:" + amount +" days:" + d);
+	 	 				
+	 	 				//Now take Hours into account.
+	 	 				if(spit_dateToText.length > 4){
+	 	 					var hour_minutes = spit_dateToText[2];
+	 	 					//print("==Going to sub Hours: " + hour_minutes);
+	 	 					d.setHours(d.getHours() - hour_minutes);
 	 	 				}
 	 	 				
 	 	 				final_dateToText.push(d)
@@ -132,7 +155,7 @@
 			]]>
 			</script>
 		</foreach>
-		
+
 		<script>
 		<![CDATA[
 			//asd = asd + "</ss>";
@@ -167,9 +190,9 @@
  	 		
 		]]>
 		</script>
-		
-		
-				
+
+
+
 
 	</operation>
 </mashup>
