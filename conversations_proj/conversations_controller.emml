@@ -226,6 +226,7 @@
 			 	 				constructor = constructor + 'final_dateToText.push(d);'
 			 	 				
 			 	 			constructor = constructor + '}'
+			 	 			//HOURS
 			 	 			constructor = constructor + 'else if (time.indexOf("hour") != -1){'
 			 	 				//print("Date beofre sub:" + amount +" hours:" + d);
 			 	 				constructor = constructor + 'd.setHours(d.getHours() - amount);'
@@ -239,6 +240,25 @@
 			 	 				
 			 	 				constructor = constructor + 'final_dateToText.push(d)'
 			 	 			constructor = constructor + '}'
+			 	 			
+			 	 			//DAYS
+			 	 			
+			 	 			constructor = constructor + 'else if(time.indexOf("day") != -1){'
+			 	 				//print("Date beofre sub:" + amount +" days:" + d);
+			 	 				constructor = constructor + 'd.setDate(d.getDate() - amount);'
+			 	 				//print("Date AFTER sub:" + amount +" days:" + d);
+			 	 				
+			 	 				//Now take Hours into account.
+			 	 				constructor = constructor + 'if(spit_dateToText.length > 4){'
+			 	 					constructor = constructor + 'var hour_minutes = spit_dateToText[2];'
+			 	 					//print("==Going to sub Hours: " + hour_minutes);
+			 	 					constructor = constructor + 'd.setHours(d.getHours() - hour_minutes);'
+			 	 				constructor = constructor + '}'
+			 	 				
+			 	 				constructor = constructor + 'final_dateToText.push(d);'
+			 	 			constructor = constructor + '}'
+			 	 			
+			 	 			//Minuetes ago...
 			 	 			constructor = constructor + 'else{'
 			 	 				//So just 1 minutes away... set todays date.
 			 	 				constructor = constructor + 'final_dateToText.push(d)'
@@ -281,17 +301,17 @@
 		 	 			
 		 	 			constructor = constructor + 'new_date_arr.push(new_date);'
 		 	 			
-		 	 			print("new_date_arr push:" + new_date_arr)
+		 	 			//print("new_date_arr push:" + new_date_arr)
 		 	 			
 		 	 		constructor = constructor + '}'
 		 	 		
 		 	 		constructor = constructor + 'print("final_dateToText:" +final_dateToText);'
-					constructor = constructor + 'print("new_date_arr:" + new_date_arr);'
+					//constructor = constructor + 'print("new_date_arr:" + new_date_arr);'
 					
 		    	
 				constructor = constructor + 'print("===========================");'
 				constructor = constructor + 'print("final_dateToText:" +final_dateToText);'
-				constructor = constructor + 'print("new_date_arr:" + new_date_arr);'
+				//constructor = constructor + 'print("new_date_arr:" + new_date_arr);'
 					
 				
 				constructor = constructor + 'for(var i =0; i < final_dateToText.length; i++){'
