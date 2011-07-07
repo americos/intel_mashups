@@ -6,208 +6,112 @@
 		<output name="result" type="document" />
 
 		<variables>
-			<variable name="config" type="document">
-				<item>
-					<entry>Intelinside: System Builder Marathon, June 2011:
-						$2000 Performance PC : A True Enthusiast Build?:
-						http://t.co/mhk6Kkv via @addthis #2ngen #Core i7</entry>
-					<created_time>Wed, 22 Jun 2011 16:09:58 +0000</created_time>
-					<source>twitter</source>
-					<link href="http://twitter.com/Intelinside/statuses/83213447080312832" />
-				</item>
-				
-		
+			<variable name="mashup_almost_ready" type="document">
+				<xx>
+					<item>
+						<entry>Intel Rapid Storage Manager Misidentified Drive</entry>
+						<datetotext>33 minutes ago</datetotext>
+						<source>rss</source>
+						<link>http://communities.intel.com/thread/23130</link>
+						<author>webadmin@intel.com</author>
+						<created_time>Thu, 07 Jul 2011 14:30:31 GMT</created_time>
+					</item>
+					<item>
+						<entry>How to change DP35DP to DP67BG keep hard drive?</entry>
+						<datetotext>34 minutes ago</datetotext>
+						<source>rss</source>
+						<link>http://communities.intel.com/thread/23118</link>
+						<author>webadmin@intel.com</author>
+						<created_time>Thu, 07 Jul 2011 14:29:31 GMT</created_time>
+					</item>
+					<item>
+						<entry>Compatible</entry>
+						<datetotext>58 minutes ago</datetotext>
+						<source>rss</source>
+						<link>http://communities.intel.com/thread/22383</link>
+						<author>webadmin@intel.com</author>
+						<created_time>Thu, 07 Jul 2011 14:05:31 GMT</created_time>
+					</item>
+					<item>
+						<entry>Intelinside: RT @laptopmag Sony VAIO S
+							VPCSA290X (2011) http://bit.ly/nfZ5Am #2ndgen</entry>
+						<created_time>2011-07-06T19:25:49+00:00</created_time>
+						<source>twitter</source>
+						<link href="http://twitter.com/Intelinside/statuses/88690131996905472" />
+					</item>
+
+				</xx>
 			</variable>
-			<variable name="pubDates" type="string" default=""></variable>
-			<variable name="xx" type="string" default=""></variable>
-			<variable name="date_string" type="string" default=""></variable>
-
-
 		</variables>
 
-
-		<assign fromexpr="$config//created_time/string()" outputvariable="pubDates" />
-
-		<display message="Pubdates:" variable="pubDates" />
-
+		<variable name="each_created_time" type="string"></variable>
+		<variable name="timestamp_arr" type="string" default=""></variable>
 
 		<script>
- 	 	<![CDATA[
- 	 		//Check the date format.
- 	 		print("Index of:" + pubDates.indexOf(",") )
- 	 		
- 	 		//////
- 	 		// Case When date is on this format: Mon, 20 Jun 2011 21:05:09 +0400
- 	 		/////
- 	 		if( pubDates.indexOf(",") >= 0){
- 	 			
- 	 			//Break date and time
-	 	 		var date_time_split = pubDates.split(" ");
-	 	 	
-	 	 		//Construct Date
-	 	 		var year = date_time_split[3];
-	 	 		var month = date_time_split[2];
-	 	 		var day = date_time_split[1];
+			<![CDATA[
+				timestamp_arr = [];
+			]]>
+		</script>
+
+
+		<foreach items="$mashup_almost_ready//item" variable="item">
+			<assign fromexpr="$item/created_time/node()" outputvariable="each_created_time" />
+
+
+			<script>
+	 	 	<![CDATA[
+	 	 		var created_time_split = each_created_time.split(" ");
 	 	 		
-	 	 		if(month == 'Jan') month = "01"
-	 	 		else if(month == 'Feb') month = "02"
-	 	 		else if(month == 'Mar') month = "03"
-	 	 		else if(month == 'Abr') month = "04"
-	 	 		else if(month == 'May') month = "05"
-	 	 		else if(month == 'Jun') month = "06"
-	 	 		else if(month == 'Jul') month = "07"
-	 	 		else if(month == 'Aug') month = "08"
-	 	 		else if(month == 'Sep') month = "09"
-	 	 		else if(month == 'Oct') month = "10"
-	 	 		else if(month == 'Nov') month = "11"
-	 	 		else if(month == 'Dec') month = "12"
-	 	 		 		
-	 	 		//Construct Time
-	 	 		var time = date_time_split[4];
-	 	 		var time_split = time.split(":");
-	 	 		var hour = time_split[0];
-	 	 		var min = time_split[1];
-	 	 		var sec = time_split[2];
-	 	 		
-	 	 		//Create Date-Time javascript obj
-	 	 		var today = new Date();
-	 	 		var that_date = new Date(year, month-1, day, hour-4, min, sec); //Month is zero based index, -4 Cause the server is in the US EAST Coast
-	 	 		print("that_date:" + that_date);
-	 	 		
-	 	 		var date_difference_milisecs = today - that_date
-	 	 		
-	 	 		var days_difference = parseInt( date_difference_milisecs / 86400000)
-	 	 		//print("days_difference:" + days_difference);
-	 	 		
-	 	 		var final_result = days_difference
-	 	 		
-	 	 		if( final_result == 0){
-	 	 			//Get hours then
-	 	 			var hours = parseInt(date_difference_milisecs / 3600000)
-	 	 			
-	 	 			//print("Hours:"+hours);
-	 	 			
-	 	 			final_result = hours
-	 	 			
-	 	 			if(final_result == 0){
-	 	 				//Then get Minutes
-	 	 				var mins = parseInt(date_difference_milisecs / 60000)
-	 	 				
-	 	 				final_result = mins + " Minutes ago"
-	 	 				
-	 	 				print("Mins:"+ final_result);
-	 	 				
-	 	 			}
-	 	 			else{
-	 	 				//Return hours ago
-	 	 				final_result += " Hours ago"
-	 	 			}
-	 	 		}	
+	 	 		//if created_time_split.length ==1 then it is alrady a timestamp (like twitter and atom feeds)
+	 	 		if (created_time_split.length == 1){
+	 	 			timestamp_arr.push(created_time_split[0]);
+	 	 		}
 	 	 		else{
-	 	 			//Return days ago
-	 	 			final_result += " Days ago"
+	 	 			//print("each_created_time:" + each_created_time);
+		 	 		print("created_time_split:" + created_time_split);
+		 	 		
+		 	 		//Format Needed: 2011-07-06T19:25:49+00:00
+		 	 		var year = created_time_split[3];
+		 	 		var month = created_time_split[2]; //Comes in letter
+		 	 		var day = created_time_split[1];
+		 	 		
+		 	 		if(month == "Jan") month = "01";
+					else if(month == "Feb") month = "02";
+					else if(month == "Mar") month = "03";
+					else if(month == "Abr") month = "04";
+					else if(month == "May") month = "05";
+					else if(month == "Jun") month = "06";
+					else if(month == "Jul") month = "07";
+					else if(month == "Aug") month = "08";
+					else if(month == "Sep") month = "09";
+					else if(month == "Oct") month = "10";
+					else if(month == "Nov") month = "11";
+					else if(month == "Dec") month = "12";
+		 	 		
+		 	 		print("year:"+year);
+		 	 		print("month:"+month);
+		 	 		print("day:"+day);
+		 	 		
+		 	 		var time_split = created_time_split[4].split(":");
+		 	 		print("time_split:" + time_split);
+		 	 		
+		 	 		var hour = time_split[0];
+		 	 		var minutes = time_split[1];
+		 	 		var seconds = time_split[2];
+		 	 		
+		 	 		var timestamp = year +"-"+ month +"-"+ day +"T"+ hour +":"+ minutes +":"+ seconds + "+00:00"; 
+		 	 		print("timestamp:"+ timestamp)
+		 	 		
+		 	 		timestamp_arr.push(timestamp);
+		 	 			
 	 	 		}
 	 	 		
-	 	 		print("final_result:"+final_result);
- 	 			
- 	 			
- 	 		}
- 	 		//////
- 	 		// Case When date is on this format: 2011-06-21T16:43:26+00:00
- 	 		/////
- 	 		else{
- 	 			
-				//Break date and time
-	 	 		var date_time_split = pubDates.split("T"); //Date in format: 2011-06-21T16:43:26+00:00
-	 	 		print("date_time_split:"+ date_time_split);
-	 	 		
-	 	 		var date_split = date_time_split[0];
-	 	 		var time_split = date_time_split[1];
-	 	 		
-	 	 		var date = date_split.split("-");
-	 	 		var time = time_split.split(":");
-	 	 		
-	 	 		
-	 	 		//var time_zone_plus = time_split.indexOf("+"); //If time_zone_plus != 0, then it has a +
-	 	 		//var time_zone = time[2].split("+"); //This will get me the hours on index 1.
-	 	 		//print("time_zone:"+time_zone[1]);
-	 	 		
-	 	 		print("index of:" + time_split.indexOf("+"));
-	 	 		
-	 	 		print("date:"+date);
-	 	 		print("time:"+time);
-	 	 		
-	 	 		
-	 	 		//Construct Date
-	          	var year = date[0];
-	           	var month = date[1];
-	        	var day = date[2];
-	        	
-	        	  if(month == 'Jan') month = "01"
-		          else if(month == 'Feb') month = "02"
-		          else if(month == 'Mar') month = "03"
-		          else if(month == 'Abr') month = "04"
-		          else if(month == 'May') month = "05"
-		          else if(month == 'Jun') month = "06"
-		          else if(month == 'Jul') month = "07"
-		          else if(month == 'Aug') month = "08"
-		          else if(month == 'Sep') month = "09"
-		          else if(month == 'Oct') month = "10"
-		          else if(month == 'Nov') month = "11"
-		          else if(month == 'Dec') month = "12"
-	        	
-	        	var hour = time[0];
-	        	var min = time[1];
-	        	var sec = "00"; //Ignoring seconds for now.
-	        	
-	        	var today = new Date();
-	        	var that_date = new Date(year, month-1, day, hour-4, min, sec); //Month is zero based index, -4 Cause the server is in the US EAST Coast
-	        	print("that_date:" + that_date);
-	        	
-	        	var date_difference_milisecs = today - that_date
-	            
-	            var days_difference = parseInt( date_difference_milisecs / 86400000)
-	            //print("days_difference:" + days_difference);
-	            
-	            var final_last_updated_value = days_difference
-	            
-	            if( final_last_updated_value == 0){
-		            //Get hours then
-		            var hours = parseInt(date_difference_milisecs / 3600000)
-		            
-		            //print("Hours:"+hours);
-		            
-		            final_last_updated_value = hours
-		            
-		            if(final_last_updated_value == 0){
-			            //Then get Minutes
-			            var mins = parseInt(date_difference_milisecs / 60000)
-			            
-			            final_last_updated_value = mins + " Minutes ago"
-			            
-			            print("Mins:"+ final_last_updated_value);
-			        
-			        }
-			          else{
-			          //Return hours ago
-			          final_last_updated_value += " Hours ago"
-			          }
-	         	 }  
-		          else{
-		          //Return days ago
-		          final_last_updated_value += " Days ago"
-		          }
-	          
-	          print("final_last_updated_value:"+final_last_updated_value);
- 	 		
- 	 		}//End if
- 	 	
- 	 		
-        	
-		]]>
-	</script>
+	 	 			 	    	
+			]]>
+			</script>
 
+		</foreach>
 
-
+		<display message="timestamp_arr:" variable="timestamp_arr" />
 	</operation>
 </mashup>

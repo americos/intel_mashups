@@ -213,11 +213,17 @@
 				constructor = constructor + '<variable name="items_with_texttodate_arr" type="string" default=""></variable>'
 				constructor = constructor + '<variable name="new_date_arr" type="string" default=""></variable>'
 				
+				//Vars for timestamp
+				constructor = constructor + '<variable name="each_created_time" type="string"></variable>'
+				constructor = constructor + '<variable name="timestamp_arr" type="string" default=""></variable>'
+				
+				
 				constructor = constructor + '<script>'
 					constructor = constructor + '<![CDATA['
 						constructor = constructor + 'final_dateToText = [];'
 						constructor = constructor + 'items_with_texttodate_arr= [];'
 						constructor = constructor + 'new_date_arr= [];'
+						constructor = constructor + 'timestamp_arr= [];'
 						//asd = "<ss>";
 					constructor = constructor + ']]xxxx>'
 					constructor = constructor + '</script>'
@@ -225,8 +231,66 @@
 				constructor = constructor + '<foreach items="$mashup_almost_ready//item" variable="item">'
 					constructor = constructor + '<assign fromexpr="$item//datetotext/node()" outputvariable="has_datetotext"/>'
 					
+					//For creating the timestamp
+					constructor = constructor + '<assign fromexpr="$item//created_time/node()" outputvariable="each_created_time"/>'
+					
+					
 					constructor = constructor + '<script>'
 					constructor = constructor + '<![CDATA['
+					
+				
+						///////////
+						//TIMESTAMP
+						////////////
+						
+						constructor = constructor + 'var created_time_split = each_created_time.split(" ");'
+	 	 		
+			 	 		//if created_time_split.length ==1 then it is alrady a timestamp (like twitter and atom feeds)
+			 	 		constructor = constructor + 'if (created_time_split.length == 1){'
+			 	 			constructor = constructor + 'timestamp_arr.push(created_time_split[0]);'
+			 	 		constructor = constructor + '}'
+			 	 		constructor = constructor + 'else{'
+			 	 			//print("each_created_time:" + each_created_time);
+				 	 		//print("created_time_split:" + created_time_split);
+				 	 		
+				 	 		//Format Needed: 2011-07-06T19:25:49+00:00
+				 	 		constructor = constructor + 'var year = created_time_split[3];'
+				 	 		constructor = constructor + 'var month = created_time_split[2];' //Comes in letter
+				 	 		constructor = constructor + 'var day = created_time_split[1];'
+				 	 		
+				 	 		constructor = constructor + 'if(month == "Jan") month = "01";'
+							constructor = constructor + 'else if(month == "Feb") month = "02";'
+							constructor = constructor + 'else if(month == "Mar") month = "03";'
+							constructor = constructor + 'else if(month == "Abr") month = "04";'
+							constructor = constructor + 'else if(month == "May") month = "05";'
+							constructor = constructor + 'else if(month == "Jun") month = "06";'
+							constructor = constructor + 'else if(month == "Jul") month = "07";'
+							constructor = constructor + 'else if(month == "Aug") month = "08";'
+							constructor = constructor + 'else if(month == "Sep") month = "09";'
+							constructor = constructor + 'else if(month == "Oct") month = "10";'
+							constructor = constructor + 'else if(month == "Nov") month = "11";'
+							constructor = constructor + 'else if(month == "Dec") month = "12";'
+				 	 		
+				 	 		//print("year:"+year);
+				 	 		//print("month:"+month);
+				 	 		//print("day:"+day);
+				 	 		
+				 	 		constructor = constructor + 'var time_split = created_time_split[4].split(":");'
+				 	 		//print("time_split:" + time_split);
+				 	 		
+				 	 		constructor = constructor + 'var hour = time_split[0];'
+				 	 		constructor = constructor + 'var minutes = time_split[1];'
+				 	 		constructor = constructor + 'var seconds = time_split[2];'
+				 	 		
+				 	 		constructor = constructor + 'var timestamp = year +"-"+ month +"-"+ day +"T"+ hour +":"+ minutes +":"+ seconds + "+00:00";' 
+				 	 		//print("timestamp:"+ timestamp)
+				 	 		
+				 	 		constructor = constructor + 'timestamp_arr.push(timestamp);'
+				 	 			
+			 	 		constructor = constructor + '}'
+						
+						///END TIMESTAMP
+					
 						constructor = constructor + 'item_counter++;'
 						//print("has_datetotext::"+has_datetotext+"::");
 						constructor = constructor + 'if(has_datetotext != ""){'
@@ -385,15 +449,25 @@
 		    	
 				constructor = constructor + 'print("===========================");'
 				constructor = constructor + 'print("final_dateToText:" +final_dateToText);'
+				constructor = constructor + 'print("timestamp_arr:" + timestamp_arr);'
 				//constructor = constructor + 'print("new_date_arr:" + new_date_arr);'
 					
 				
 				constructor = constructor + 'for(var i =0; i < final_dateToText.length; i++){'
 					constructor = constructor + 'mashup_almost_ready.item[i].created_time = new_date_arr[i];'
 				constructor = constructor + '}'
+				
+				//Add Timestamp
+				constructor = constructor + 'for(var i =0; i < timestamp_arr.length; i++){'
+					constructor = constructor + 'mashup_almost_ready.item[i].timestamp = timestamp_arr[i];'
+				constructor = constructor + '}'
+				
 					
 				constructor = constructor + ']]xxxx>'
 				constructor = constructor + '</script>'
+				
+				//Sort by Timestamp
+				constructor = constructor + '<sort inputvariable="mashup_almost_ready" sortexpr="//item" sortkeys="xs:dateTime(timestamp)" sortdir="descending" outputvariable="mashup_almost_ready" />'
 				
     			constructor = constructor + "<assign fromvariable='mashup_almost_ready' outputvariable='result' />"   
 			]]>
