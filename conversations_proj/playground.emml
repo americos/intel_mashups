@@ -18,44 +18,34 @@
 			<variable name="mashup_almost_ready" type="document">
 				<mashupx>
 					<item>
-						<entry>problem with wireless Intel centrino advanced-N 6250
-							AGN</entry>
-						<created_time>Tue, 19 Oct 2010 15:32:53 GMT</created_time>
-						<datetotext>2 minutes ago</datetotext>
+						<entry>Paying IT Forward</entry>
+						<datetotext>1 week, 1 day ago</datetotext>
 						<source>rss</source>
-						<link>http://communities.intel.com/thread/16772</link>
-						<author />
-						<last_updated>252 Days ago</last_updated>
-					</item>
-					<item>
-						<entry>Raid uninstall on DX58OG</entry>
-						<created_time>Tue, 28 Jun 2011 18:39:28 GMT</created_time>
-						<datetotext>18 minutes ago</datetotext>
-						<source>rss</source>
-						<link>http://communities.intel.com/thread/22906</link>
-						<author />
-						<last_updated>18 Minutes ago</last_updated>
-					</item>
-					<item>
-						<entry>“The Devil Made Me Do It”: Results of an Informal
-							Security Survey</entry>
-						<datetotext>6 days, 4 hours ago</datetotext>
-						<source>rss</source>
-						<link>http://communities.intel.com/community/openportit/vproexpert/blog/2011/06/23/the-devil-made-me-do-it-results-of-an-informal-security-survey</link>
+						<link>http://premierit.intel.com/community/ipip/blog/2011/06/28/paying-it-forward</link>
 						<author>webadmin@intel.com</author>
-						<created_time>Wed, 29 Jun 2011 22:24:45 GMT</created_time>
+						<created_time>Wed, 06 Jul 2011 17:19:55 GMT</created_time>
 					</item>
 					<item>
-						<entry>Motherboard Boots with Blank screen until
-							Windows, then OK</entry>
-						<created_time>Mon, 13 Jun 2011 01:49:25 GMT</created_time>
-						<datetotext>1 hour, 01 minutes ago</datetotext>
+						<entry>Support Community Guidelines</entry>
+						<datetotext>6 months, 5 days ago</datetotext>
 						<source>rss</source>
-						<link>http://communities.intel.com/thread/22509</link>
-						<author />
-						<last_updated>15 Days ago</last_updated>
+						<link>http://communities.intel.com/community/tech/blog/2011/01/01/support-community-guidelines</link>
+						<author>webadmin@intel.com</author>
 					</item>
-
+					<item>
+						<entry>Making Life a Little Easier</entry>
+						<datetotext>2 years, 1 month ago</datetotext>
+						<source>rss</source>
+						<link>http://communities.intel.com/community/tech/blog/2009/05/29/making-life-a-little-easier</link>
+						<author>webadmin@intel.com</author>
+					</item>
+					<item>
+						<entry>Are you buying a genuine Intel® Ethernet adapter?</entry>
+						<datetotext>2 years, 2 months ago</datetotext>
+						<source>rss</source>
+						<link>http://communities.intel.com/community/tech/blog/2009/04/17/are-you-buying-a-genuine-intel-ethernet-adapter</link>
+						<author>webadmin@intel.com</author>
+					</item>
 				</mashupx>
 			</variable>
 		</variables>
@@ -138,6 +128,59 @@
 	 	 				
 	 	 				final_dateToText.push(d)
 	 	 			}
+	 	 			
+	 	 			//Weeks
+	 	 			else if(time.indexOf("week") != -1){
+	 	 				print("Date beofre sub:" + amount +" week:" + d);
+	 	 				d.setDate(d.getDate() - (amount * 7));
+	 	 				print("Date AFTER sub:" + amount +" week:" + d);
+	 	 				
+	 	 				//Now take days into account.
+	 	 				if(spit_dateToText.length > 4){
+	 	 					var week_day = spit_dateToText[2];
+	 	 					print("==Going to sub day: " + week_day);
+	 	 					d.setDate(d.getDate() - week_day);
+	 	 					
+	 	 				}
+	 	 				
+	 	 				final_dateToText.push(d)
+	 	 			}
+	 	 			
+	 	 			//Months
+	 	 			else if(time.indexOf("month") != -1){
+	 	 				print("Date beofre sub:" + amount +" month:" + d);
+	 	 				d.setMonth(d.getMonth() - amount );
+	 	 				print("Date AFTER sub:" + amount +" month:" + d);
+	 	 				
+	 	 				//Now take days into account.
+	 	 				if(spit_dateToText.length > 4){
+	 	 					var month_day = spit_dateToText[2];
+	 	 					print("==Going to sub day: " + month_day);
+	 	 					d.setDate(d.getDate() - month_day);
+	 	 					
+	 	 				}
+	 	 				
+	 	 				final_dateToText.push(d)
+	 	 			}
+	 	 			
+	 	 			//Years
+	 	 			else if(time.indexOf("year") != -1){
+	 	 				print("Date beofre sub:" + amount +" year:" + d);
+	 	 				d.setFullYear(d.getFullYear() - amount );
+	 	 				print("Date AFTER sub:" + amount +" year:" + d);
+	 	 				
+	 	 				//Now take months into account.
+	 	 				if(spit_dateToText.length > 4){
+	 	 					var year_month = spit_dateToText[2];
+	 	 					print("==Going to sub day: " + year_month);
+	 	 					d.setMonth(d.getMonth() - year_month);
+	 	 					
+	 	 				}
+	 	 				
+	 	 				final_dateToText.push(d)
+	 	 			}
+	 	 			
+	 	 			
 	 	 			else{
 	 	 				//So just 1 minutes away... set todays date.
 	 	 				final_dateToText.push(d)

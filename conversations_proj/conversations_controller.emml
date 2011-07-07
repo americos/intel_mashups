@@ -53,7 +53,31 @@
 						<source_name>rss</source_name>
 						<source_type>rss</source_type>
 						<repeating_element>entry</repeating_element>
-						<limit>10</limit>
+						<limit>5</limit>
+					</feed>
+					<feed>
+						<url>http://twitter.com/statuses/user_timeline/intelinside.atom</url>
+						<keywords></keywords>
+						<description>Tweets about IntelInisde</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>twitter</source_name>
+						<source_type>twitter</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>5</limit>
+					</feed>
+					<feed>
+						<url>http://www.facebook.com/feeds/page.php?id=22707976849format=rss20</url>
+						<keywords></keywords>
+						<description>Tweets about IntelInisde</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>facebook</source_name>
+						<source_type>facebook</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>5</limit>
 					</feed>
 				</feeds>
 			</configuration>
@@ -257,6 +281,56 @@
 			 	 				
 			 	 				constructor = constructor + 'final_dateToText.push(d);'
 			 	 			constructor = constructor + '}'
+			 	 			
+			 	 			
+			 	 			//WEEKS
+			 	 			constructor = constructor + 'else if(time.indexOf("week") != -1){'
+			 	 				//print("Date beofre sub:" + amount +" week:" + d);
+			 	 				constructor = constructor + 'd.setDate(d.getDate() - (amount * 7));'
+			 	 				//print("Date AFTER sub:" + amount +" week:" + d);
+			 	 				
+			 	 				//Now take days into account.
+			 	 				constructor = constructor + 'if(spit_dateToText.length > 4){'
+			 	 					constructor = constructor + 'var week_day = spit_dateToText[2];'
+			 	 					//print("==Going to sub day: " + week_day);
+			 	 					constructor = constructor + 'd.setDate(d.getDate() - week_day);'
+			 	 				constructor = constructor + '}'
+			 	 				
+			 	 				constructor = constructor + 'final_dateToText.push(d);'
+			 	 			constructor = constructor + '}'
+			 	 			
+			 	 			//Months
+			 	 			constructor = constructor + 'else if(time.indexOf("month") != -1){'
+			 	 				//print("Date beofre sub:" + amount +" month:" + d);
+			 	 				constructor = constructor + 'd.setMonth(d.getMonth() - amount );'
+			 	 				//print("Date AFTER sub:" + amount +" month:" + d);
+			 	 				
+			 	 				//Now take days into account.
+			 	 				constructor = constructor + 'if(spit_dateToText.length > 4){'
+			 	 					constructor = constructor + 'var month_day = spit_dateToText[2];'
+			 	 					//print("==Going to sub day: " + month_day);
+			 	 					constructor = constructor + 'd.setDate(d.getDate() - month_day);'
+			 	 				constructor = constructor + '}'
+			 	 				
+			 	 				constructor = constructor + 'final_dateToText.push(d);'
+			 	 			constructor = constructor + '}'
+			 	 			
+			 	 			//Years
+			 	 			constructor = constructor + 'else if(time.indexOf("year") != -1){'
+			 	 				//print("Date beofre sub:" + amount +" year:" + d);
+			 	 				constructor = constructor + 'd.setFullYear(d.getFullYear() - amount );'
+			 	 				//print("Date AFTER sub:" + amount +" year:" + d);
+			 	 				
+			 	 				//Now take months into account.
+			 	 				constructor = constructor + 'if(spit_dateToText.length > 4){'
+			 	 					constructor = constructor + 'var year_month = spit_dateToText[2];'
+			 	 					//print("==Going to sub day: " + year_month);
+			 	 					constructor = constructor + 'd.setMonth(d.getMonth() - year_month);'
+			 	 				constructor = constructor + '}'
+			 	 				
+			 	 				constructor = constructor + 'final_dateToText.push(d);'
+			 	 			constructor = constructor + '}'
+			 	 			
 			 	 			
 			 	 			//Minuetes ago...
 			 	 			constructor = constructor + 'else{'
