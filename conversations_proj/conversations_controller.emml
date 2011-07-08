@@ -32,6 +32,30 @@
 				<name>ameMiami2</name>
 				<feeds>
 					<feed>
+						<url>http://feeds.feedburner.com/IADPBlog</url>
+						<keywords></keywords>
+						<description>Some desc</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>rss</source_name>
+						<source_type>rss</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>10</limit>
+					</feed>
+					<feed>
+						<url>http://feeds.feedburner.com/CSRIntel</url>
+						<keywords></keywords>
+						<description>Tweets about IntelInisde</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>feed</source_name>
+						<source_type>feed</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>5</limit>
+					</feed>
+										<feed>
 						<url>http://feeds.feedburner.com/IntelSoftwareNetworkBlog</url>
 						<keywords></keywords>
 						<description>Tweets about IntelInisde</description>
@@ -93,6 +117,9 @@
 						<repeating_element>entry</repeating_element>
 						<limit>1</limit>
 					</feed>
+					
+					
+					
 				</feeds>
 			</configuration>
 		</input>
@@ -230,7 +257,7 @@
 				//Vars for timestamp
 				constructor = constructor + '<variable name="each_created_time" type="string"></variable>'
 				constructor = constructor + '<variable name="timestamp_arr" type="string" default=""></variable>'
-				
+				constructor = constructor + '<variable name="each_created_time_counter" type="string" default=""></variable>'
 				
 				constructor = constructor + '<script>'
 					constructor = constructor + '<![CDATA['
@@ -238,6 +265,7 @@
 						constructor = constructor + 'items_with_texttodate_arr= [];'
 						constructor = constructor + 'new_date_arr= [];'
 						constructor = constructor + 'timestamp_arr= [];'
+						constructor = constructor + 'each_created_time_counter = 0;'
 						//asd = "<ss>";
 					constructor = constructor + ']]xxxx>'
 					constructor = constructor + '</script>'
@@ -372,7 +400,7 @@
 							constructor = constructor + 'final_dateToText.push( each_created_time.replace(",", "") );'
 						constructor = constructor + '}'
 						
-						//constructor = constructor + 'print("final_dateToText:" +final_dateToText);'
+						constructor = constructor + 'print("final_dateToText:" +final_dateToText);'
 						
 						
 					constructor = constructor + ']]xxxx>'
@@ -426,20 +454,22 @@
 					
 				
 				constructor = constructor + 'for(var i =0; i < final_dateToText.length; i++){'
-					constructor = constructor + 'mashup_almost_ready.item[i].created_time = new_date_arr[i];'
+					////constructor = constructor + 'mashup_almost_ready.item[i].created_time = new_date_arr[i];'
+					
+					
 				constructor = constructor + '}'
-				
 				
 					
 				constructor = constructor + ']]xxxx>'
 				constructor = constructor + '</script>'
 				
-				///////
-				constructor = constructor + '<foreach items="$mashup_almost_ready//item" variable="item">'
+				
+				///////FOREACH for created_time - Timestamp
+				constructor = constructor + '<foreach items="$mashup_almost_ready//*:item" variable="item">'
 					
 					//For creating the timestamp
-					constructor = constructor + '<assign fromexpr="$item//created_time/node()" outputvariable="each_created_time"/>'
-					
+					constructor = constructor + '<assign fromexpr="$item//*:created_time/node()" outputvariable="each_created_time"/>'
+					constructor = constructor + '<display message="a:" variable="$each_created_time" />'
 					
 					constructor = constructor + '<script>'
 					constructor = constructor + '<![CDATA['
@@ -449,10 +479,49 @@
 						////////////
 						
 						constructor = constructor + 'var created_time_split = each_created_time.split(" ");'
+						
+						constructor = constructor + 'each_created_time_counter++;'
 	 	 		
-			 	 		//if created_time_split.length ==1 then it is alrady a timestamp (like twitter and atom feeds)
+			 	 		//if created_time_split.length ==1 then it is already a timestamp (like twitter and atom feeds)
 			 	 		constructor = constructor + 'if (created_time_split.length == 1){'
-			 	 			constructor = constructor + 'timestamp_arr.push(created_time_split[0]);'
+			 	 			//THEN parse the timestamp into a format like: Mon, 01 Jan 2011 HH:MM:SS GMT
+			 	 			//constructor = constructor + 'timestamp_arr.push(created_time_split[0]);'
+			 	 				constructor = constructor + 'var ts = created_time_split[0];'
+		 	 			
+				 	 			constructor = constructor + 'timestamp_arr.push( ts );'
+				 	 			//print("ts:"  + ts);
+				 	 			
+				 	 			constructor = constructor + 'var year = ts.substring(0,4);'
+				 	 			constructor = constructor + 'var month = ts.substring(5,7);'
+				 	 			constructor = constructor + 'var day = ts.substring(8,10);'
+				 	 			
+				 	 			constructor = constructor + 'var hour = ts.substring(11,13);'
+				 	 			constructor = constructor + 'var minutes = ts.substring(14,16);'
+				 	 			constructor = constructor + 'var secs = ts.substring(17,19);'
+				 	 			
+				 	 			constructor = constructor + 'if(month == "01") month = "Jan";'
+								constructor = constructor + 'else if(month == "02") month = "Feb";'
+								constructor = constructor + 'else if(month == "03") month = "Mar";'
+								constructor = constructor + 'else if(month == "04") month = "Apr";'
+								constructor = constructor + 'else if(month == "05") month = "May";'
+								constructor = constructor + 'else if(month == "06") month = "Jun";'
+								constructor = constructor + 'else if(month == "07") month = "Jul";'
+								constructor = constructor + 'else if(month == "08") month = "Aug";'
+								constructor = constructor + 'else if(month == "09") month = "Sep";'
+								constructor = constructor + 'else if(month == "10") month = "Oct";'
+								constructor = constructor + 'else if(month == "11") month = "Nov";'
+								constructor = constructor + 'else if(month == "12") month = "Dec";'
+				 	 			
+				 	 			constructor = constructor + 'print("year:" + year + " month:"+ month + " day:"+ day);'
+				 	 			constructor = constructor + 'print("hr:" + hour + " min:"+ minutes + " secs:"+ secs);'
+				 	 			
+				 	 			constructor = constructor + 'var updated_created_time = "Mon, "+ day +" "+ month +" "+ year +" "+ hour +":"+ minutes +":"+ secs + " GMT";'
+				 	 			//print("updated_created_time:" + updated_created_time);
+				 	 			
+				 	 			//Now add the converted ts into date in created_time
+				 	 			constructor = constructor + 'mashup_almost_ready.item[each_created_time_counter - 1].created_time = updated_created_time;'
+			 	 			
+			 	 			
 			 	 		constructor = constructor + '}'
 			 	 		constructor = constructor + 'else{'
 			 	 			constructor = constructor + 'print("each_created_time:" + each_created_time);'
@@ -522,7 +591,7 @@
 				constructor = constructor + '</script>'
 				///////
 				//Sort by Timestamp
-				constructor = constructor + '<sort inputvariable="mashup_almost_ready" sortexpr="//item" sortkeys="xs:dateTime(timestamp)" sortdir="descending" outputvariable="mashup_almost_ready" />'
+				//constructor = constructor + '<sort inputvariable="mashup_almost_ready" sortexpr="//item" sortkeys="xs:dateTime(timestamp)" sortdir="descending" outputvariable="mashup_almost_ready" />'
 				
     			constructor = constructor + "<assign fromvariable='mashup_almost_ready' outputvariable='result' />"   
 			]]>

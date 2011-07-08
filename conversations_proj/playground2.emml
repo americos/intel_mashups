@@ -9,35 +9,21 @@
 			<variable name="mashup_almost_ready" type="document">
 				<xx>
 					<item>
-						<entry>Intel Rapid Storage Manager Misidentified Drive</entry>
-						<datetotext>33 minutes ago</datetotext>
-						<source>rss</source>
-						<link>http://communities.intel.com/thread/23130</link>
-						<author>webadmin@intel.com</author>
-						<created_time>Thu, 07 Jul 2011 14:30:31 GMT</created_time>
+						<entry>Bite-sized CSR: Ergo, Shmergo</entry>
+						<created_time>2011-06-29T18:12:15Z</created_time>
+						<source>feed</source>
+						<link
+							href="http://blogs.intel.com/csr/2011/06/bite-sized_csr_ergo_shmergo.php" />
+						<author>Linda Qian</author>
 					</item>
 					<item>
-						<entry>How to change DP35DP to DP67BG keep hard drive?</entry>
-						<datetotext>34 minutes ago</datetotext>
-						<source>rss</source>
-						<link>http://communities.intel.com/thread/23118</link>
-						<author>webadmin@intel.com</author>
-						<created_time>Thu, 07 Jul 2011 14:29:31 GMT</created_time>
-					</item>
-					<item>
-						<entry>Compatible</entry>
-						<datetotext>58 minutes ago</datetotext>
-						<source>rss</source>
-						<link>http://communities.intel.com/thread/22383</link>
-						<author>webadmin@intel.com</author>
-						<created_time>Thu, 07 Jul 2011 14:05:31 GMT</created_time>
-					</item>
-					<item>
-						<entry>Intelinside: RT @laptopmag Sony VAIO S
-							VPCSA290X (2011) http://bit.ly/nfZ5Am #2ndgen</entry>
-						<created_time>2011-07-06T19:25:49+00:00</created_time>
-						<source>twitter</source>
-						<link href="http://twitter.com/Intelinside/statuses/88690131996905472" />
+						<entry>Bite-Sized CSR: Smaller, Lighter, Better...
+							Trays?</entry>
+						<created_time>2011-06-17T21:34:21Z</created_time>
+						<source>feed</source>
+						<link
+							href="http://blogs.intel.com/csr/2011/06/bite-sized_csr_smaller_lighter.php" />
+						<author>Linda Qian</author>
 					</item>
 
 				</xx>
@@ -46,10 +32,12 @@
 
 		<variable name="each_created_time" type="string"></variable>
 		<variable name="timestamp_arr" type="string" default=""></variable>
+		<variable name="each_created_time_counter" type="string"></variable>
 
 		<script>
 			<![CDATA[
 				timestamp_arr = [];
+				var each_created_time_counter = 0;
 			]]>
 		</script>
 
@@ -62,9 +50,46 @@
 	 	 	<![CDATA[
 	 	 		var created_time_split = each_created_time.split(" ");
 	 	 		
-	 	 		//if created_time_split.length ==1 then it is alrady a timestamp (like twitter and atom feeds)
+	 	 		each_created_time_counter++;
+	 	 		
+	 	 		//if created_time_split.length ==1 then it is already a timestamp: 2011-07-06T19:25:49+00:00 (like twitter and atom feeds)
+	 	 			//Add it to timestamp array and update created_date to use format: Fri Jul 08 2011 12:09:54 
 	 	 		if (created_time_split.length == 1){
-	 	 			timestamp_arr.push(created_time_split[0]);
+	 	 			
+	 	 			var ts = created_time_split[0];
+	 	 			
+	 	 			timestamp_arr.push( ts );
+	 	 			print("ts:"  + ts);
+	 	 			
+	 	 			var year = ts.substring(0,4);
+	 	 			var month = ts.substring(5,7);
+	 	 			var day = ts.substring(8,10);
+	 	 			
+	 	 			var hour = ts.substring(11,13);
+	 	 			var minutes = ts.substring(14,16);
+	 	 			var secs = ts.substring(17,19);
+	 	 			
+	 	 			if(month == "01") month = "Jan";
+					else if(month == "02") month = "Feb";
+					else if(month == "03") month = "Mar";
+					else if(month == "04") month = "Abr";
+					else if(month == "05") month = "May";
+					else if(month == "06") month = "Jun";
+					else if(month == "07") month = "Jul";
+					else if(month == "08") month = "Aug";
+					else if(month == "09") month = "Sep";
+					else if(month == "10") month = "Oct";
+					else if(month == "11") month = "Nov";
+					else if(month == "12") month = "Dec";
+	 	 			
+	 	 			print("year:" + year + " month:"+ month + " day:"+ day);
+	 	 			print("hr:" + hour + " min:"+ minutes + " secs:"+ secs);
+	 	 			
+	 	 			var updated_created_time = " , "+ day +" "+ month +" "+ year +" "+ hour +":"+ minutes +":"+ secs + " GMT";
+	 	 			print("updated_created_time:" + updated_created_time);
+	 	 			
+	 	 			//Now add the converted ts into date in created_time
+	 	 			mashup_almost_ready.item[each_created_time_counter - 1].created_time = updated_created_time;
 	 	 		}
 	 	 		else{
 	 	 			//print("each_created_time:" + each_created_time);
@@ -113,5 +138,6 @@
 		</foreach>
 
 		<display message="timestamp_arr:" variable="timestamp_arr" />
+		<display message="Mashup Almost" variable="mashup_almost_ready" />
 	</operation>
 </mashup>

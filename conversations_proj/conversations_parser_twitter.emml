@@ -8,12 +8,12 @@
         <output name="result" type="document"/>
         
          <!-- Input -->
- 	 <input name="url" type="string" default="http://twitter.com/statuses/user_timeline/34714943.atom"></input>
+ 	 <input name="url" type="string" default="http://twitter.com/statuses/user_timeline/intelinside.atom"></input>
  	 <input name="counter" type="number" default="1"></input>
  	 <input name="repetitive_elem" type="string" default="item"></input>
  	 <input name="limit" type="number" default="7"></input>
- 	 <input name="feed_sourcetype" type="string" default="feed_source"></input>
- 	 <input name="feed_keywords" type="string" default="#2ndgen @addthis"></input>
+ 	 <input name="feed_sourcetype" type="string" default="twitter"></input>
+ 	 <input name="feed_keywords" type="string" default=""></input>
  
         
         <script>
@@ -21,8 +21,16 @@
  	 		//OUTPUT VARIABLE FOR ALL
  	 		var my_output = "output" + counter
  	 	
+ 	 		var res = '';
+ 	 	
+ 	 		//FORCE Use RSS in case an Atom was provided
+ 	 		url = url.replace(".atom", ".rss");
+ 	 		//print("New url rss:", url);
+ 	 			//FORCE use "item" as repetitive element
+ 	 			repetitive_elem = "item";
+ 	 	
   			//Direct Invoke of the URL
-  			var res = ' <directinvoke endpoint="' + url + '" outputvariable="'+ my_output +'"/>'
+  			res = ' <directinvoke endpoint="' + url + '" outputvariable="'+ my_output +'"/>'
   			
 			//Removing &'s to be able to parse this response.			  			
   			res = res + ' <variable name="mystring" type="string"/>'
@@ -68,12 +76,14 @@
  				
  				//Entry
  				item_string = item_string + '<entry>';
- 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:content' + '[1]//text()' +'}'
+ 					//item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:content' + '[1]//text()' +'}'
+ 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:title' + '[1]//text()' +'}'
  				item_string = item_string + '</entry>';
  				
  				//Created Time
  				item_string = item_string  + '<created_time>'
- 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:published' + '[1]//text()' +'}'
+ 					//item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:published' + '[1]//text()' +'}'
+ 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:pubDate' + '[1]//text()' +'}'
  				item_string = item_string  + '</created_time>'
  				
  				//Source
@@ -83,7 +93,8 @@
  				
  				//Source URI / Link
  				item_string = item_string + '<link>';
- 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:link'+ '[1]/@href' +'}'
+ 					//item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:link'+ '[1]/@href' +'}'
+ 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:link'+ '[1]/text()' +'}'
  				item_string = item_string + '</link>';
  				
  				//Closing Item

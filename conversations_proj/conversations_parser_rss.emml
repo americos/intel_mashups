@@ -92,6 +92,10 @@
  					item_string = item_string  + '<datetotext>'
  						item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:dateToText' + '[1]//text()' +'}'
  					item_string = item_string  + '</datetotext>'
+ 					//Created Time
+ 					item_string = item_string  + '<created_time>'
+ 						item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:pubDate' + '[1]//text()' +'}'
+	 				item_string = item_string  + '</created_time>'
  				}
  				else{
  					//Created Time
