@@ -32,7 +32,7 @@
 				<name>ameMiami2</name>
 				<feeds>
 					<feed>
-						<url>http://communities.intel.com/community/feeds/allcontent?community=2081</url>
+						<url>http://feeds.feedburner.com/IntelSoftwareNetworkBlog</url>
 						<keywords></keywords>
 						<description>Tweets about IntelInisde</description>
 						<timeout>10000</timeout>
@@ -44,9 +44,9 @@
 						<limit>5</limit>
 					</feed>
 					<feed>
-						<url>http://feeds.feedburner.com/IADPBlog</url>
+						<url>http://premierit.intel.com/community/feeds/blogs?community=2041</url>
 						<keywords></keywords>
-						<description>Some desc</description>
+						<description>Tweets about IntelInisde</description>
 						<timeout>10000</timeout>
 						<mandatory>true</mandatory>
 						<active>true</active>
@@ -67,6 +67,20 @@
 						<repeating_element>entry</repeating_element>
 						<limit>5</limit>
 					</feed>
+					
+					<feed>
+						<url>http://communities.intel.com/community/feeds/blogs?community=2081</url>
+						<keywords></keywords>
+						<description>Tweets about IntelInisde</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>twitter</source_name>
+						<source_type>twitter</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>5</limit>
+					</feed>
+					
 					<feed>
 						<url>http://www.facebook.com/feeds/page.php?id=22707976849format=rss20</url>
 						<keywords></keywords>
@@ -77,7 +91,7 @@
 						<source_name>facebook</source_name>
 						<source_type>facebook</source_type>
 						<repeating_element>entry</repeating_element>
-						<limit>5</limit>
+						<limit>1</limit>
 					</feed>
 				</feeds>
 			</configuration>
@@ -238,58 +252,6 @@
 					constructor = constructor + '<script>'
 					constructor = constructor + '<![CDATA['
 					
-				
-						///////////
-						//TIMESTAMP
-						////////////
-						
-						constructor = constructor + 'var created_time_split = each_created_time.split(" ");'
-	 	 		
-			 	 		//if created_time_split.length ==1 then it is alrady a timestamp (like twitter and atom feeds)
-			 	 		constructor = constructor + 'if (created_time_split.length == 1){'
-			 	 			constructor = constructor + 'timestamp_arr.push(created_time_split[0]);'
-			 	 		constructor = constructor + '}'
-			 	 		constructor = constructor + 'else{'
-			 	 			//print("each_created_time:" + each_created_time);
-				 	 		//print("created_time_split:" + created_time_split);
-				 	 		
-				 	 		//Format Needed: 2011-07-06T19:25:49+00:00
-				 	 		constructor = constructor + 'var year = created_time_split[3];'
-				 	 		constructor = constructor + 'var month = created_time_split[2];' //Comes in letter
-				 	 		constructor = constructor + 'var day = created_time_split[1];'
-				 	 		
-				 	 		constructor = constructor + 'if(month == "Jan") month = "01";'
-							constructor = constructor + 'else if(month == "Feb") month = "02";'
-							constructor = constructor + 'else if(month == "Mar") month = "03";'
-							constructor = constructor + 'else if(month == "Abr") month = "04";'
-							constructor = constructor + 'else if(month == "May") month = "05";'
-							constructor = constructor + 'else if(month == "Jun") month = "06";'
-							constructor = constructor + 'else if(month == "Jul") month = "07";'
-							constructor = constructor + 'else if(month == "Aug") month = "08";'
-							constructor = constructor + 'else if(month == "Sep") month = "09";'
-							constructor = constructor + 'else if(month == "Oct") month = "10";'
-							constructor = constructor + 'else if(month == "Nov") month = "11";'
-							constructor = constructor + 'else if(month == "Dec") month = "12";'
-				 	 		
-				 	 		//print("year:"+year);
-				 	 		//print("month:"+month);
-				 	 		//print("day:"+day);
-				 	 		
-				 	 		constructor = constructor + 'var time_split = created_time_split[4].split(":");'
-				 	 		//print("time_split:" + time_split);
-				 	 		
-				 	 		constructor = constructor + 'var hour = time_split[0];'
-				 	 		constructor = constructor + 'var minutes = time_split[1];'
-				 	 		constructor = constructor + 'var seconds = time_split[2];'
-				 	 		
-				 	 		constructor = constructor + 'var timestamp = year +"-"+ month +"-"+ day +"T"+ hour +":"+ minutes +":"+ seconds + "+00:00";' 
-				 	 		//print("timestamp:"+ timestamp)
-				 	 		
-				 	 		constructor = constructor + 'timestamp_arr.push(timestamp);'
-				 	 			
-			 	 		constructor = constructor + '}'
-						
-						///END TIMESTAMP
 					
 						constructor = constructor + 'item_counter++;'
 						//print("has_datetotext::"+has_datetotext+"::");
@@ -406,6 +368,8 @@
 						constructor = constructor + '}'
 						constructor = constructor + 'else{'
 							//print("item: " + item_counter + " DONT date to Text");
+							//NO DateToText, then add its default created_time (Replacing commas cause I am gonna add them down below)
+							constructor = constructor + 'final_dateToText.push( each_created_time.replace(",", "") );'
 						constructor = constructor + '}'
 						
 						//constructor = constructor + 'print("final_dateToText:" +final_dateToText);'
@@ -413,7 +377,7 @@
 						
 					constructor = constructor + ']]xxxx>'
 					constructor = constructor + '</script>'
-				constructor = constructor + '</foreach>'
+				constructor = constructor + '</foreach>'   //End foreach: mashup_almost_ready//item para dateToText
 				
 				constructor = constructor + '<script>'
 				constructor = constructor + '<![CDATA['
@@ -431,11 +395,19 @@
 		 	 		constructor = constructor + 'for(var i =0; i< final_dateToText.length; i++){'
 		 	 			constructor = constructor + 'date_to_manipulate = final_dateToText[i].toString();'
 		 	 			constructor = constructor + 'date_to_manipulate_strip = date_to_manipulate.split(" ");'
-		 	 			//print("date_to_manipulate_strip:"+date_to_manipulate_strip); //Tue,Jun,28,2011,16:37:06,GMT-0400,(EDT) 
+		 	 			constructor = constructor + 'print("date_to_manipulate_strip:"+date_to_manipulate_strip);' //Tue,Jun,28,2011,16:37:06,GMT-0400,(EDT) 
 		 	 			//I get : Tue Jun 28 2011 16:32:28 GMT-0400 (EDT)
 		 	 			//I need: Tue, 19 Oct 2010 15:32:53 GMT
 		 	 			
-		 	 			constructor = constructor + 'new_date = date_to_manipulate_strip[0] + ", " + date_to_manipulate_strip[2] + " " + date_to_manipulate_strip[1] + " " + date_to_manipulate_strip[3] + " " +date_to_manipulate_strip[4] + " GMT";' 
+		 	 			//If date_to_manipulate_strip.length == 1, just push the date_to_manipulate_strip[0];
+		 	 			constructor = constructor + 'if( date_to_manipulate_strip.length ==1){'
+		 	 				constructor = constructor + 'new_date_arr.push(date_to_manipulate_strip[0]);'
+		 	 			constructor = constructor + '}'
+		 	 			constructor = constructor + 'else{'
+		 	 				constructor = constructor + 'new_date = date_to_manipulate_strip[0] + ", " + date_to_manipulate_strip[2] + " " + date_to_manipulate_strip[1] + " " + date_to_manipulate_strip[3] + " " +date_to_manipulate_strip[4] + " GMT";' 
+		 	 			constructor = constructor + '}'
+		 	 			
+		 	 			
 		 	 			
 		 	 			constructor = constructor + 'new_date_arr.push(new_date);'
 		 	 			
@@ -449,7 +421,7 @@
 		    	
 				constructor = constructor + 'print("===========================");'
 				constructor = constructor + 'print("final_dateToText:" +final_dateToText);'
-				constructor = constructor + 'print("timestamp_arr:" + timestamp_arr);'
+				
 				//constructor = constructor + 'print("new_date_arr:" + new_date_arr);'
 					
 				
@@ -457,15 +429,98 @@
 					constructor = constructor + 'mashup_almost_ready.item[i].created_time = new_date_arr[i];'
 				constructor = constructor + '}'
 				
-				//Add Timestamp
-				constructor = constructor + 'for(var i =0; i < timestamp_arr.length; i++){'
-					constructor = constructor + 'mashup_almost_ready.item[i].timestamp = timestamp_arr[i];'
-				constructor = constructor + '}'
 				
 					
 				constructor = constructor + ']]xxxx>'
 				constructor = constructor + '</script>'
 				
+				///////
+				constructor = constructor + '<foreach items="$mashup_almost_ready//item" variable="item">'
+					
+					//For creating the timestamp
+					constructor = constructor + '<assign fromexpr="$item//created_time/node()" outputvariable="each_created_time"/>'
+					
+					
+					constructor = constructor + '<script>'
+					constructor = constructor + '<![CDATA['
+					
+						///////////
+						//TIMESTAMP
+						////////////
+						
+						constructor = constructor + 'var created_time_split = each_created_time.split(" ");'
+	 	 		
+			 	 		//if created_time_split.length ==1 then it is alrady a timestamp (like twitter and atom feeds)
+			 	 		constructor = constructor + 'if (created_time_split.length == 1){'
+			 	 			constructor = constructor + 'timestamp_arr.push(created_time_split[0]);'
+			 	 		constructor = constructor + '}'
+			 	 		constructor = constructor + 'else{'
+			 	 			constructor = constructor + 'print("each_created_time:" + each_created_time);'
+				 	 		constructor = constructor + 'print("created_time_split:" + created_time_split);'
+				 	 		
+				 	 		//Format Needed: 2011-07-06T19:25:49+00:00
+				 	 		constructor = constructor + 'var year = created_time_split[3];'
+				 	 		constructor = constructor + 'var month = created_time_split[2];' //Comes in letter
+				 	 		constructor = constructor + 'var day = created_time_split[1];'
+				 	 		
+				 	 		//Fuzzy logic for month-day swap cause some feeds come as day month and viceversa
+				 	 		constructor = constructor + 'if(month.length == 2){ month= day; day=created_time_split[2];  }'
+				 	 		
+				 	 		constructor = constructor + 'print("month:" + month);'
+				 	 		
+				 	 		constructor = constructor + 'if(month == "Jan") month = "01";'
+							constructor = constructor + 'else if(month == "Feb") month = "02";'
+							constructor = constructor + 'else if(month == "Mar") month = "03";'
+							constructor = constructor + 'else if(month == "Abr") month = "04";'
+							constructor = constructor + 'else if(month == "May") month = "05";'
+							constructor = constructor + 'else if(month == "Jun") month = "06";'
+							constructor = constructor + 'else if(month == "Jul") month = "07";'
+							constructor = constructor + 'else if(month == "Aug") month = "08";'
+							constructor = constructor + 'else if(month == "Sep") month = "09";'
+							constructor = constructor + 'else if(month == "Oct") month = "10";'
+							constructor = constructor + 'else if(month == "Nov") month = "11";'
+							constructor = constructor + 'else if(month == "Dec") month = "12";'
+				 	 		
+				 	 		//print("year:"+year);
+				 	 		//print("month:"+month);
+				 	 		//print("day:"+day);
+				 	 		
+				 	 		constructor = constructor + 'var time_split = created_time_split[4].split(":");'
+				 	 		//print("time_split:" + time_split);
+				 	 		
+				 	 		constructor = constructor + 'var hour = time_split[0];'
+				 	 		constructor = constructor + 'var minutes = time_split[1];'
+				 	 		constructor = constructor + 'var seconds = time_split[2];'
+				 	 		
+				 	 		constructor = constructor + 'var timestamp = year +"-"+ month +"-"+ day +"T"+ hour +":"+ minutes +":"+ seconds + "+00:00";' 
+				 	 		//print("timestamp:"+ timestamp)
+				 	 		
+				 	 		constructor = constructor + 'timestamp_arr.push(timestamp);'
+				 	 			
+			 	 		constructor = constructor + '}'
+						
+						///END TIMESTAMP
+					
+					constructor = constructor + ']]xxxx>'
+					constructor = constructor + '</script>'
+				constructor = constructor + '</foreach>'   //End foreach: mashup_almost_ready//item para timestamp
+				
+				constructor = constructor + '<script>'
+				constructor = constructor + '<![CDATA['
+				
+				//constructor = constructor + 'print("timestamp_arr Before for:" + timestamp_arr);'
+			
+					//Add Timestamp
+					constructor = constructor + 'for(var i =0; i < timestamp_arr.length; i++){'
+						//constructor = constructor + 'print("inside for:" + timestamp_arr[i]);'
+						constructor = constructor + 'mashup_almost_ready.item[i].timestamp = timestamp_arr[i];'
+					constructor = constructor + '}'
+				
+				//constructor = constructor + 'print("timestamp_arr:" + timestamp_arr);'
+				
+				constructor = constructor + ']]xxxx>'
+				constructor = constructor + '</script>'
+				///////
 				//Sort by Timestamp
 				constructor = constructor + '<sort inputvariable="mashup_almost_ready" sortexpr="//item" sortkeys="xs:dateTime(timestamp)" sortdir="descending" outputvariable="mashup_almost_ready" />'
 				
