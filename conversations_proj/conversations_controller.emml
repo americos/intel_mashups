@@ -75,8 +75,8 @@
 						<timeout>10000</timeout>
 						<mandatory>true</mandatory>
 						<active>true</active>
-						<source_name>twitter</source_name>
-						<source_type>twitter</source_type>
+						<source_name>rss</source_name>
+						<source_type>rss</source_type>
 						<repeating_element>entry</repeating_element>
 						<limit>5</limit>
 					</feed>
@@ -471,7 +471,7 @@
 				 	 		constructor = constructor + 'if(month == "Jan") month = "01";'
 							constructor = constructor + 'else if(month == "Feb") month = "02";'
 							constructor = constructor + 'else if(month == "Mar") month = "03";'
-							constructor = constructor + 'else if(month == "Abr") month = "04";'
+							constructor = constructor + 'else if(month == "Apr") month = "04";'
 							constructor = constructor + 'else if(month == "May") month = "05";'
 							constructor = constructor + 'else if(month == "Jun") month = "06";'
 							constructor = constructor + 'else if(month == "Jul") month = "07";'
