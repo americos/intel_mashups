@@ -1,0 +1,568 @@
+<mashup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd"
+  xmlns="http://www.openmashup.org/schemas/v1.0/EMML" xmlns:macro="http://www.openmashup.org/schemas/v1.0/EMMLMacro"
+  name="conversations_controller">
+
+  <operation name="invoke">
+    <output name="result" type="string"></output>
+    
+    <variables>
+      <variable name="feed_data" type="document"></variable>
+      
+      <variable name="dynamicScript" type="string"/>
+      
+      <variable name="emml_string" type="string"/>
+      <variable name="final_emml" type="string"/>
+      <variable name="emml_xml" type="document"></variable>
+      <variable name="counter" type="number" default="0"></variable>
+      <variable name="constructor" type="string"/>
+      <variable name="feed_limit" type="number"></variable>
+      <variable name="mashup_name" type="string"></variable>
+      <variable name="serviceID" type="string"></variable>
+      <variable name="feed_sourcetype" type="string"></variable>
+      <variable name="jsonp_result" type="string"></variable>
+      <variable name="feed_keywords" type="string"></variable>
+      
+    </variables>
+    
+    <!-- INPUT's -->
+    <input name="jsonp" type="string" default="parseResponse"></input>
+    <input name="configuration" type="document">
+      <configuration>
+        <name>ameMiami2</name>
+        <feeds>
+          <feed>
+            <url>http://feeds.feedburner.com/IntelSoftwareNetworkBlog</url>
+            <keywords></keywords>
+            <description>Tweets about IntelInisde</description>
+            <timeout>10000</timeout>
+            <mandatory>true</mandatory>
+            <active>true</active>
+            <source_name>rss</source_name>
+            <source_type>rss</source_type>
+            <repeating_element>entry</repeating_element>
+            <limit>5</limit>
+          </feed>
+          <feed>
+            <url>http://premierit.intel.com/community/feeds/blogs?community=2041</url>
+            <keywords></keywords>
+            <description>Tweets about IntelInisde</description>
+            <timeout>10000</timeout>
+            <mandatory>true</mandatory>
+            <active>true</active>
+            <source_name>rss</source_name>
+            <source_type>rss</source_type>
+            <repeating_element>entry</repeating_element>
+            <limit>5</limit>
+          </feed>
+          <feed>
+            <url>http://twitter.com/statuses/user_timeline/intelinside.atom</url>
+            <keywords></keywords>
+            <description>Tweets about IntelInisde</description>
+            <timeout>10000</timeout>
+            <mandatory>true</mandatory>
+            <active>true</active>
+            <source_name>twitter</source_name>
+            <source_type>twitter</source_type>
+            <repeating_element>entry</repeating_element>
+            <limit>5</limit>
+          </feed>
+          
+          <feed>
+            <url>http://communities.intel.com/community/feeds/blogs?community=2081</url>
+            <keywords></keywords>
+            <description>Tweets about IntelInisde</description>
+            <timeout>10000</timeout>
+            <mandatory>true</mandatory>
+            <active>true</active>
+            <source_name>twitter</source_name>
+            <source_type>twitter</source_type>
+            <repeating_element>entry</repeating_element>
+            <limit>5</limit>
+          </feed>
+          
+          <feed>
+            <url>http://www.facebook.com/feeds/page.php?id=22707976849format=rss20</url>
+            <keywords></keywords>
+            <description>Tweets about IntelInisde</description>
+            <timeout>10000</timeout>
+            <mandatory>true</mandatory>
+            <active>true</active>
+            <source_name>facebook</source_name>
+            <source_type>facebook</source_type>
+            <repeating_element>entry</repeating_element>
+            <limit>1</limit>
+          </feed>
+        </feeds>
+      </configuration>
+    </input>
+    
+    
+    <variable name="feed_url" type="string" default=""></variable>
+
+    <!-- CONTROLLER LOGIC -->
+    <display message="===BEGIN MASHUP CONTROLLER EXECUTION===" />
+    
+    <!-- ITERATE ON ALL THE FEEDS -->
+    <foreach items="$configuration//feed" variable="feed">
+      <!-- FEED URL -->
+      <assign fromexpr="$feed//url/node()" outputvariable="feed_url" />
+      <display message="::Controller will ask to visit url:" variable="feed_url" />
+      <!-- Limit -->
+      <assign fromexpr="$feed//limit/node()" outputvariable="feed_limit" />
+      <display message="::Limit results to:" variable="feed_limit" />
+      <!-- Keywords -->
+      <assign fromexpr="$feed//keywords/node()" outputvariable="feed_keywords" />
+      <script>
+      <![CDATA[
+          counter = counter + 1;
+      ]]>
+      </script>
+
+      <!-- CHECKING SOURCE TYPE -->
+      <assign fromexpr="$feed//source_type/node()" outputvariable="feed_sourcetype"/>
+       <if condition="$feed_sourcetype eq 'twitter' ">
+        <!-- TWITTER -->
+        <variable name="repetitive_elem" type="string" default="entry"></variable>
+        <invoke operation="invoke" service="conversations_parser_twitter" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords" outputvariable="feed_data"/>
+        
+        <!-- RSS -->
+        <elseif condition="$feed_sourcetype eq 'rss' ">
+          <variable name="repetitive_elem" type="string" default="item"></variable>
+          <invoke operation="invoke" service="conversations_parser_rss" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords" outputvariable="feed_data"/>
+        </elseif>
+        
+        <!-- FEED -->        
+        <elseif condition="$feed_sourcetype eq 'feed' ">
+          <variable name="repetitive_elem" type="string" default="entry"></variable>
+          <invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords" outputvariable="feed_data"/>
+        </elseif>
+        
+        <!-- FACEBOOK -->        
+        <elseif condition="$feed_sourcetype eq 'facebook' ">
+          <variable name="repetitive_elem" type="string" default="item"></variable>
+          <invoke operation="invoke" service="conversations_parser_facebook" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords" outputvariable="feed_data"/>
+        </elseif>
+        
+        <!-- FEED NOT SUPPORTED -->
+        <else>
+          <invoke operation="invoke" service="conversations_error" inputvariables="counter, feed_sourcetype" outputvariable="feed_data"/>
+        </else>
+      </if>
+    
+      
+      <!-- CREATING XML STRUCTURE WHERE EACH LINE IS A MASHUP CODE -->
+      <appendresult outputvariable="emml_xml">
+          <mashup_code>
+            {$feed_data}
+          </mashup_code>
+      </appendresult>
+       
+    </foreach>
+
+    <display message="Emml_String:" variable="emml_xml"/>
+    
+    <!-- Get Final MASHUP NAME -->
+    <assign fromexpr="$configuration//name/node()" outputvariable="mashup_name"/>
+    <!-- CREATE FINAL MASHUP CODE -->
+    <script>
+      <![CDATA[
+        
+        var mashup_header = "<mashup xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd' xmlns='http://www.openmashup.org/schemas/v1.0/EMML' xmlns:macro='http://www.openmashup.org/schemas/v1.0/EMMLMacro' xmlns:presto='http://www.jackbe.com/v1.0/EMMLPrestoExtensions'";
+        mashup_header = mashup_header + " name='"+ mashup_name +"'><operation name='runMashup'>";
+        
+        var output = '<output name="result" type="string"></output>';
+        dynamicScript = mashup_header + output;
+    ]]>
+    </script>
+    
+    <!-- Getting all the lines of every mashup -->
+    <foreach items="$emml_xml//mashup_code" variable="mashup_item">
+      <display message="MASHUP_ITEM:" variable="mashup_item"/>
+      
+      <script>
+        <![CDATA[          
+          dynamicScript = dynamicScript + mashup_item;
+      ]]>
+      </script>
+    </foreach>
+    <!-- Closing operation & mashup tag -->
+    <assign fromexpr="count($configuration//feed)" outputvariable="feed_count"/>
+    <display message="FEED COUNT:" variable="feed_count"/>
+    
+    <!-- Opening final Constructor -->
+    <script>
+        <![CDATA[          
+          constructor = '<constructor outputvariable="mashup_almost_ready">';
+          constructor = constructor + '<mashup>';
+      ]]>
+    </script>
+    
+    <for variable="feed_number" startcountervalue="1" finalcountervalue="$feed_count">
+      <display message="feed_number:" variable="feed_number"/>
+      
+      <script>
+        <![CDATA[    
+          var output_number = 'output' + feed_number;
+          constructor = constructor + '{$'+ output_number +'//item[string-length( entry/string()) != 0]}'; //This last item is the tag name created in conversations_parser_feed.emml
+                                                          //Checking against the length of entry to put only items with valid text values (due to keyword filtering)
+      ]]>
+      </script>
+      
+    </for>
+    <!-- Closing final constructor -->
+    <script>
+        <![CDATA[          
+          constructor = constructor + '</mashup>';
+          constructor = constructor + '</constructor>';
+          
+          //////////////
+          // Adding last_updated
+          /////////////
+          
+          constructor = constructor + '<variable name="item_counter" type="string" default="0"></variable>'
+        constructor = constructor + '<variable name="has_datetotext" type="string" default="0"></variable>'
+        constructor = constructor + '<variable name="items_with_texttodate_str" type="string" default=""></variable>'
+        constructor = constructor + '<variable name="final_dateToText" type="string" default=""></variable>'
+        constructor = constructor + '<variable name="items_with_texttodate_arr" type="string" default=""></variable>'
+        constructor = constructor + '<variable name="new_date_arr" type="string" default=""></variable>'
+        
+        //Vars for timestamp
+        constructor = constructor + '<variable name="each_created_time" type="string"></variable>'
+        constructor = constructor + '<variable name="timestamp_arr" type="string" default=""></variable>'
+        
+        
+        constructor = constructor + '<script>'
+          constructor = constructor + '<![CDATA['
+            constructor = constructor + 'final_dateToText = [];'
+            constructor = constructor + 'items_with_texttodate_arr= [];'
+            constructor = constructor + 'new_date_arr= [];'
+            constructor = constructor + 'timestamp_arr= [];'
+            //asd = "<ss>";
+          constructor = constructor + ']]xxxx>'
+          constructor = constructor + '</script>'
+        
+        constructor = constructor + '<foreach items="$mashup_almost_ready//item" variable="item">'
+          constructor = constructor + '<assign fromexpr="$item//datetotext/node()" outputvariable="has_datetotext"/>'
+          
+          //For creating the timestamp
+          constructor = constructor + '<assign fromexpr="$item//created_time/node()" outputvariable="each_created_time"/>'
+          
+          
+          constructor = constructor + '<script>'
+          constructor = constructor + '<![CDATA['
+          
+          
+            constructor = constructor + 'item_counter++;'
+            //print("has_datetotext::"+has_datetotext+"::");
+            constructor = constructor + 'if(has_datetotext != ""){'
+              //print("item: " + item_counter + " Has date to Text!");
+              constructor = constructor + 'items_with_texttodate_arr.push( item_counter);'
+              
+              
+              constructor = constructor + 'var spit_dateToText = has_datetotext.split(" ");'
+                constructor = constructor + 'amount = spit_dateToText[0];'
+                constructor = constructor + 'var time = spit_dateToText[1];'
+                //print("Amount:" + amount + "::"+ " Time:" + time );
+                
+                //Logic for adding the dates
+                constructor = constructor + 'var d = new Date();'
+                //Minutes
+                constructor = constructor + 'if( time == "minutes"){'
+                  //print("Date beofre sub:" + amount +" minutes:" + d);
+                  constructor = constructor + 'd.setMinutes(d.getMinutes() - amount);'
+                  //print("Date AFTER sub:" + amount +" minutes:" + d);
+                  
+                  constructor = constructor + 'final_dateToText.push(d);'
+                  
+                constructor = constructor + '}'
+                //HOURS
+                constructor = constructor + 'else if (time.indexOf("hour") != -1){'
+                  //print("Date beofre sub:" + amount +" hours:" + d);
+                  constructor = constructor + 'd.setHours(d.getHours() - amount);'
+                  //print("Date AFTER sub:" + amount +" hours:" + d);
+                  //Now take minutes into account.
+                  constructor = constructor + 'if(spit_dateToText.length > 4){'
+                  constructor = constructor + 'var hour_minutes = spit_dateToText[2];'
+                  //print("==Going to sub minutes: " + hour_minutes);
+                  constructor = constructor + 'd.setMinutes(d.getMinutes() - hour_minutes);'
+                  constructor = constructor + '}'
+                  
+                  constructor = constructor + 'final_dateToText.push(d)'
+                constructor = constructor + '}'
+                
+                //DAYS
+                
+                constructor = constructor + 'else if(time.indexOf("day") != -1){'
+                  //print("Date beofre sub:" + amount +" days:" + d);
+                  constructor = constructor + 'd.setDate(d.getDate() - amount);'
+                  //print("Date AFTER sub:" + amount +" days:" + d);
+                  
+                  //Now take Hours into account.
+                  constructor = constructor + 'if(spit_dateToText.length > 4){'
+                    constructor = constructor + 'var hour_minutes = spit_dateToText[2];'
+                    //print("==Going to sub Hours: " + hour_minutes);
+                    constructor = constructor + 'd.setHours(d.getHours() - hour_minutes);'
+                  constructor = constructor + '}'
+                  
+                  constructor = constructor + 'final_dateToText.push(d);'
+                constructor = constructor + '}'
+                
+                
+                //WEEKS
+                constructor = constructor + 'else if(time.indexOf("week") != -1){'
+                  //print("Date beofre sub:" + amount +" week:" + d);
+                  constructor = constructor + 'd.setDate(d.getDate() - (amount * 7));'
+                  //print("Date AFTER sub:" + amount +" week:" + d);
+                  
+                  //Now take days into account.
+                  constructor = constructor + 'if(spit_dateToText.length > 4){'
+                    constructor = constructor + 'var week_day = spit_dateToText[2];'
+                    //print("==Going to sub day: " + week_day);
+                    constructor = constructor + 'd.setDate(d.getDate() - week_day);'
+                  constructor = constructor + '}'
+                  
+                  constructor = constructor + 'final_dateToText.push(d);'
+                constructor = constructor + '}'
+                
+                //Months
+                constructor = constructor + 'else if(time.indexOf("month") != -1){'
+                  //print("Date beofre sub:" + amount +" month:" + d);
+                  constructor = constructor + 'd.setMonth(d.getMonth() - amount );'
+                  //print("Date AFTER sub:" + amount +" month:" + d);
+                  
+                  //Now take days into account.
+                  constructor = constructor + 'if(spit_dateToText.length > 4){'
+                    constructor = constructor + 'var month_day = spit_dateToText[2];'
+                    //print("==Going to sub day: " + month_day);
+                    constructor = constructor + 'd.setDate(d.getDate() - month_day);'
+                  constructor = constructor + '}'
+                  
+                  constructor = constructor + 'final_dateToText.push(d);'
+                constructor = constructor + '}'
+                
+                //Years
+                constructor = constructor + 'else if(time.indexOf("year") != -1){'
+                  //print("Date beofre sub:" + amount +" year:" + d);
+                  constructor = constructor + 'd.setFullYear(d.getFullYear() - amount );'
+                  //print("Date AFTER sub:" + amount +" year:" + d);
+                  
+                  //Now take months into account.
+                  constructor = constructor + 'if(spit_dateToText.length > 4){'
+                    constructor = constructor + 'var year_month = spit_dateToText[2];'
+                    //print("==Going to sub day: " + year_month);
+                    constructor = constructor + 'd.setMonth(d.getMonth() - year_month);'
+                  constructor = constructor + '}'
+                  
+                  constructor = constructor + 'final_dateToText.push(d);'
+                constructor = constructor + '}'
+                
+                
+                //Minuetes ago...
+                constructor = constructor + 'else{'
+                  //So just 1 minutes away... set todays date.
+                  constructor = constructor + 'final_dateToText.push(d)'
+                constructor = constructor + '}'
+                
+                //asd = asd + "<a>"+ item_counter +"</a>";
+            constructor = constructor + '}'
+            constructor = constructor + 'else{'
+              //print("item: " + item_counter + " DONT date to Text");
+              //NO DateToText, then add its default created_time (Replacing commas cause I am gonna add them down below)
+              constructor = constructor + 'final_dateToText.push( each_created_time.replace(",", "") );'
+            constructor = constructor + '}'
+            
+            //constructor = constructor + 'print("final_dateToText:" +final_dateToText);'
+            
+            
+          constructor = constructor + ']]xxxx>'
+          constructor = constructor + '</script>'
+        constructor = constructor + '</foreach>'   //End foreach: mashup_almost_ready//item para dateToText
+        
+        constructor = constructor + '<script>'
+        constructor = constructor + '<![CDATA['
+          //asd = asd + "</ss>";
+            
+          
+          //LOGIC for creating date in format: Tue, 19 Oct 2010 15:32:53 GMT
+            //stu = "<aa>";
+            constructor = constructor + 'var date_to_manipulate = "";'
+            constructor = constructor + 'var date_to_manipulate_strip = "";'
+            constructor = constructor + 'var new_date = "";'
+            
+            constructor = constructor + 'new_date_arr = [];'
+            
+            constructor = constructor + 'for(var i =0; i< final_dateToText.length; i++){'
+              constructor = constructor + 'date_to_manipulate = final_dateToText[i].toString();'
+              constructor = constructor + 'date_to_manipulate_strip = date_to_manipulate.split(" ");'
+              constructor = constructor + 'print("date_to_manipulate_strip:"+date_to_manipulate_strip);' //Tue,Jun,28,2011,16:37:06,GMT-0400,(EDT)
+              //I get : Tue Jun 28 2011 16:32:28 GMT-0400 (EDT)
+              //I need: Tue, 19 Oct 2010 15:32:53 GMT
+              
+              //If date_to_manipulate_strip.length == 1, just push the date_to_manipulate_strip[0];
+              constructor = constructor + 'if( date_to_manipulate_strip.length ==1){'
+                constructor = constructor + 'new_date_arr.push(date_to_manipulate_strip[0]);'
+              constructor = constructor + '}'
+              constructor = constructor + 'else{'
+                constructor = constructor + 'new_date = date_to_manipulate_strip[0] + ", " + date_to_manipulate_strip[2] + " " + date_to_manipulate_strip[1] + " " + date_to_manipulate_strip[3] + " " +date_to_manipulate_strip[4] + " GMT";'
+              constructor = constructor + '}'
+              
+              
+              
+              constructor = constructor + 'new_date_arr.push(new_date);'
+              
+              //print("new_date_arr push:" + new_date_arr)
+              
+            constructor = constructor + '}'
+            
+            constructor = constructor + 'print("final_dateToText:" +final_dateToText);'
+          //constructor = constructor + 'print("new_date_arr:" + new_date_arr);'
+          
+          
+        constructor = constructor + 'print("===========================");'
+        constructor = constructor + 'print("final_dateToText:" +final_dateToText);'
+        
+        //constructor = constructor + 'print("new_date_arr:" + new_date_arr);'
+          
+        
+        constructor = constructor + 'for(var i =0; i < final_dateToText.length; i++){'
+          constructor = constructor + 'mashup_almost_ready.item[i].created_time = new_date_arr[i];'
+        constructor = constructor + '}'
+        
+        
+          
+        constructor = constructor + ']]xxxx>'
+        constructor = constructor + '</script>'
+        
+        ///////
+        constructor = constructor + '<foreach items="$mashup_almost_ready//item" variable="item">'
+          
+          //For creating the timestamp
+          constructor = constructor + '<assign fromexpr="$item//created_time/node()" outputvariable="each_created_time"/>'
+          
+          
+          constructor = constructor + '<script>'
+          constructor = constructor + '<![CDATA['
+          
+            ///////////
+            //TIMESTAMP
+            ////////////
+            
+            constructor = constructor + 'var created_time_split = each_created_time.split(" ");'
+          
+              //if created_time_split.length ==1 then it is alrady a timestamp (like twitter and atom feeds)
+              constructor = constructor + 'if (created_time_split.length == 1){'
+                constructor = constructor + 'timestamp_arr.push(created_time_split[0]);'
+              constructor = constructor + '}'
+              constructor = constructor + 'else{'
+                constructor = constructor + 'print("each_created_time:" + each_created_time);'
+                constructor = constructor + 'print("created_time_split:" + created_time_split);'
+                
+                //Format Needed: 2011-07-06T19:25:49+00:00
+                constructor = constructor + 'var year = created_time_split[3];'
+                constructor = constructor + 'var month = created_time_split[2];' //Comes in letter
+                constructor = constructor + 'var day = created_time_split[1];'
+                
+                //Fuzzy logic for month-day swap cause some feeds come as day month and viceversa
+                constructor = constructor + 'if(month.length == 2){ month= day; day=created_time_split[2];  }'
+                
+                constructor = constructor + 'print("month:" + month);'
+                
+                constructor = constructor + 'if(month == "Jan") month = "01";'
+              constructor = constructor + 'else if(month == "Feb") month = "02";'
+              constructor = constructor + 'else if(month == "Mar") month = "03";'
+              constructor = constructor + 'else if(month == "Abr") month = "04";'
+              constructor = constructor + 'else if(month == "May") month = "05";'
+              constructor = constructor + 'else if(month == "Jun") month = "06";'
+              constructor = constructor + 'else if(month == "Jul") month = "07";'
+              constructor = constructor + 'else if(month == "Aug") month = "08";'
+              constructor = constructor + 'else if(month == "Sep") month = "09";'
+              constructor = constructor + 'else if(month == "Oct") month = "10";'
+              constructor = constructor + 'else if(month == "Nov") month = "11";'
+              constructor = constructor + 'else if(month == "Dec") month = "12";'
+                
+                //print("year:"+year);
+                //print("month:"+month);
+                //print("day:"+day);
+                
+                constructor = constructor + 'var time_split = created_time_split[4].split(":");'
+                //print("time_split:" + time_split);
+                
+                constructor = constructor + 'var hour = time_split[0];'
+                constructor = constructor + 'var minutes = time_split[1];'
+                constructor = constructor + 'var seconds = time_split[2];'
+                
+                constructor = constructor + 'var timestamp = year +"-"+ month +"-"+ day +"T"+ hour +":"+ minutes +":"+ seconds + "+00:00";'
+                //print("timestamp:"+ timestamp)
+                
+                constructor = constructor + 'timestamp_arr.push(timestamp);'
+                  
+              constructor = constructor + '}'
+            
+            ///END TIMESTAMP
+          
+          constructor = constructor + ']]xxxx>'
+          constructor = constructor + '</script>'
+        constructor = constructor + '</foreach>'   //End foreach: mashup_almost_ready//item para timestamp
+        
+        constructor = constructor + '<script>'
+        constructor = constructor + '<![CDATA['
+        
+        //constructor = constructor + 'print("timestamp_arr Before for:" + timestamp_arr);'
+      
+          //Add Timestamp
+          constructor = constructor + 'for(var i =0; i < timestamp_arr.length; i++){'
+            //constructor = constructor + 'print("inside for:" + timestamp_arr[i]);'
+            constructor = constructor + 'mashup_almost_ready.item[i].timestamp = timestamp_arr[i];'
+          constructor = constructor + '}'
+        
+        //constructor = constructor + 'print("timestamp_arr:" + timestamp_arr);'
+        
+        constructor = constructor + ']]xxxx>'
+        constructor = constructor + '</script>'
+        ///////
+        //Sort by Timestamp
+        //constructor = constructor + '<sort inputvariable="mashup_almost_ready" sortexpr="//item" sortkeys="xs:dateTime(timestamp)" sortdir="descending" outputvariable="mashup_almost_ready" />'
+        
+          constructor = constructor + "<assign fromvariable='mashup_almost_ready' outputvariable='result' />"   
+      ]]>
+    </script>
+    
+    <script>
+      <![CDATA[
+        //CONSTRUCTOR FOR PUTTING ALL TOGETHER
+        dynamicScript = dynamicScript + constructor
+      
+        //FUZZY LOGIC FOR REMOVING MASHUP_CODE tag
+        var res = new Packages.java.lang.String(dynamicScript);
+        res = res.replaceAll("<mashup_code>" , "");
+        res = res.replaceAll("</mashup_code>" , "");
+        res = res.replaceAll("xxxx" , "");
+        dynamicScript = res + "</operation></mashup>";
+    ]]>
+    </script>
+    
+    <!-- EMML STRING THAT WAS CREATED AND ITS GOING TO BE SAVED -->
+    <display message="This is the Groovy: " variable="dynamicScript"/>    
+  
+    <!-- SAVE MASHUP -->
+    <invoke operation="invoke" service="converastions_publish_mashup" inputvariables="mashup_name, dynamicScript" outputvariable="serviceID"/>
+     
+     <!-- CONSTRUCTING FINAL RESULT jsonp FOR CLIENT
+       parseResponse({"mashup":{"id":"Mashup_Generated_Name","url":"/presto/edge/api/rest/Mashup_Generated_Name/runMashup"}})
+      -->
+      <assign fromexpr="concat('/presto/edge/api/rest/', $serviceID, '/invoke?')" outputvariable="url"/>]
+      
+      <script>
+      <![CDATA[
+        //BUILDING THE JSONP STRING FOR RESULT
+        var jsonp_result = '{"mashup":{"id":"'+ serviceID + '", "url":"/presto/edge/api/rest/'+ serviceID + '/runMashup?x-p-anonymous=true&x-presto-resultFormat=json&callback='+ jsonp +'"}}';
+      
+    ]]>
+    </script>
+     <assign fromvariable="jsonp_result" outputvariable="result"/>
+      
+    <display message="Result:" variable="result"/>
+    
+  </operation>
+</mashup>

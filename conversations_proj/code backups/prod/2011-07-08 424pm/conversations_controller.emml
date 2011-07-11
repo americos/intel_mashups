@@ -1,0 +1,208 @@
+<mashup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd"
+  xmlns="http://www.openmashup.org/schemas/v1.0/EMML" xmlns:macro="http://www.openmashup.org/schemas/v1.0/EMMLMacro"
+  name="conversations_controller">
+
+  <operation name="invoke">
+    <output name="result" type="string"></output>
+    
+    <variables>
+      <variable name="feed_data" type="document"></variable>
+      
+      <variable name="dynamicScript" type="string"/>
+      
+      <variable name="emml_string" type="string"/>
+      <variable name="final_emml" type="string"/>
+      <variable name="emml_xml" type="document"></variable>
+      <variable name="counter" type="number" default="0"></variable>
+      <variable name="constructor" type="string"/>
+      <variable name="feed_limit" type="number"></variable>
+      <variable name="mashup_name" type="string"></variable>
+      <variable name="serviceID" type="string"></variable>
+      <variable name="feed_sourcetype" type="string"></variable>
+      <variable name="jsonp_result" type="string"></variable>
+      <variable name="feed_keywords" type="string"></variable>
+      
+    </variables>
+    
+    <!-- INPUT's -->
+    <input name="jsonp" type="string" default="parseResponse"></input>
+    <input name="configuration" type="document">
+      <configuration>
+        <name>smartTrade</name>
+      
+        <feed>
+          <url>http://twitter.com/statuses/user_timeline/intelinside.atom
+          </url>
+          <keywords>MeeGo AGK</keywords>
+          <description></description>
+          <timeout>10000</timeout>
+          <mandatory>true</mandatory>
+          <active>true</active>
+          <source_name>twitter</source_name>
+          <source_type>twitter</source_type>
+          <repeating_element>entry</repeating_element>
+          <limit>5</limit>
+        </feed>
+      
+      </configuration>
+    </input>
+    
+    
+    <variable name="feed_url" type="string" default=""></variable>
+
+    <!-- CONTROLLER LOGIC -->
+    <display message="===BEGIN MASHUP CONTROLLER EXECUTION===" />
+    
+    <!-- ITERATE ON ALL THE FEEDS -->
+    <foreach items="$configuration//feed" variable="feed">
+      <!-- FEED URL -->
+      <assign fromexpr="$feed//url/node()" outputvariable="feed_url" />
+      <display message="::Controller will ask to visit url:" variable="feed_url" />
+      <!-- Limit -->
+      <assign fromexpr="$feed//limit/node()" outputvariable="feed_limit" />
+      <display message="::Limit results to:" variable="feed_limit" />
+      <!-- Keywords -->
+      <assign fromexpr="$feed//keywords/node()" outputvariable="feed_keywords" />
+      <script>
+      <![CDATA[
+          counter = counter + 1; 
+      ]]>
+      </script>
+
+      <!-- CHECKING SOURCE TYPE -->
+      <assign fromexpr="$feed//source_type/node()" outputvariable="feed_sourcetype"/>
+       <if condition="$feed_sourcetype eq 'twitter' ">
+        <!-- TWITTER -->
+        <variable name="repetitive_elem" type="string" default="entry"></variable>
+        <invoke operation="invoke" service="conversations_parser_twitter" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords" outputvariable="feed_data"/>
+        
+        <!-- RSS -->
+        <elseif condition="$feed_sourcetype eq 'rss' ">
+          <variable name="repetitive_elem" type="string" default="item"></variable>
+          <invoke operation="invoke" service="conversations_parser_rss" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords" outputvariable="feed_data"/>
+        </elseif>
+        
+        <!-- FEED -->        
+        <elseif condition="$feed_sourcetype eq 'feed' ">
+          <variable name="repetitive_elem" type="string" default="entry"></variable>
+          <invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords" outputvariable="feed_data"/>
+        </elseif>
+        
+        <!-- FACEBOOK -->        
+        <elseif condition="$feed_sourcetype eq 'facebook' ">
+          <variable name="repetitive_elem" type="string" default="item"></variable>
+          <invoke operation="invoke" service="conversations_parser_facebook" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords" outputvariable="feed_data"/>
+        </elseif>
+        
+        <!-- FEED NOT SUPPORTED -->
+        <else>
+          <invoke operation="invoke" service="conversations_error" inputvariables="counter, feed_sourcetype" outputvariable="feed_data"/>
+        </else>
+      </if>
+    
+      
+      <!-- CREATING XML STRUCTURE WHERE EACH LINE IS A MASHUP CODE -->
+      <appendresult outputvariable="emml_xml">
+          <mashup_code>
+            {$feed_data}
+          </mashup_code>
+      </appendresult>
+       
+    </foreach>
+
+    <display message="Emml_String:" variable="emml_xml"/>
+    
+    <!-- Get Final MASHUP NAME -->
+    <assign fromexpr="$configuration//name/node()" outputvariable="mashup_name"/>
+    <!-- CREATE FINAL MASHUP CODE -->
+    <script>
+      <![CDATA[
+        
+        var mashup_header = "<mashup xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.openmashup.org/schemas/v1.0/EMML/../schemas/EMMLPrestoSpec.xsd' xmlns='http://www.openmashup.org/schemas/v1.0/EMML' xmlns:macro='http://www.openmashup.org/schemas/v1.0/EMMLMacro' xmlns:presto='http://www.jackbe.com/v1.0/EMMLPrestoExtensions'";
+        mashup_header = mashup_header + " name='"+ mashup_name +"'><operation name='runMashup'>";
+        
+        var output = '<output name="result" type="string"></output>';
+        dynamicScript = mashup_header + output;
+    ]]>
+    </script>
+    
+    <!-- Getting all the lines of every mashup -->
+    <foreach items="$emml_xml//mashup_code" variable="mashup_item">
+      <display message="MASHUP_ITEM:" variable="mashup_item"/>
+      
+      <script>
+        <![CDATA[          
+          dynamicScript = dynamicScript + mashup_item;
+      ]]>
+      </script>
+    </foreach>
+    <!-- Closing operation & mashup tag -->
+    <assign fromexpr="count($configuration//feed)" outputvariable="feed_count"/>
+    <display message="FEED COUNT:" variable="feed_count"/>
+    
+    <!-- Opening final Constructor -->
+    <script>
+        <![CDATA[          
+          constructor = '<constructor outputvariable="result">';
+          constructor = constructor + '<mashup>';
+      ]]>
+    </script>
+    
+    <for variable="feed_number" startcountervalue="1" finalcountervalue="$feed_count">
+      <display message="feed_number:" variable="feed_number"/>
+      
+      <script>
+        <![CDATA[    
+          var output_number = 'output' + feed_number;
+          constructor = constructor + '{$'+ output_number +'//item[string-length( entry/string()) != 0]}'; //This last item is the tag name created in conversations_parser_feed.emml
+                                                          //Checking against the length of entry to put only items with valid text values (due to keyword filtering)
+      ]]>
+      </script>
+      
+    </for>
+    <!-- Closing final constructor -->
+    <script>
+        <![CDATA[          
+          constructor = constructor + '</mashup>';
+          constructor = constructor + '</constructor>';
+      ]]>
+    </script>
+    
+    <script>
+      <![CDATA[
+        //CONSTRUCTOR FOR PUTTING ALL TOGETHER
+        dynamicScript = dynamicScript + constructor
+      
+        //FUZZY LOGIC FOR REMOVING MASHUP_CODE tag
+        var res = new Packages.java.lang.String(dynamicScript);
+        res = res.replaceAll("<mashup_code>" , "");
+        res = res.replaceAll("</mashup_code>" , "");
+        dynamicScript = res + "</operation></mashup>";
+    ]]>
+    </script>
+    
+    <!-- EMML STRING THAT WAS CREATED AND ITS GOING TO BE SAVED -->
+    <display message="This is the Groovy: " variable="dynamicScript"/>    
+  
+    <!-- SAVE MASHUP -->
+    <invoke operation="invoke" service="converastions_publish_mashup" inputvariables="mashup_name, dynamicScript" outputvariable="serviceID"/>
+     
+     <!-- CONSTRUCTING FINAL RESULT jsonp FOR CLIENT
+       parseResponse({"mashup":{"id":"Mashup_Generated_Name","url":"/presto/edge/api/rest/Mashup_Generated_Name/runMashup"}})
+      -->
+      <assign fromexpr="concat('/presto/edge/api/rest/', $serviceID, '/invoke?')" outputvariable="url"/>]
+      
+      <script>
+      <![CDATA[
+        //BUILDING THE JSONP STRING FOR RESULT
+        var jsonp_result = '{"mashup":{"id":"'+ serviceID + '", "url":"/presto/edge/api/rest/'+ serviceID + '/runMashup?x-p-anonymous=true&x-presto-resultFormat=json&callback='+ jsonp +'"}}';
+      
+    ]]>
+    </script>
+     <assign fromvariable="jsonp_result" outputvariable="result"/>
+      
+    <display message="Result:" variable="result"/>
+    
+  </operation>
+</mashup>​
