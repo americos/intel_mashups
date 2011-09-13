@@ -31,56 +31,9 @@
 			<configuration>
 				<name>ameMiami2</name>
 				<feeds>
+					
 					<feed>
-						<url>http://feeds.feedburner.com/IADPBlog</url>
-						<keywords></keywords>
-						<description>Some desc</description>
-						<timeout>10000</timeout>
-						<mandatory>true</mandatory>
-						<active>true</active>
-						<source_name>rss</source_name>
-						<source_type>rss</source_type>
-						<repeating_element>entry</repeating_element>
-						<limit>10</limit>
-					</feed>
-					<feed>
-						<url>http://feeds.feedburner.com/CSRIntel</url>
-						<keywords></keywords>
-						<description>Tweets about IntelInisde</description>
-						<timeout>10000</timeout>
-						<mandatory>true</mandatory>
-						<active>true</active>
-						<source_name>feed</source_name>
-						<source_type>feed</source_type>
-						<repeating_element>entry</repeating_element>
-						<limit>5</limit>
-					</feed>
-										<feed>
-						<url>http://feeds.feedburner.com/IntelSoftwareNetworkBlog</url>
-						<keywords></keywords>
-						<description>Tweets about IntelInisde</description>
-						<timeout>10000</timeout>
-						<mandatory>true</mandatory>
-						<active>true</active>
-						<source_name>rss</source_name>
-						<source_type>rss</source_type>
-						<repeating_element>entry</repeating_element>
-						<limit>5</limit>
-					</feed>
-					<feed>
-						<url>http://premierit.intel.com/community/feeds/blogs?community=2041</url>
-						<keywords></keywords>
-						<description>Tweets about IntelInisde</description>
-						<timeout>10000</timeout>
-						<mandatory>true</mandatory>
-						<active>true</active>
-						<source_name>rss</source_name>
-						<source_type>rss</source_type>
-						<repeating_element>entry</repeating_element>
-						<limit>5</limit>
-					</feed>
-					<feed>
-						<url>http://twitter.com/statuses/user_timeline/intelinside.atom</url>
+						<url>http://twitter.com/statuses/user_timeline/americos.atom</url>
 						<keywords></keywords>
 						<description>Tweets about IntelInisde</description>
 						<timeout>10000</timeout>
@@ -92,31 +45,6 @@
 						<limit>5</limit>
 					</feed>
 					
-					<feed>
-						<url>http://communities.intel.com/community/feeds/blogs?community=2081</url>
-						<keywords></keywords>
-						<description>Tweets about IntelInisde</description>
-						<timeout>10000</timeout>
-						<mandatory>true</mandatory>
-						<active>true</active>
-						<source_name>rss</source_name>
-						<source_type>rss</source_type>
-						<repeating_element>entry</repeating_element>
-						<limit>5</limit>
-					</feed>
-					
-					<feed>
-						<url>http://www.facebook.com/feeds/page.php?id=22707976849format=rss20</url>
-						<keywords></keywords>
-						<description>Tweets about IntelInisde</description>
-						<timeout>10000</timeout>
-						<mandatory>true</mandatory>
-						<active>true</active>
-						<source_name>facebook</source_name>
-						<source_type>facebook</source_type>
-						<repeating_element>entry</repeating_element>
-						<limit>1</limit>
-					</feed>
 					
 					
 					

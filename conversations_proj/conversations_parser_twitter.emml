@@ -15,6 +15,9 @@
  	 <input name="feed_sourcetype" type="string" default="twitter"></input>
  	 <input name="feed_keywords" type="string" default=""></input>
  
+ 	<variables>
+ 		<variable name="tweets" type="string" default=""></variable>
+ 	</variables>
         
         <script>
  	 	<![CDATA[
@@ -30,12 +33,17 @@
  	 			repetitive_elem = "item";
  	 	
   			//Direct Invoke of the URL
-  			res = ' <directinvoke endpoint="' + url + '" outputvariable="'+ my_output +'"/>'
+  			///res = ' <directinvoke endpoint="' + url + '" outputvariable="'+ my_output +'"/>'
+  			
   			
 			//Removing &'s to be able to parse this response.			  			
   			res = res + ' <variable name="mystring" type="string"/>'
   			res = res + '<script><![CDATA['
-  			res = res + 'var mystring=""; var res = new Packages.java.lang.String('+ my_output +');'
+  				
+  				//Call To Java Class for Twitter oAuth
+  				res = res + 'var tweets = new Packages.com.jackbe.oauth.TwitterOAuth.callMe(); ';
+  			
+  			res = res + 'var mystring=""; var res = new Packages.java.lang.String( tweets);'
   			res = res + 'res = res.replaceAll("&" , "&amp;");'
   			res = res + 'mystring = res;' 
   			res = res + "]]xxxx></script>"
@@ -58,7 +66,7 @@
   			print(contains_string);
   			
   			res = res + '<filter inputvariable="'+ my_output + '"'
-  			res = res + ' filterexpr="//'+ repetitive_elem +'[title['+ contains_string +']]"';
+  			res = res + ' filterexpr="//'+ repetitive_elem +'[entry['+ contains_string +']]"'; //Formerly "title" when directinvoke was used
   			res = res + ' outputvariable="' + my_output + '" />' 
   			
   			//Applying limit
@@ -77,13 +85,13 @@
  				//Entry
  				item_string = item_string + '<entry>';
  					//item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:content' + '[1]//text()' +'}'
- 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:title' + '[1]//text()' +'}'
+ 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:entry' + '[1]//text()' +'}' //Formerly "title" when directinvoke was used
  				item_string = item_string + '</entry>';
  				
  				//Created Time
  				item_string = item_string  + '<created_time>'
  					//item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:published' + '[1]//text()' +'}'
- 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:pubDate' + '[1]//text()' +'}'
+ 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:created_time' + '[1]//text()' +'}' //Formerly "pubDate" when directinvoke was used
  				item_string = item_string  + '</created_time>'
  				
  				//Source
