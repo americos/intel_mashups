@@ -35,13 +35,18 @@
   			//Direct Invoke of the URL
   			///res = ' <directinvoke endpoint="' + url + '" outputvariable="'+ my_output +'"/>'
   			
+  			//Get Twitter user name remove the rss.
+  			var twitter_user = url.split("/");
+  			twitter_user = twitter_user[5]; //Name is on index 5 of the splitted array
+  			twitter_user = twitter_user.replace(".rss", "");
+  			print("Twitter:user:" + twitter_user);
   			
 			//Removing &'s to be able to parse this response.			  			
   			res = res + ' <variable name="mystring" type="string"/>'
   			res = res + '<script><![CDATA['
   				
   				//Call To Java Class for Twitter oAuth
-  				res = res + 'var tweets = new Packages.com.jackbe.oauth.TwitterOAuth.callMe(); ';
+  				res = res + 'var tweets = new Packages.com.jackbe.oauth.TwitterOAuth.printTwitterFeeds("'+ twitter_user +'"); ';
   			
   			res = res + 'var mystring=""; var res = new Packages.java.lang.String( tweets);'
   			res = res + 'res = res.replaceAll("&" , "&amp;");'
