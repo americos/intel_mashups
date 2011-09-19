@@ -110,6 +110,12 @@
  					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:link'+ '[1]/text()' +'}'
  				item_string = item_string + '</link>';
  				
+ 				//Twitter_user hits reminaing
+ 				item_string = item_string + '<twitter_user_hits_remaining>';
+ 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:twitter_user_hits'+ '[1]/text()' +'}'
+ 				item_string = item_string + '</twitter_user_hits_remaining>';
+ 				
+ 				
  				//Closing Item
  				item_string = item_string + '</item>';
  			}
