@@ -115,6 +115,15 @@
  					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:twitter_user_hits'+ '[1]/text()' +'}'
  				item_string = item_string + '</twitter_user_hits_remaining>';
  				
+ 				//Twitter User
+ 				item_string = item_string + '<twitter_user>';
+ 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:twitter_user'+ '[1]/text()' +'}'
+ 				item_string = item_string + '</twitter_user>';
+ 				
+ 				//Tweet ID
+ 				item_string = item_string + '<twitter_id>';
+ 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:twitter_id'+ '[1]/text()' +'}'
+ 				item_string = item_string + '</twitter_id>';
  				
  				//Closing Item
  				item_string = item_string + '</item>';
