@@ -127,6 +127,12 @@
  					}
  				item_string = item_string + '</author>';
  				
+ 				//Description (because now we are filtering in both Title and Description
+ 				item_string = item_string + '<description>';
+ 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:description/text()' +'}'
+ 				item_string = item_string + '</description>';
+ 				
+ 				
  				//Closing Item
  				item_string = item_string + '</item>';
  			}
