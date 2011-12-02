@@ -13,7 +13,7 @@
  	 <input name="repetitive_elem" type="string" default="entry"></input>
  	 <input name="limit" type="number" default="7"></input>
  	 <input name="feed_sourcetype" type="string" default="feed_source"></input>
- 	 <input name="feed_keywords" type="string" default="Tablet Rocks"></input>
+ 	 <input name="feed_keywords" type="string" default=""></input>
  
         
         <script>
@@ -48,8 +48,9 @@
 	  			}
   			print(contains_string);
   			
+  			//Filter on Title & Summary (Body)
   			res = res + '<filter inputvariable="'+ my_output + '"'
-  			res = res + ' filterexpr="//'+ repetitive_elem +'[title['+ contains_string +']]"';
+  			res = res + ' filterexpr="//'+ repetitive_elem +'[title['+ contains_string +'] or summary['+contains_string+'] ]"';
   			res = res + ' outputvariable="' + my_output + '" />' 
   			
   			
@@ -70,6 +71,11 @@
  				item_string = item_string + '<entry>';
  					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:title' + '[1]//text()' +'}'
  				item_string = item_string + '</entry>';
+ 				
+ 				//Description (summary)
+ 				item_string = item_string + '<description>';
+ 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:summary' + '[1]//text()' +'}'
+ 				item_string = item_string + '</description>';
  				
  				//Created Time
  				item_string = item_string  + '<created_time>'

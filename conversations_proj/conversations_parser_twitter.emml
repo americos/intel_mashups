@@ -70,6 +70,7 @@
 	  			}
   			print(contains_string);
   			
+  			//Filter on Title & description
   			res = res + '<filter inputvariable="'+ my_output + '"'
   			res = res + ' filterexpr="//'+ repetitive_elem +'[entry['+ contains_string +']]"'; //Formerly "title" when directinvoke was used
   			res = res + ' outputvariable="' + my_output + '" />' 

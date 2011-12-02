@@ -50,8 +50,9 @@
 	  			}
   			print(contains_string);
   			
+  			//Filter on Title & Description
   			res = res + '<filter inputvariable="'+ my_output + '"'
-  			res = res + ' filterexpr="//'+ repetitive_elem +'[title['+ contains_string +']]"';
+  			res = res + ' filterexpr="//'+ repetitive_elem +'[title['+ contains_string +'] or description['+contains_string+'] ]"';
   			res = res + ' outputvariable="' + my_output + '" />' 
   			
   			//Applying limit
@@ -72,6 +73,11 @@
  				item_string = item_string + '<entry>';
  					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:title' + '[1]//text()' +'}'
  				item_string = item_string + '</entry>';
+ 				
+ 				//Description
+ 				item_string = item_string + '<description>';
+ 					item_string = item_string + '{$'+ my_output + '//*:' + repetitive_elem+ '['+ i +']//*:description' + '[1]//text()' +'}'
+ 				item_string = item_string + '</description>';
  				
  				//Created Time
  				item_string = item_string  + '<created_time>'

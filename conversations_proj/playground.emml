@@ -18,6 +18,17 @@
 			<variable name="mashup_almost_ready" type="document">
 				<mashupx>
 					<item>
+						<entry>CinemaNow, Intel Give PCs a Front Row Seat to
+							Growing, Secure Library of HD Movie Content</entry>
+						<datetotext>1 week, 13 hours ago</datetotext>
+						<created_time>Thu, 06 Oct 2011 03:47:49 GMT</created_time>
+						<source>rss</source>
+						<link>http://newsroom.intel.com/community/intel_newsroom/blog/2011/10/06/cinemanow-intel-give-pcs-a-front-row-seat-to-growing-secure-library-of-hd-movie-content</link>
+						<author>webadmin@intel.com</author>
+						<datetotext2>Fri, 23 Sep 2011 13:11:29 GMT</datetotext2>
+						<timestamp>2011-10-06T03:47:49+00:00</timestamp>
+					</item>
+					<item>
 						<entry>Paying IT Forward</entry>
 						<datetotext>1 week, 1 day ago</datetotext>
 						<source>rss</source>
@@ -192,7 +203,7 @@
 					//print("item: " + item_counter + " DONT date to Text");
 				}
 				
-				//print("final_dateToText:" +final_dateToText);
+				print("final_dateToText:" +final_dateToText);
 				
 				
 			]]>
