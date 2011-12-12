@@ -5,47 +5,35 @@
 
 	<operation name="invoke">
 		<output name="result" type="string"></output>
-		
+
 		<variables>
 			<variable name="feed_data" type="document"></variable>
-			
-			<variable name="dynamicScript" type="string"/>
-			
-			<variable name="emml_string" type="string"/>
-			<variable name="final_emml" type="string"/>
+
+			<variable name="dynamicScript" type="string" />
+
+			<variable name="emml_string" type="string" />
+			<variable name="final_emml" type="string" />
 			<variable name="emml_xml" type="document"></variable>
 			<variable name="counter" type="number" default="0"></variable>
-			<variable name="constructor" type="string"/>
+			<variable name="constructor" type="string" />
 			<variable name="feed_limit" type="number"></variable>
 			<variable name="mashup_name" type="string"></variable>
 			<variable name="serviceID" type="string"></variable>
 			<variable name="feed_sourcetype" type="string"></variable>
 			<variable name="jsonp_result" type="string"></variable>
 			<variable name="feed_keywords" type="string"></variable>
-			
+
 		</variables>
-		
+
 		<!-- INPUT's -->
 		<input name="jsonp" type="string" default="parseResponse"></input>
 		<input name="configuration" type="document">
 			<configuration>
-				<name>ameMiami2</name>
+				<name>beachMashup</name>
 				<feeds>
 					<feed>
-						<url>http://feeds.feedburner.com/IADPBlog</url>
-						<keywords></keywords>
-						<description>Some desc</description>
-						<timeout>10000</timeout>
-						<mandatory>true</mandatory>
-						<active>true</active>
-						<source_name>rss</source_name>
-						<source_type>rss</source_type>
-						<repeating_element>entry</repeating_element>
-						<limit>10</limit>
-					</feed>
-					<feed>
 						<url>http://feeds.feedburner.com/CSRIntel</url>
-						<keywords></keywords>
+						<keywords>Heather Levin</keywords>
 						<description>Tweets about IntelInisde</description>
 						<timeout>10000</timeout>
 						<mandatory>true</mandatory>
@@ -55,86 +43,22 @@
 						<repeating_element>entry</repeating_element>
 						<limit>5</limit>
 					</feed>
-										<feed>
-						<url>http://feeds.feedburner.com/IntelSoftwareNetworkBlog</url>
-						<keywords></keywords>
-						<description>Tweets about IntelInisde</description>
-						<timeout>10000</timeout>
-						<mandatory>true</mandatory>
-						<active>true</active>
-						<source_name>rss</source_name>
-						<source_type>rss</source_type>
-						<repeating_element>entry</repeating_element>
-						<limit>5</limit>
-					</feed>
-					<feed>
-						<url>http://premierit.intel.com/community/feeds/blogs?community=2041</url>
-						<keywords></keywords>
-						<description>Tweets about IntelInisde</description>
-						<timeout>10000</timeout>
-						<mandatory>true</mandatory>
-						<active>true</active>
-						<source_name>rss</source_name>
-						<source_type>rss</source_type>
-						<repeating_element>entry</repeating_element>
-						<limit>5</limit>
-					</feed>
-					<feed>
-						<url>http://twitter.com/statuses/user_timeline/intelinside.atom</url>
-						<keywords></keywords>
-						<description>Tweets about IntelInisde</description>
-						<timeout>10000</timeout>
-						<mandatory>true</mandatory>
-						<active>true</active>
-						<source_name>twitter</source_name>
-						<source_type>twitter</source_type>
-						<repeating_element>entry</repeating_element>
-						<limit>5</limit>
-					</feed>
-					
-					<feed>
-						<url>http://communities.intel.com/community/feeds/blogs?community=2081</url>
-						<keywords></keywords>
-						<description>Tweets about IntelInisde</description>
-						<timeout>10000</timeout>
-						<mandatory>true</mandatory>
-						<active>true</active>
-						<source_name>rss</source_name>
-						<source_type>rss</source_type>
-						<repeating_element>entry</repeating_element>
-						<limit>5</limit>
-					</feed>
-					
-					<feed>
-						<url>http://www.facebook.com/feeds/page.php?id=22707976849format=rss20</url>
-						<keywords></keywords>
-						<description>Tweets about IntelInisde</description>
-						<timeout>10000</timeout>
-						<mandatory>true</mandatory>
-						<active>true</active>
-						<source_name>facebook</source_name>
-						<source_type>facebook</source_type>
-						<repeating_element>entry</repeating_element>
-						<limit>1</limit>
-					</feed>
-					
-					
-					
 				</feeds>
 			</configuration>
 		</input>
-		
-		
+
+
 		<variable name="feed_url" type="string" default=""></variable>
 
 		<!-- CONTROLLER LOGIC -->
 		<display message="===BEGIN MASHUP CONTROLLER EXECUTION===" />
-		
+
 		<!-- ITERATE ON ALL THE FEEDS -->
 		<foreach items="$configuration//feed" variable="feed">
 			<!-- FEED URL -->
 			<assign fromexpr="$feed//url/node()" outputvariable="feed_url" />
-			<display message="::Controller will ask to visit url:" variable="feed_url" />
+			<display message="::Controller will ask to visit url:"
+				variable="feed_url" />
 			<!-- Limit -->
 			<assign fromexpr="$feed//limit/node()" outputvariable="feed_limit" />
 			<display message="::Limit results to:" variable="feed_limit" />
@@ -147,50 +71,60 @@
 			</script>
 
 			<!-- CHECKING SOURCE TYPE -->
-			<assign fromexpr="$feed//source_type/node()" outputvariable="feed_sourcetype"/>
-			 <if condition="$feed_sourcetype eq 'twitter' ">
+			<assign fromexpr="$feed//source_type/node()" outputvariable="feed_sourcetype" />
+			 
+			<if condition="$feed_sourcetype eq 'twitter' ">
 				<!-- TWITTER -->
 				<variable name="repetitive_elem" type="string" default="entry"></variable>
-				<invoke operation="invoke" service="conversations_parser_twitter" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords" outputvariable="feed_data"/>
-				
+				<invoke operation="invoke" service="conversations_parser_twitter"
+					inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords"
+					outputvariable="feed_data" />
+
 				<!-- RSS -->
 				<elseif condition="$feed_sourcetype eq 'rss' ">
 					<variable name="repetitive_elem" type="string" default="item"></variable>
-					<invoke operation="invoke" service="conversations_parser_rss" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords" outputvariable="feed_data"/>
+					<invoke operation="invoke" service="conversations_parser_rss"
+						inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords"
+						outputvariable="feed_data" />
 				</elseif>
-				
-				<!-- FEED -->				
+
+				<!-- FEED -->
 				<elseif condition="$feed_sourcetype eq 'feed' ">
 					<variable name="repetitive_elem" type="string" default="entry"></variable>
-					<invoke operation="invoke" service="conversations_parser_feed" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords" outputvariable="feed_data"/>
+					<invoke operation="invoke" service="conversations_parser_feed"
+						inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords"
+						outputvariable="feed_data" />
 				</elseif>
-				
-				<!-- FACEBOOK -->				
+
+				<!-- FACEBOOK -->
 				<elseif condition="$feed_sourcetype eq 'facebook' ">
 					<variable name="repetitive_elem" type="string" default="item"></variable>
-					<invoke operation="invoke" service="conversations_parser_facebook" inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords" outputvariable="feed_data"/>
+					<invoke operation="invoke" service="conversations_parser_facebook"
+						inputvariables="feed_url, counter, repetitive_elem, feed_limit, feed_sourcetype, feed_keywords"
+						outputvariable="feed_data" />
 				</elseif>
-				
+
 				<!-- FEED NOT SUPPORTED -->
 				<else>
-					<invoke operation="invoke" service="conversations_error" inputvariables="counter, feed_sourcetype" outputvariable="feed_data"/>
+					<invoke operation="invoke" service="conversations_error"
+						inputvariables="counter, feed_sourcetype" outputvariable="feed_data" />
 				</else>
 			</if>
-		
-			
+
+
 			<!-- CREATING XML STRUCTURE WHERE EACH LINE IS A MASHUP CODE -->
 			<appendresult outputvariable="emml_xml">
-					<mashup_code>
-						{$feed_data}
+				<mashup_code>
+					{$feed_data}
 					</mashup_code>
 			</appendresult>
-			 
+
 		</foreach>
 
-		<display message="Emml_String:" variable="emml_xml"/>
-		
+		<display message="Emml_String:" variable="emml_xml" />
+
 		<!-- Get Final MASHUP NAME -->
-		<assign fromexpr="$configuration//name/node()" outputvariable="mashup_name"/>
+		<assign fromexpr="$configuration//name/node()" outputvariable="mashup_name" />
 		<!-- CREATE FINAL MASHUP CODE -->
 		<script>
  	 	<![CDATA[
@@ -202,11 +136,11 @@
   			dynamicScript = mashup_header + output;
 		]]>
 		</script>
-		
+
 		<!-- Getting all the lines of every mashup -->
 		<foreach items="$emml_xml//mashup_code" variable="mashup_item">
-			<display message="MASHUP_ITEM:" variable="mashup_item"/>
-			
+			<display message="MASHUP_ITEM:" variable="mashup_item" />
+
 			<script>
  	 		<![CDATA[  				
   				dynamicScript = dynamicScript + mashup_item;
@@ -214,9 +148,9 @@
 			</script>
 		</foreach>
 		<!-- Closing operation & mashup tag -->
-		<assign fromexpr="count($configuration//feed)" outputvariable="feed_count"/>
-		<display message="FEED COUNT:" variable="feed_count"/>
-		
+		<assign fromexpr="count($configuration//feed)" outputvariable="feed_count" />
+		<display message="FEED COUNT:" variable="feed_count" />
+
 		<!-- Opening final Constructor -->
 		<script>
  	 		<![CDATA[  				
@@ -224,10 +158,11 @@
   				constructor = constructor + '<mashup>';
 			]]>
 		</script>
-		
-		<for variable="feed_number" startcountervalue="1" finalcountervalue="$feed_count">
-			<display message="feed_number:" variable="feed_number"/>
-			
+
+		<for variable="feed_number" startcountervalue="1"
+			finalcountervalue="$feed_count">
+			<display message="feed_number:" variable="feed_number" />
+
 			<script>
  	 		<![CDATA[  	
  	 			var output_number = 'output' + feed_number;
@@ -235,7 +170,7 @@
  	 																											//Checking against the length of entry to put only items with valid text values (due to keyword filtering)
 			]]>
 			</script>
-			
+
 		</for>
 		<!-- Closing final constructor -->
 		<script>
@@ -339,18 +274,22 @@
 			 	 			
 			 	 			//WEEKS
 			 	 			constructor = constructor + 'else if(time.indexOf("week") != -1){'
-			 	 				//print("Date beofre sub:" + amount +" week:" + d);
+			 	 				constructor = constructor + 'print("Date beofre sub:" + amount +" week:" + d);'
 			 	 				constructor = constructor + 'd.setDate(d.getDate() - (amount * 7));'
-			 	 				//print("Date AFTER sub:" + amount +" week:" + d);
+			 	 				constructor = constructor + 'print("Date AFTER sub:" + amount +" week:" + d);'
 			 	 				
 			 	 				//Now take days into account.
-			 	 				constructor = constructor + 'if(spit_dateToText.length > 4){'
+			 	 				constructor = constructor + 'if(spit_dateToText.length > 4 && spit_dateToText[2].indexOf("day")!= -1){'
 			 	 					constructor = constructor + 'var week_day = spit_dateToText[2];'
-			 	 					//print("==Going to sub day: " + week_day);
+			 	 					constructor = constructor + 'print("==Going to sub day: " + week_day);'
 			 	 					constructor = constructor + 'd.setDate(d.getDate() - week_day);'
+			 	 					constructor = constructor + 'print(" pre final_dateToText for weeks-days:" + d);'
 			 	 				constructor = constructor + '}'
 			 	 				
 			 	 				constructor = constructor + 'final_dateToText.push(d);'
+			 	 				
+			 	 				constructor = constructor + 'print("final_dateToText for weeks-days:" + d);'
+			 	 				
 			 	 			constructor = constructor + '}'
 			 	 			
 			 	 			//Months
@@ -452,9 +391,10 @@
 				
 				//constructor = constructor + 'print("new_date_arr:" + new_date_arr);'
 					
-				
+				//HERE is the magic for asigning the datetotext in the created_time format.
 				constructor = constructor + 'for(var i =0; i < final_dateToText.length; i++){'
-					////constructor = constructor + 'mashup_almost_ready.item[i].created_time = new_date_arr[i];'
+					constructor = constructor + 'mashup_almost_ready.item[i].created_time2 = new_date_arr[i];'
+					constructor = constructor + 'mashup_almost_ready.item[i].datetotext2 = new_date_arr[i];'
 					
 					
 				constructor = constructor + '}'
@@ -596,7 +536,7 @@
     			constructor = constructor + "<assign fromvariable='mashup_almost_ready' outputvariable='result' />"   
 			]]>
 		</script>
-		
+
 		<script>
  	 	<![CDATA[
  	 		//CONSTRUCTOR FOR PUTTING ALL TOGETHER
@@ -610,28 +550,35 @@
   			dynamicScript = res + "</operation></mashup>";
 		]]>
 		</script>
-		
+
 		<!-- EMML STRING THAT WAS CREATED AND ITS GOING TO BE SAVED -->
-		<display message="This is the Groovy: " variable="dynamicScript"/>		
-	
+		<display message="FINAL Mashup Code: " variable="dynamicScript" />
+
 		<!-- SAVE MASHUP -->
-		<!-- <invoke operation="invoke" service="converastions_publish_mashup" inputvariables="mashup_name, dynamicScript" outputvariable="serviceID"/> -->
-	 	
-	 	<!-- CONSTRUCTING FINAL RESULT jsonp FOR CLIENT
-	 		parseResponse({"mashup":{"id":"Mashup_Generated_Name","url":"/presto/edge/api/rest/Mashup_Generated_Name/runMashup"}})
-	 	 -->
-	 	 <assign fromexpr="concat('/presto/edge/api/rest/', $serviceID, '/invoke?')" outputvariable="url"/>]
-	 	 
-	 	 <script>
+		<!--
+			<invoke operation="invoke" service="converastions_publish_mashup"
+			inputvariables="mashup_name, dynamicScript"
+			outputvariable="serviceID"/>
+		-->
+
+		<!--
+			CONSTRUCTING FINAL RESULT jsonp FOR CLIENT
+			parseResponse({"mashup":{"id":"Mashup_Generated_Name","url":"/presto/edge/api/rest/Mashup_Generated_Name/runMashup"}})
+		-->
+		<assign fromexpr="concat('/presto/edge/api/rest/', $serviceID, '/invoke?')"
+			outputvariable="url" />
+		]
+
+		<script>
  	 	<![CDATA[
  	 		//BUILDING THE JSONP STRING FOR RESULT
  	 		var jsonp_result = '{"mashup":{"id":"'+ serviceID + '", "url":"/presto/edge/api/rest/'+ serviceID + '/runMashup?x-p-anonymous=true&x-presto-resultFormat=json&callback='+ jsonp +'"}}';
  	 	
 		]]>
 		</script>
-	 	<assign fromvariable="jsonp_result" outputvariable="result"/>
-	 	 
-		<display message="Result:" variable="result"/>
-		
+		<assign fromvariable="jsonp_result" outputvariable="result" />
+
+		<display message="JSONP Result:" variable="result" />
+
 	</operation>
 </mashup>
