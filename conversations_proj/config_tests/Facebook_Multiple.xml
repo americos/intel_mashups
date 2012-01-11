@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+				<name>ameMiami2</name>
+				<feeds>
+					<feed>
+						<url>http://www.facebook.com/feeds/page.php?id=22707976849format=rss20</url>
+						<keywords></keywords>
+						<description>Tweets about IntelInisde</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>facebook</source_name>
+						<source_type>facebook</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>5</limit>
+					</feed>
+					
+					<feed>
+						<url>https://www.facebook.com/feeds/page.php?id=97164766102format=rss20</url>
+						<keywords></keywords>
+						<description>Tweets about IntelInisde</description>
+						<timeout>10000</timeout>
+						<mandatory>true</mandatory>
+						<active>true</active>
+						<source_name>facebook</source_name>
+						<source_type>facebook</source_type>
+						<repeating_element>entry</repeating_element>
+						<limit>5</limit>
+					</feed>
+				</feeds>
+			</configuration>
